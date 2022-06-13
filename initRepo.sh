@@ -1,9 +1,13 @@
 #!/bin/sh
 
-mkdir -p ../build 
+mkdir -p build 
 
 cd build
 
 cmake ..
 
 make
+
+cd ..
+
+mv build ../build
