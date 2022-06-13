@@ -10,4 +10,6 @@ make
 
 cd ..
 
+rm -r ../build
+
 mv build ../build
