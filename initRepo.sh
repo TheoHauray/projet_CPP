@@ -7,7 +7,3 @@ cd build
 cmake ..
 
 make
-
-rm -r ../build
-
-mv build ../build

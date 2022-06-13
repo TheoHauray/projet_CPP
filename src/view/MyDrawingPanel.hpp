@@ -1,4 +1,5 @@
-#include "MyDrawingPanel.hpp"
+#ifndef __MYDRAWINGPANEL_H__
+#define __MYDRAWINGPANEL_H__
 
 #include "wx/wxprec.h"
 
@@ -26,3 +27,5 @@ private:
 	wxPoint m_mousePoint ;
 	wxPoint m_onePoint ;
 };
+
+#endif // __MYDRAWINGPANEL_H__
