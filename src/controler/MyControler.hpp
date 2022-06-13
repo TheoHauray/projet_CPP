@@ -1,5 +1,5 @@
-#ifndef __MYAPP_H__
-#define __MYAPP_H__
+#ifndef __MYCONTROLER_H__
+#define __MYCONTROLER_H__
 
 // For compilers that support precompilation, includes "wx/wx.h".
 #include "wx/wxprec.h"
@@ -13,11 +13,16 @@
 #include <wx/file.h>
 #include <wx/bitmap.h>
 
+
 //------------------------------------------------------------------------
-class MyApp: public wxApp
+class MyControler: public wxApp
 //------------------------------------------------------------------------
 {
-    virtual bool OnInit() ;
+    private:
+        
+
+    public:
+        
 };
 
 #endif //__MYAPP_H__

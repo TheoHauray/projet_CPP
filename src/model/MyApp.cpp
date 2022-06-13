@@ -10,7 +10,6 @@
 #include <wx/file.h>
 #include <wx/bitmap.h>
 
-#include "MyApp.hpp"
 #include "../view/MyFrame.hpp"
 
 //------------------------------------------------------------------------
@@ -23,6 +22,13 @@
 #define WIDGET_Y_STEP		50
 #define APP_NAME "M1102 Skeleton 1.0"
 
+
+//------------------------------------------------------------------------
+class MyApp: public wxApp
+//------------------------------------------------------------------------
+{
+    virtual bool OnInit() ;
+};
 
 IMPLEMENT_APP(MyApp) // macro that contains the main() function
 
