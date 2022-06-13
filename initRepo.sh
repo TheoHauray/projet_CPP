@@ -7,3 +7,7 @@ cd build
 cmake ..
 
 make
+
+cd ..
+
+mv build ../build
