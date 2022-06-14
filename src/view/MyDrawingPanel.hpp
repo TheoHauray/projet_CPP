@@ -18,20 +18,22 @@
 class MyDrawingPanel: public wxPanel
 
 {
+private:
+	void OnMouseMove(wxMouseEvent &event) ;
+	void OnMouseLeftDown(wxMouseEvent &event) ;
+	void OnPaint(wxPaintEvent &event) ;
+	
+	wxPoint m_mousePoint ;
+	wxPoint m_onePoint ;
+	Controler *controler;
+	
 public:
 	MyDrawingPanel( wxWindow *parent ) ;
 	void OpenFile(wxString fileName) ;
 	void SaveFile(wxString fileName) ;
 	void setControler(Controler *controler) ;
 
-private:
-	void OnMouseMove(wxMouseEvent &event) ;
-	void OnMouseLeftDown(wxMouseEvent &event) ;
-	void OnPaint(wxPaintEvent &event) ;
-	wxPoint m_mousePoint ;
-	wxPoint m_onePoint ;
 
-	Controler controler;
 };
 
 #endif // __MYDRAWINGPANEL_H__
