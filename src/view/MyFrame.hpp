@@ -17,14 +17,15 @@
 #include "MyDrawingPanel.hpp"
 #include "../controler/Controler.hpp"
 
+class Controler ; 
+class MyControlPanel ;
+class MyDrawingPanel ;
+
+
 //------------------------------------------------------------------------
 class MyFrame: public wxFrame
 //------------------------------------------------------------------------
 {
-public:
-	MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size);
-	MyControlPanel* GetControlPanel(){return m_controlPanel ;} ;
-	void RefreshDrawing(){m_drawingPanel->Refresh() ;} ;
 
 protected:
 	void OnQuit(wxCommandEvent& event);
@@ -37,6 +38,13 @@ protected:
 	MyControlPanel *m_controlPanel; // the panel with controls
 	MyDrawingPanel *m_drawingPanel; // the panel in which we draw
 	Controler *controler;
+
+public:
+	MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size);
+	MyControlPanel* GetControlPanel(){return m_controlPanel ;} ;
+	void RefreshDrawing();
+	//void setControler(Controler *controler) ;
+
 } ;
 
 #endif //__MYFRAME_H__

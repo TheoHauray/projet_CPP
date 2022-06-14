@@ -15,9 +15,9 @@ include(${wxWidgets_USE_FILE})
 
 add_executable(
     skeleton
+    src/controler/Controler.cpp
     src/MyApp.cpp
     src/view/Constant.hpp
-    src/view/MyControlPanel.hpp 
     src/view/MyControlPanel.cpp 
     src/view/MyDrawingPanel.cpp 
     src/view/MyFrame.cpp

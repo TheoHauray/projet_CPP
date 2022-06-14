@@ -14,6 +14,8 @@
 
 #include "../controler/Controler.hpp"
 
+class Controler ; 
+
 //------------------------------------------------------------------------
 class MyControlPanel: public wxPanel
 //------------------------------------------------------------------------
@@ -24,6 +26,7 @@ public:
 	bool GetCheckBoxValue() {return m_checkBox->GetValue() ;} ;
 	bool GetRadioButtonLineValue() {return m_radioButtonLine->GetValue();} ;
 	bool GetLineValue() {return m_line->GetValue();} ; 
+	void setControler(Controler *controler) ;
 
 private:
 	void OnButton(wxCommandEvent &event) ;

@@ -14,24 +14,30 @@
 
 #include "../controler/Controler.hpp"
 
+class Controler ; 
 
 class MyDrawingPanel: public wxPanel
-
 {
-public:
-	MyDrawingPanel( wxWindow *parent ) ;
-	void OpenFile(wxString fileName) ;
-	void SaveFile(wxString fileName) ;
-	int clic;
+
 
 private:
 	void OnMouseMove(wxMouseEvent &event) ;
 	void OnMouseLeftDown(wxMouseEvent &event) ;
 	void OnPaint(wxPaintEvent &event) ;
+	
 	wxPoint m_mousePoint ;
 	wxPoint m_onePoint ;
+	Controler *controler;
+	
+public:
+	MyDrawingPanel( wxWindow *parent ) ;
+	void OpenFile(wxString fileName) ;
+	void SaveFile(wxString fileName) ;
+	void setControler(Controler *controler) ;
+	int clic;
 
-	Controler controler;
+
+
 };
 
 #endif // __MYDRAWINGPANEL_H__

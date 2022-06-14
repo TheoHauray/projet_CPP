@@ -15,6 +15,7 @@
 #include "../model/Line.hpp"
 
 #include "Constant.hpp"
+#include "../controler/Controler.hpp"
 
 
 //------------------------------------------------------------------------
@@ -110,4 +111,11 @@ void MyControlPanel::OnCheckBox(wxCommandEvent &event)
 {
 	MyFrame* frame = (MyFrame*)GetParent() ;
 	frame->RefreshDrawing() ;	// update the drawing panel
+}
+
+//------------------------------------------------------------------------
+void MyControlPanel::setControler(Controler *controler)
+//------------------------------------------------------------------------
+{
+	this->controler = controler;
 }

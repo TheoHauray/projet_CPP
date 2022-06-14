@@ -14,6 +14,7 @@
 #include "MyDrawingPanel.hpp"
 
 #include "Constant.hpp"
+#include "../controler/Controler.hpp"
 
 //------------------------------------------------------------------------
 // Some enums for widgets
@@ -65,9 +66,10 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
 	m_drawingPanel = new MyDrawingPanel(this);
 
 	//Init controler
-	controler(*m_controlPanel, *m_drawingPanel, *this);
+	controler = new Controler(*m_controlPanel, *m_drawingPanel, *this);
 
-
+	m_controlPanel->setControler(controler);
+	m_drawingPanel->setControler(controler);
 
 	CreateStatusBar() ;
 	SetStatusText(wxT("click in the right panel and tune the controls of the left panel. Visit the File menu!")) ;
@@ -125,4 +127,18 @@ void MyFrame::OnSize(wxSizeEvent &event)
 	GetSize(&w,&h) ;	
 	m_controlPanel->SetSize(wxRect(wxPoint(0,0), wxPoint(WIDGET_PANEL_WIDTH, h))) ;
 	m_drawingPanel->SetSize(wxRect(wxPoint(WIDGET_PANEL_WIDTH,0), wxPoint(w, h))) ;
+}
+
+//------------------------------------------------------------------------
+/*
+void MyFrame::setControler(Controler *controler)
+//------------------------------------------------------------------------
+{
+	this->controler = controler;
+}
+*/
+
+void MyFrame::RefreshDrawing()
+{
+	m_drawingPanel->Refresh() ;
 }
