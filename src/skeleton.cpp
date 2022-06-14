@@ -57,6 +57,7 @@ enum
 	ID_SAVE,
 	ID_BUTTON1,
 	ID_SLIDER1,
+	ID_BUTTON2,
 	ID_CHECKBOX1
 };
 
@@ -105,6 +106,8 @@ private:
 	wxButton* m_button ;
 	wxSlider* m_slider ;
 	wxCheckBox* m_checkBox ;
+	wxButton* m_button2;
+
 };
 
 //------------------------------------------------------------------------
@@ -158,6 +161,10 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 	y+= WIDGET_Y_STEP ;
 	m_checkBox = new wxCheckBox(this, ID_CHECKBOX1, "Show (x,y)", wxPoint(10, y), wxSize(100,20)) ;
 	Bind(wxEVT_CHECKBOX, &MyControlPanel::OnCheckBox, this, ID_CHECKBOX1) ;	
+
+	y+= WIDGET_Y_STEP ;
+	m_button2 = new wxButton(this, ID_BUTTON2, wxT("Draw a point"), wxPoint(10, y)) ;
+	Bind(wxEVT_CHECKBOX, &MyControlPanel::OnCheckBox, this, ID_BUTTON2) ;
 }
 
 //------------------------------------------------------------------------
