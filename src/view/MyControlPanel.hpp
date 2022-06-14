@@ -22,6 +22,7 @@ public:
 	MyControlPanel( wxWindow *parent ) ;
 	int GetSliderValue() {return m_slider->GetValue() ;} ;
 	bool GetCheckBoxValue() {return m_checkBox->GetValue() ;} ;
+	bool GetRadioButtonLineValue() {return m_radioButtonLine->GetValue();} ;
 	bool GetLineValue() {return m_line->GetValue();} ; 
 
 private:
@@ -34,7 +35,8 @@ private:
 	wxSlider* m_slider ;
 	wxCheckBox* m_checkBox ;
 	wxCheckBox* m_line ;
-	wxRadioButton* m_radioButton;
+	wxRadioButton* m_radioButtonLine;
+	wxRadioButton* m_radioButtonCircle;
 
 	Controler *controler;
 };

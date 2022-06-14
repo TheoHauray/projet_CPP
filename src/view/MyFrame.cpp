@@ -26,7 +26,10 @@ enum
 	ID_SAVE,
 	ID_BUTTON1,
 	ID_SLIDER1,
-	ID_CHECKBOX1
+	ID_CHECKBOX1,
+
+	ID_RADIOBUTTONLINE,
+	ID_RADIOBUTTONCERCLE
 };
 
 //------------------------------------------------------------------------

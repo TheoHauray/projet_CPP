@@ -22,6 +22,7 @@ public:
 	MyDrawingPanel( wxWindow *parent ) ;
 	void OpenFile(wxString fileName) ;
 	void SaveFile(wxString fileName) ;
+	int clic;
 
 private:
 	void OnMouseMove(wxMouseEvent &event) ;
