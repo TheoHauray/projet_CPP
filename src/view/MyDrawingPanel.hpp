@@ -22,6 +22,7 @@ public:
 	MyDrawingPanel( wxWindow *parent ) ;
 	void OpenFile(wxString fileName) ;
 	void SaveFile(wxString fileName) ;
+	void setControler(Controler *controler) ;
 
 private:
 	void OnMouseMove(wxMouseEvent &event) ;

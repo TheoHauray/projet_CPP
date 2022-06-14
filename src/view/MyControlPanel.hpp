@@ -23,6 +23,7 @@ public:
 	int GetSliderValue() {return m_slider->GetValue() ;} ;
 	bool GetCheckBoxValue() {return m_checkBox->GetValue() ;} ;
 	bool GetLineValue() {return m_line->GetValue();} ; 
+	void setControler(Controler *controler) ;
 
 private:
 	void OnButton(wxCommandEvent &event) ;

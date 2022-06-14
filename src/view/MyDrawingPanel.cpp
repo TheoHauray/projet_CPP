@@ -114,3 +114,10 @@ void MyDrawingPanel::SaveFile(wxString fileName)
 		fclose(f) ;
 	}
 }
+
+//------------------------------------------------------------------------
+void MyDrawingPanel::setControler(Controler *controler)
+//------------------------------------------------------------------------
+{
+	this->controler = controler;
+}
