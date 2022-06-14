@@ -29,7 +29,8 @@ enum
 	ID_BUTTON1,
 	ID_SLIDER1,
 	ID_CHECKBOX1,
-	ID_CHECKBOX2
+	ID_CHECKBOX2,
+	ID_RADIOBUTTON1
 
 };
 
@@ -38,6 +39,10 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 //------------------------------------------------------------------------
 // In this constructor, create the controls and associate each of them (bind) a method
 {
+
+//	Bind(wxEVT_CHECKBOX, &MyControlPanel::OnCheckBox, this, ID_CHECKBOX1) ; trouvé perdu au milieu de nul part jsp ou ça va
+
+
 	int w, h, y ;
 	GetParent()->GetSize(&w,&h) ;
 	SetSize(wxRect(wxPoint(0,0), wxPoint(WIDGET_PANEL_WIDTH, h))) ;
@@ -58,10 +63,18 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 	m_checkBox = new wxCheckBox(this, ID_CHECKBOX1, "Show (x,y)", wxPoint(10, y), wxSize(100,20)) ;
 	Bind(wxEVT_CHECKBOX, &MyControlPanel::OnCheckBox, this, ID_CHECKBOX1) ;	
 
-	y+= WIDGET_Y_STEP ;
-	m_checkBox = new wxCheckBox(this, ID_CHECKBOX2, "Ligne", wxPoint(10, y), wxSize(100,20)) ;
-	Bind(wxEVT_BUTTON, &MyControlPanel::OnCheckBoxLine, this, ID_CHECKBOX2) ;	
-	Bind(wxEVT_CHECKBOX, &MyControlPanel::OnCheckBox, this, ID_CHECKBOX1) ;
+
+//Ajout de boutons radio pour test, voir à quelle méthode ils peuvent être liés
+
+	y+= 2* WIDGET_Y_STEP ;
+	m_radioButton = new wxRadioButton(this, ID_RADIOBUTTON1, "Ligne", wxPoint(10, y), wxSize(100,20)) ;
+	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTON1);
+		y+= WIDGET_Y_STEP ;
+	m_radioButton = new wxRadioButton(this, ID_RADIOBUTTON1, "Carre", wxPoint(10, y), wxSize(100,20)) ;
+	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTON1);
+		y+= WIDGET_Y_STEP ;
+	m_radioButton = new wxRadioButton(this, ID_RADIOBUTTON1, "Rectangle", wxPoint(10, y), wxSize(100,20)) ;
+	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTON1);
 	
 }
 

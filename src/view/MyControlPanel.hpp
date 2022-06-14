@@ -33,6 +33,7 @@ private:
 	wxSlider* m_slider ;
 	wxCheckBox* m_checkBox ;
 	wxCheckBox* m_line ;
+	wxRadioButton* m_radioButton;
 };
 
 #endif //__MYCONTROLPANEL_H__
