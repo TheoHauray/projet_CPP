@@ -13,9 +13,9 @@
 #include <wx/file.h>
 #include <wx/bitmap.h>
 
-#include "MyControlPanel.hpp"
-#include "MyDrawingPanel.hpp"
-#include "Frame.hpp"
+#include "../view/MyControlPanel.hpp"
+#include "../view/MyDrawingPanel.hpp"
+#include "../view/MyFrame.hpp"
 
 //------------------------------------------------------------------------
 class Controler: 
