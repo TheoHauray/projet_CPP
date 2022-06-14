@@ -16,11 +16,11 @@ using namespace std;
 //Constructeur / destructeur
 
 
-Controler::Controler(MyControlPanel *myControlPanel, MyDrawingPanel *myDrawingPanel, MyFrame *myFrame)
+Controler::Controler(MyControlPanel& myControlPanel, MyDrawingPanel& myDrawingPanel, MyFrame& myFrame)
 {
-    this->myControlPanel = myControlPanel;
-    this->myDrawingPanel = myDrawingPanel;
-    this->myFrame = myFrame;
+    this->myControlPanel = &myControlPanel;
+    this->myDrawingPanel = &myDrawingPanel;
+    this->myFrame = &myFrame;
 }
 
 Controler::Controler()

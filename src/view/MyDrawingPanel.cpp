@@ -15,6 +15,8 @@
 
 #include "Constant.hpp"
 
+#include "../controler/Controler.hpp"
+
 
 MyDrawingPanel::MyDrawingPanel(wxWindow *parent) : wxPanel(parent)
 //------------------------------------------------------------------------

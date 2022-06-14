@@ -14,6 +14,7 @@
 #include "MyDrawingPanel.hpp"
 
 #include "Constant.hpp"
+#include "../controler/Controler.hpp"
 
 //------------------------------------------------------------------------
 // Some enums for widgets
@@ -62,7 +63,7 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
 	m_drawingPanel = new MyDrawingPanel(this);
 
 	//Init controler
-	controler(*m_controlPanel, *m_drawingPanel, *this);
+	controler = new Controler(*m_controlPanel, *m_drawingPanel, *this);
 
 	m_controlPanel->setControler(controler);
 	m_drawingPanel->setControler(controler);
@@ -126,8 +127,13 @@ void MyFrame::OnSize(wxSizeEvent &event)
 }
 
 //------------------------------------------------------------------------
-void MyDrawingPanel::setControler(Controler *controler)
+void MyFrame::setControler(Controler *controler)
 //------------------------------------------------------------------------
 {
 	this->controler = controler;
+}
+
+void MyFrame::RefreshDrawing()
+{
+	m_drawingPanel->Refresh() ;
 }

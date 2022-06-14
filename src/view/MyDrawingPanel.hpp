@@ -14,9 +14,9 @@
 
 #include "../controler/Controler.hpp"
 
+class Controler ; 
 
 class MyDrawingPanel: public wxPanel
-
 {
 private:
 	void OnMouseMove(wxMouseEvent &event) ;
