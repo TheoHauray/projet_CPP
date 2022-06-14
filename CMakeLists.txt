@@ -16,11 +16,8 @@ include(${wxWidgets_USE_FILE})
 add_executable(
     skeleton
     src/model/MyApp.cpp 
-    src/view/MyControlPanel.hpp 
     src/view/MyControlPanel.cpp 
-    src/view/MyDrawingPanel.hpp
     src/view/MyDrawingPanel.cpp 
-    src/view/MyFrame.hpp
     src/view/MyFrame.cpp)
 
 target_link_libraries(skeleton ${wxWidgets_LIBRARIES})
