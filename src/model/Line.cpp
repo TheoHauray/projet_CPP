@@ -28,8 +28,12 @@ Line::Line(int x1, int y1, int x2, int y2, const std::string label, const Point 
 
 //Copy constructor
 
+<<<<<<< HEAD
 Line::Line(Line& copy)
 : Forme(*copy.label, copy.center)
+=======
+Line::Line(Line &copy)
+>>>>>>> 9d706ed74a1288721bae28228bca1540ac8ad180
 {
     this->x1 = copy.x1;
     this->x2 = copy.x2;

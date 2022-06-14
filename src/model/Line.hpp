@@ -7,7 +7,7 @@ class Line : public Forme
     public:
 
         Line();
-        Line(int x1, int y1, int x2, int y2, , const std::string label) ;
+        Line(int x1, int y1, int x2, int y2, , const std::string label, const Point point) ;
         Line(Line& copy);
 
         void setX1(int x1);
