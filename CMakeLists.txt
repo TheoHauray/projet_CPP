@@ -23,7 +23,8 @@ add_executable(
     src/view/MyFrame.cpp
     src/model/Point.cpp
     src/model/Forme.cpp
-    src/model/Line.cpp)
+    src/model/Line.cpp
+    src/model/Cercle.cpp)
 
 target_link_libraries(skeleton ${wxWidgets_LIBRARIES})
 

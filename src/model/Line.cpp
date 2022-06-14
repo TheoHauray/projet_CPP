@@ -20,13 +20,16 @@ Line::Line()
 
 //Constructor
 
-Line::Line(int x1, int y1, int x2, int y2, const std::string label, const Point& point)
-: Forme(label, point)
+Line::Line(int x1, int y1, int x2, int y2, const std::string label)
 {
     this->x1 = x1;
     this->x2 = x2;
     this->y1 = y1;
     this->y2 = y2;
+
+    Point center((x1 + x2)/2, (y1 + y2)/2);
+
+    Forme(label, center);
 
     this->nbLine++;
 }
