@@ -13,13 +13,18 @@
 #include <wx/file.h>
 #include <wx/bitmap.h>
 
+#include "MyControlPanel.hpp"
+#include "MyDrawingPanel.hpp"
+#include "Frame.hpp"
 
 //------------------------------------------------------------------------
-class MyControler: public wxApp
+class Controler: 
 //------------------------------------------------------------------------
 {
     private:
-        
+        MyControlPanel myControlPanel;
+        MyDrawingPanel myDrawingPanel;
+        MyFrame myFrame;
 
     public:
         

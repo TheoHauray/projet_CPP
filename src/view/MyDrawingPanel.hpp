@@ -12,6 +12,9 @@
 #include <wx/file.h>
 #include <wx/bitmap.h>
 
+#include "../controler/Controler.hpp"
+
+
 class MyDrawingPanel: public wxPanel
 
 {
@@ -26,6 +29,8 @@ private:
 	void OnPaint(wxPaintEvent &event) ;
 	wxPoint m_mousePoint ;
 	wxPoint m_onePoint ;
+
+	Controler controler;
 };
 
 #endif // __MYDRAWINGPANEL_H__

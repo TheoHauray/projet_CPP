@@ -15,6 +15,7 @@
 
 #include "MyControlPanel.hpp"
 #include "MyDrawingPanel.hpp"
+#include "../controler/Controler.hpp"
 
 //------------------------------------------------------------------------
 class MyFrame: public wxFrame
@@ -35,6 +36,7 @@ protected:
 
 	MyControlPanel *m_controlPanel; // the panel with controls
 	MyDrawingPanel *m_drawingPanel; // the panel in which we draw
+	Controler *controler;
 } ;
 
 #endif //__MYFRAME_H__

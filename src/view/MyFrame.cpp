@@ -54,10 +54,18 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
 
 	SetMenuBar( menuBar );
 
+
+
 // create the panel that will contain the controls
 	m_controlPanel = new MyControlPanel(this);
 // create the panel that will display the graphics
 	m_drawingPanel = new MyDrawingPanel(this);
+
+	//Init controler
+	controler(*m_controlPanel, *m_drawingPanel, *this);
+
+
+
 	CreateStatusBar() ;
 	SetStatusText(wxT("click in the right panel and tune the controls of the left panel. Visit the File menu!")) ;
 	Centre() ; // Guess what it does ;-)

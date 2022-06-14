@@ -12,6 +12,7 @@
 #include <wx/file.h>
 #include <wx/bitmap.h>
 
+#include "../controler/Controler.hpp"
 
 //------------------------------------------------------------------------
 class MyControlPanel: public wxPanel
@@ -34,6 +35,8 @@ private:
 	wxCheckBox* m_checkBox ;
 	wxCheckBox* m_line ;
 	wxRadioButton* m_radioButton;
+
+	Controler *controler;
 };
 
 #endif //__MYCONTROLPANEL_H__
