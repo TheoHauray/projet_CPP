@@ -12,6 +12,7 @@
 
 #include "MyControlPanel.hpp"
 #include "MyFrame.hpp"
+#include "Line.hpp"
 
 //------------------------------------------------------------------------
 // Some constants
@@ -34,7 +35,9 @@ enum
 	ID_SAVE,
 	ID_BUTTON1,
 	ID_SLIDER1,
-	ID_CHECKBOX1
+	ID_CHECKBOX1,
+	ID_CHECKBOX2
+
 };
 
 //------------------------------------------------------------------------
@@ -61,6 +64,10 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 	y+= WIDGET_Y_STEP ;
 	m_checkBox = new wxCheckBox(this, ID_CHECKBOX1, "Show (x,y)", wxPoint(10, y), wxSize(100,20)) ;
 	Bind(wxEVT_CHECKBOX, &MyControlPanel::OnCheckBox, this, ID_CHECKBOX1) ;	
+
+	y+= WIDGET_Y_STEP ;
+	m_checkBox = new wxCheckBox(this, ID_CHECKBOX2, "Ligne", wxPoint(10, y), wxSize(100,20)) ;
+	Bind(wxEVT_BUTTON, &MyControlPanel::OnCheckBoxLine, this, ID_CHECKBOX2) ;	
 }
 
 //------------------------------------------------------------------------
@@ -71,6 +78,14 @@ void MyControlPanel::OnButton(wxCommandEvent &event)
 //	wxMessageBox(wxString::FromAscii(s)) ; // call a C function located in the sample.cp module
 //	free(s) ;
 	wxMessageBox(wxT("You just pressed the button!")) ;
+}
+
+void MyControlPanel::OnCheckBoxLine(wxCommandEvent &event)
+
+{
+	MyFrame* frame = (MyFrame*)GetParent() ;
+	frame->RefreshDrawing() ;
+
 }
 
 //------------------------------------------------------------------------

@@ -10,7 +10,7 @@ public:
 
     Line();
     Line(int x1, int y1, int x2, int y2) ;
-    Line(Line& copy);
+    Line(Line &copy);
 
     void setX1(int x1);
     void setX2(int x2);

@@ -11,6 +11,7 @@
 
 #include "MyDrawingPanel.hpp"
 #include "MyFrame.hpp"
+#include "Line.hpp"
 
 //------------------------------------------------------------------------
 // Some constants
@@ -34,6 +35,7 @@ MyDrawingPanel::MyDrawingPanel(wxWindow *parent) : wxPanel(parent)
 	Bind(wxEVT_MOTION, &MyDrawingPanel::OnMouseMove, this);
 	Bind(wxEVT_LEFT_DOWN, &MyDrawingPanel::OnMouseLeftDown, this);
 	Bind(wxEVT_PAINT, &MyDrawingPanel::OnPaint, this) ;
+
 	m_onePoint.x = (w-WIDGET_PANEL_WIDTH)/2 ;
 	m_onePoint.y = h/2 ;
 	m_mousePoint = m_onePoint ;
@@ -71,12 +73,16 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 	int radius = frame->GetControlPanel()->GetSliderValue() ;
 	bool check = frame->GetControlPanel()->GetCheckBoxValue() ;
 
+
+
 	// then paint
 	wxPaintDC dc(this);	
 		
 	dc.DrawLine(m_mousePoint, m_onePoint) ;
 	dc.DrawRectangle(wxPoint(m_onePoint.x-radius/2, m_onePoint.y-radius/2), wxSize(radius,radius)) ;
 	dc.DrawCircle(wxPoint(m_mousePoint), radius/2) ;
+
+
 	
 	if (check)
 	{
@@ -84,8 +90,19 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 		coordinates.sprintf(wxT("(%d,%d)"), m_mousePoint.x, m_mousePoint.y) ;
 		dc.DrawText(coordinates, wxPoint(m_mousePoint.x, m_mousePoint.y+20)) ;
 	}
+
+
 }
 
+void MyDrawingPanel::Ligne(wxPaintEvent &event)
+{
+
+	MyFrame* frame = (MyFrame*)GetParent() ;
+	bool line = frame->GetControlPanel()->GetLineValue() ;
+
+
+
+}
 //------------------------------------------------------------------------
 void MyDrawingPanel::OpenFile(wxString fileName)
 //------------------------------------------------------------------------

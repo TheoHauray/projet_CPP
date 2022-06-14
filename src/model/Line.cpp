@@ -26,7 +26,7 @@ Line::Line(int x1, int y1, int x2, int y2)
 
 //Copy constructor
 
-Line::Line(Line& copy)
+Line::Line(Line &copy)
 {
     this->x1 = copy.x1;
     this->x2 = copy.x2;
