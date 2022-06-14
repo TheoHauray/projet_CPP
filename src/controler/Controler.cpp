@@ -23,6 +23,9 @@ Controler::Controler(MyControlPanel& myControlPanel, MyDrawingPanel& myDrawingPa
     this->myControlPanel = &myControlPanel;
     this->myDrawingPanel = &myDrawingPanel;
     this->myFrame = &myFrame;
+    this->clic = 0;
+    Dessin dessin;
+    this->dessin = dessin;
 }
 
 Controler::Controler()
@@ -46,15 +49,17 @@ bool Controler::getBoolLine()
 
 void Controler::setCoordinatesLine(int x, int y)
 {
-    Line *line = new Line();
+    Line* lineFinal = new Line;
 
     if(this->clic==0){
-        line.setX1(x);
-        line.setY1(y);
+        lineFinal->setX1(x);
+        lineFinal->setY1(y);
     }
     else{
-        line.setX2(x);
-        line.setY2(y);
+        lineFinal->setX2(x);
+        lineFinal->setY2(y);
+
+        this->addForm(lineFinal);
     }
 }
 
@@ -68,12 +73,12 @@ void Controler::setClic(int x)
     this->clic = x;
 }
 
-Dessin Controler::getDessin()
+Dessin& Controler::getDessin()
 {
-    return this->dessin;
+    return dessin;
 }
 
-void Controler::drawLine()
+void Controler::addForm(Forme *forme)
 {
-    this->dessin.addVector(this->line);
+    this->dessin.addVector(forme);
 }

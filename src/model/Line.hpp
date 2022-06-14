@@ -26,6 +26,7 @@ class Line : public Forme
 
         Line getAllCoordinates();
 
+
     private:
 
         int x1;

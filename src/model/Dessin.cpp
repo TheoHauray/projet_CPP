@@ -2,8 +2,12 @@
 #include "Forme.hpp"
 #include <vector>
 
+using namespace std;
+
 Dessin::Dessin()
-{}
+{
+
+}
 
 Dessin::Dessin(const Dessin& dessin)
 {
@@ -17,15 +21,18 @@ Dessin& Dessin::operator=(const Dessin& dessin)
 }
 
 Dessin::~Dessin()
-{}
+{
+
+}
 
 
-std::vector<Forme> Dessin::getVector()
+std::vector<Forme*> Dessin::getVector()
 { 
     return dessins; 
 }
 
-void Dessin::addVector(Forme forme)
+
+void Dessin::addVector(Forme* forme)
 {
     this->dessins.push_back(forme);
 }

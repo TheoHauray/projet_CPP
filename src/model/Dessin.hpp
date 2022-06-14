@@ -14,14 +14,12 @@ public:
     Dessin& operator=(const Dessin& dessin);
     ~Dessin();
 
-
-    std::vector<Forme> getVector();
-    void addVector(Forme forme);
-
+    std::vector<Forme*> getVector();
+    void addVector(Forme* forme);
 
 private:
 
-    std::vector<Forme> dessins;
+    std::vector<Forme*> dessins;
 
 };
 
