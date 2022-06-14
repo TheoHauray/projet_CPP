@@ -47,7 +47,6 @@ Point& Point::operator=(const Point& point)
 
 Point::~Point()
 {
-    m_PointCount--;
 
 }   
 

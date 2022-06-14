@@ -1,20 +1,26 @@
 #include <iostream>
 #include <cstdlib>
+#include <string>
 
 #include "Line.hpp"
-#include "Line.hpp"
+#include "Forme.hpp"
+
+
+using namespace std;
+
+//static
+int Line::nbLine = 0;
 
 //Default constructor
-
 Line::Line()
-
+: Forme()
 {
     x1,y1,x2,y2 = 0;
 }
 
 //Constructor
 
-Line::Line(int x1, int y1, int x2, int y2, const std::string label, const Point point)
+Line::Line(int x1, int y1, int x2, int y2, const std::string label, const Point& point)
 : Forme(label, point)
 {
     this->x1 = x1;
@@ -28,17 +34,20 @@ Line::Line(int x1, int y1, int x2, int y2, const std::string label, const Point 
 
 //Copy constructor
 
-<<<<<<< HEAD
 Line::Line(Line& copy)
-: Forme(*copy.label, copy.center)
-=======
-Line::Line(Line &copy)
->>>>>>> 9d706ed74a1288721bae28228bca1540ac8ad180
+: Forme(*copy.m_label, copy.center)
 {
     this->x1 = copy.x1;
     this->x2 = copy.x2;
     this->y1 = copy.y1;
     this->y2 = copy.y2;
+
+    this->nbLine++;
+}
+
+Line::~Line()
+{
+    nbLine--;
 }
 
 //SETTERS

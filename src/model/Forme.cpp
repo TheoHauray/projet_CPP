@@ -9,15 +9,17 @@
 #include <wx/image.h>
 #include <wx/file.h>
 #include <wx/bitmap.h>
+#include <string>
 
 #include "Forme.hpp"
 #include "Point.hpp"
 
+using namespace std;
 
 Forme::Forme()
 : center(0, 0)
 {
-    m_label = new String("");
+    m_label = new string("");
 }
 
 Forme::Forme(const std::string& s, const Point& point)
@@ -33,8 +35,8 @@ Forme::Forme(const Forme& forme)
 }
 
 Forme& Forme::operator=(const Forme& forme)
-: center(forme.center)
 {
+    center = forme.center;
     m_label = new string(forme.getLabel());
 
     return *this;

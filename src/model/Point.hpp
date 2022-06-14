@@ -12,7 +12,6 @@ class Point
         ~Point();
 
         void display() const;
-        static int getPointCount();
         void move(int dX, int dY);
         bool XEgalY() const;
         int getX() const;

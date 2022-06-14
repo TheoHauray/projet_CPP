@@ -18,7 +18,7 @@
 
 
 //------------------------------------------------------------------------
-class Forme:
+class Forme
 //------------------------------------------------------------------------
 {
     protected:
@@ -36,8 +36,8 @@ class Forme:
 	    std::string getLabel() const;
 
 
-        void setPoint(const std::string& s); 
-	    Point getPoint() const;
+        void setCenter(const Point& point); 
+	    Point getCenter() const;
 };
 
 #endif //__FORME_H__
