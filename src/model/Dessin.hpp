@@ -11,17 +11,17 @@ public:
 
     Dessin();
     Dessin(const Dessin& dessin);
-    Dessin& operator=(const Desssin& dessin);
+    Dessin& operator=(const Dessin& dessin);
     ~Dessin();
 
 
-    getVector();
-    addVector(Forme forme);
+    std::vector<Forme> getVector();
+    void addVector(Forme forme);
 
 
 private:
 
-    vector<Forme> dessins;
+    std::vector<Forme> dessins;
 
 };
 

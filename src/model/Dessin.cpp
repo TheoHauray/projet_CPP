@@ -7,25 +7,25 @@ Dessin::Dessin()
 
 Dessin::Dessin(const Dessin& dessin)
 {
-    this.dessins = dessin->dessins;
+    this->dessins = dessin.dessins;
 }
 
 Dessin& Dessin::operator=(const Dessin& dessin)
 {
-    this.dessins = dessin->dessins;
-    return this;
+    this->dessins = dessin.dessins;
+    return *this;
 }
 
 Dessin::~Dessin()
 {}
 
 
-Dessin::getVector()
+std::vector<Forme> Dessin::getVector()
 { 
     return dessins; 
 }
 
-Dessin::addVector(Forme forme)
+void Dessin::addVector(Forme forme)
 {
-    dessins.puck_back(forme);
+    this->dessins.push_back(forme);
 }
