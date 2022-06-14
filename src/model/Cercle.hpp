@@ -6,12 +6,11 @@
 class Cercle : public Forme
 {
     private:
-        Point m_center;
 	    int m_radius;
     
     public:
         Cercle();
-        Cercle(int x, int y, int radius, const std::string label);
+        Cercle(int x, int y, const std::string label);
         Cercle(const Cercle& c);
         Cercle& operator=(const Cercle& c);
         virtual ~Cercle();

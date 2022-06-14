@@ -13,7 +13,6 @@ Point::Point()
     m_x = 0;
     m_y = 0;
 
-    cout << "appel constructeur Point (vide): " << __func__ << "@" << this << endl;
 }
 
 Point::Point(int xy)
@@ -21,7 +20,6 @@ Point::Point(int xy)
     m_x = xy;
     m_y = xy;
 
-    cout << "appel constructeur Point (xy): " << __func__ <<  "@" << this << endl;
 }
 
 Point::Point(int x, int y)
@@ -29,7 +27,6 @@ Point::Point(int x, int y)
     m_x = x;
     m_y = y;
 
-    cout << "appel constructeur Point (x, y): " << __func__ << "@" << this << endl;
 }
 
 Point::Point(const Point& point)
@@ -37,7 +34,6 @@ Point::Point(const Point& point)
     m_x = point.m_x;
     m_y = point.m_y;
 
-    cout << "appel constructeur Point (point): " << __func__ << "@" << this << endl;
 }
 
 Point& Point::operator=(const Point& point)
@@ -45,7 +41,6 @@ Point& Point::operator=(const Point& point)
     m_x = point.m_x;
     m_y = point.m_y;
 
-    cout << "Point (affectation)" << endl;
 
     return *this;
 }
@@ -54,7 +49,6 @@ Point::~Point()
 {
     m_PointCount--;
 
-    cout << "appel destructeur Point: " << __func__ << endl;
 }   
 
 //---------------------------------------------

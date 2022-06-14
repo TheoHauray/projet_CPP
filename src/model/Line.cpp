@@ -2,6 +2,7 @@
 #include <cstdlib>
 
 #include "Line.hpp"
+#include "Line.hpp"
 
 //Default constructor
 
@@ -13,7 +14,8 @@ Line::Line()
 
 //Constructor
 
-Line::Line(int x1, int y1, int x2, int y2)
+Line::Line(int x1, int y1, int x2, int y2, const std::string label, const Point point)
+: Forme(label, point)
 {
     this->x1 = x1;
     this->x2 = x2;
@@ -27,6 +29,7 @@ Line::Line(int x1, int y1, int x2, int y2)
 //Copy constructor
 
 Line::Line(Line& copy)
+: Forme(*copy.label, copy.center)
 {
     this->x1 = copy.x1;
     this->x2 = copy.x2;

@@ -11,33 +11,55 @@
 #include <wx/bitmap.h>
 
 #include "Forme.hpp"
+#include "Point.hpp"
+
 
 Forme::Forme()
+: center(0, 0)
 {
-    xPos = 0;
-    yPos = 0;
+    m_label = new String("");
 }
 
-Forme::Forme(const Point& point)
+Forme::Forme(const std::string& s, const Point& point)
+: center(point)
 {
-    xPos = x;
-    yPos = y;
+    m_label = new string(s);
 }
 
 Forme::Forme(const Forme& forme)
-center
+: center(forme.center)
 {
-    xPos = forme.xPos;
-    yPos = forme.yPos;
+    m_label = new string(forme.getLabel());
 }
 
-Forme& Forme::operator=(const Forme& f)
+Forme& Forme::operator=(const Forme& forme)
+: center(forme.center)
 {
-    xPos = f.xPos;
-    yPos = f.yPos;
+    m_label = new string(forme.getLabel());
 
     return *this;
 }
 
-Forme::~Forme(){    
+Forme::~Forme(){   
+    delete m_label;
+}
+
+void Forme::setLabel(const::string& s)
+{
+    *m_label = s;
+}
+
+string Forme::getLabel() const
+{
+    return *m_label;
+}
+
+void Forme::setCenter(const::Point& point)
+{
+    center = point;
+}
+
+Point Forme::getCenter() const
+{
+    return center;
 }
