@@ -10,10 +10,7 @@
 #include <wx/file.h>
 #include <wx/bitmap.h>
 
-#include <iostream>
-#include <cstdlib>
-
-#include "../view/MyFrame.hpp"
+#include "view/MyFrame.hpp"
 
 
 //------------------------------------------------------------------------

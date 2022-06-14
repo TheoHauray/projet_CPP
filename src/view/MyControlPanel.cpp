@@ -12,17 +12,10 @@
 
 #include "MyControlPanel.hpp"
 #include "MyFrame.hpp"
-#include "Line.hpp"
+#include "../model/Line.hpp"
 
-//------------------------------------------------------------------------
-// Some constants
-//------------------------------------------------------------------------
-#define APPLICATION_WIDTH	600
-#define APPLICATION_HEIGHT	500 
-#define WIDGET_PANEL_WIDTH	150
-#define WIDGET_Y0			30
-#define WIDGET_Y_STEP		50
-#define APP_NAME "M1102 Skeleton 1.0"
+#include "Constant.hpp"
+
 
 //------------------------------------------------------------------------
 // Some enums for widgets
@@ -68,6 +61,8 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 	y+= WIDGET_Y_STEP ;
 	m_checkBox = new wxCheckBox(this, ID_CHECKBOX2, "Ligne", wxPoint(10, y), wxSize(100,20)) ;
 	Bind(wxEVT_BUTTON, &MyControlPanel::OnCheckBoxLine, this, ID_CHECKBOX2) ;	
+	Bind(wxEVT_CHECKBOX, &MyControlPanel::OnCheckBox, this, ID_CHECKBOX1) ;
+	
 }
 
 //------------------------------------------------------------------------
