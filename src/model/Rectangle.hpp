@@ -16,7 +16,7 @@ public:
     void setX2(int x2);
     void setY1(int y1);
     void setY2(int y2);
-    void draw(wxClientDC* dc) override;
+    void draw(wxDC* dc) override;
 
 
 

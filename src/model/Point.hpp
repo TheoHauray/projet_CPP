@@ -19,6 +19,8 @@ class Point : public Forme
         void setX(int x);
         void setY(int y);
         float distance(const Point& point) const;
+        void draw(wxDC* dc) override;
+
 
     private:
         int m_x;
