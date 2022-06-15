@@ -1,3 +1,16 @@
+#include "wx/wxprec.h"
+
+#ifndef WX_PRECOMP
+    #include "wx/wx.h"
+#endif
+
+#include<wx/filedlg.h>
+#include <wx/image.h>
+#include <wx/file.h>
+#include <wx/bitmap.h>
+#include <wx/dcsvg.h>
+
+
 #include "Dessin.hpp"
 #include "Forme.hpp"
 #include <vector>
@@ -35,4 +48,31 @@ std::vector<Forme*>& Dessin::getVector()
 void Dessin::addVector(Forme* forme)
 {
     this->dessins.push_back(forme);
+}
+
+bool Dessin::saveImage(wxString fileName, int height, int width)
+{
+    bool isFileSaved = true;
+
+    wxSVGFileDC dcFile(fileName, width, height);
+
+    for(int i = 0; i < dessins.size(); i++)
+    {
+        dessins[i]->draw(&dcFile);
+    }
+
+    /*
+    // just to create a tiny file
+	FILE* f = fopen(fileName, "w") ;
+	if (!f)
+		isFileSaved = false;
+	else
+	{
+		fprintf(f, "S1102 software can create and write a file") ;
+		
+		fclose(f) ;
+	}
+    */
+
+   return true;
 }

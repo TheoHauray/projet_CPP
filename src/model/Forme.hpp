@@ -32,7 +32,7 @@ class Forme
         void setLabel(const std::string& s); 
 	    std::string getLabel() const;
 
-        virtual void draw(wxClientDC* dc) = 0;
+        virtual void draw(wxDC* dc) = 0;
 };
 
 #endif //__FORME_H__

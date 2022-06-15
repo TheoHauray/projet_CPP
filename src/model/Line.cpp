@@ -106,7 +106,7 @@ Line Line::getAllCoordinates()
     return *this;
 }
 
-void Line::draw(wxClientDC* dc)
+void Line::draw(wxDC* dc)
 {
     dc->DrawLine(x1, y1, x2, y2);
 }

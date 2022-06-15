@@ -46,7 +46,7 @@ Cercle::~Cercle()
 {
 }
 
-void Cercle::draw(wxClientDC* dc)
+void Cercle::draw(wxDC* dc)
 {
     dc->DrawCircle(x1,y1, m_radius);
 }

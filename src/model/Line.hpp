@@ -26,7 +26,7 @@ class Line : public Forme
 
         Line getAllCoordinates();
 
-        void draw(wxClientDC* dc) override;
+        void draw(wxDC* dc) override;
 
 
     private:

@@ -20,7 +20,7 @@ class Cercle : public Forme
         void setX1(int x1);
         void setY1(int y1);
         void setRadius(int radius);
-        void draw(wxClientDC* dc) override;
+        void draw(wxDC* dc) override;
 
 };
 

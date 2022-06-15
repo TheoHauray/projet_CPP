@@ -44,6 +44,7 @@ class Controler
         Dessin& getDessin();
         void addForm(Forme* forme);
         void drawForms(wxClientDC* dc);
+        bool saveImage(wxString fileName, int heigth, int width);
 
 
     private:
