@@ -14,15 +14,13 @@
 #include <wx/bitmap.h>
 #include <string>
 
-#include "Point.hpp"
-
 
 //------------------------------------------------------------------------
 class Forme
 //------------------------------------------------------------------------
 {
     protected:
-        std::string* m_label;
+        std::string m_label;
 
     public:
         Forme();

@@ -15,6 +15,7 @@ using namespace std;
 
 Cercle::Cercle(int x, int y, int radius)
 {
+    m_label = "Cercle";
     m_radius = radius;
     x1 = x;
     y1 = x;
@@ -22,26 +23,27 @@ Cercle::Cercle(int x, int y, int radius)
 
 Cercle::Cercle()
 {
+    m_label = "Cercle";
     m_radius = 0;
     x1 = 0;
     y1 = 0;
 }
 
-Cercle::~Cercle()
-{
-}
-
 Cercle::Cercle(const Cercle& c)
 {
+    m_label = "Cercle";
     m_radius = c.m_radius;
 }
 
 Cercle& Cercle::operator=(const Cercle& c)
 {
-    m_label = c.m_label;
     m_radius = c.m_radius;
 
     return *this;
+}
+
+Cercle::~Cercle()
+{
 }
 
 void Cercle::draw(wxClientDC* dc)

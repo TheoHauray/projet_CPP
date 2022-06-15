@@ -14,6 +14,7 @@ int Line::nbLine = 0;
 //Default constructor
 Line::Line()
 {
+    m_label = "Ligne";
     x1,y1,x2,y2 = 0;
 }
 
@@ -25,6 +26,7 @@ Line::Line(int x1, int y1, int x2, int y2)
     this->x2 = x2;
     this->y1 = y1;
     this->y2 = y2;
+    m_label = "Ligne";
 
     //Forme(string("Line"), center);
 
@@ -40,6 +42,7 @@ Line::Line(Line& copy)
     this->x2 = copy.x2;
     this->y1 = copy.y1;
     this->y2 = copy.y2;
+    m_label = "Ligne";
 
     this->nbLine++;
 }

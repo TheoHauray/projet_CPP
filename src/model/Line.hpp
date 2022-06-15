@@ -36,6 +36,7 @@ class Line : public Forme
         int x2;
         int y2;
 
+
         static int nbLine;
 };
 

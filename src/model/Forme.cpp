@@ -17,39 +17,40 @@
 using namespace std;
 
 Forme::Forme()
+: m_label(" ")
 {
-    m_label = new string("");
+    
 }
 
 Forme::Forme(const std::string& s)
+: m_label(s)
 {
-    m_label = new string(s);
+    
 }
 
 Forme::Forme(const Forme& forme)
+: m_label(forme.getLabel())
 {
-    m_label = new string(forme.getLabel());
+   
 }
 
 Forme& Forme::operator=(const Forme& forme)
 {
-    m_label = new string(forme.getLabel());
-
+    m_label = forme.getLabel();
     return *this;
 }
 
 Forme::~Forme(){   
-    delete m_label;
 }
 
 void Forme::setLabel(const::string& s)
 {
-    *m_label = s;
+    m_label = s;
 }
 
 string Forme::getLabel() const
 {
-    return *m_label;
+    return m_label;
 }
 
 
