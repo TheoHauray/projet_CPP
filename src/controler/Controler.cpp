@@ -47,6 +47,11 @@ bool Controler::getBoolLine()
     return this->myFrame->GetControlPanel()->GetRadioButtonLineValue() ;
 }
 
+bool Controler::getBoolCircle()
+{
+    return this->myFrame->GetControlPanel()->GetRadioButtonCircleValue() ;
+}
+
 void Controler::setCoordinatesLine(int x1, int y1, int x2, int y2)
 {
     Line* line = new Line;
@@ -57,6 +62,19 @@ void Controler::setCoordinatesLine(int x1, int y1, int x2, int y2)
     line->setY2(y2);
     this->addForm(line);
 }
+
+void Controler::setCoordinatesCircle(int x1, int y1, int radius)
+{
+    Cercle* cercle = new Cercle;
+
+    cercle->setX1(x1);
+    cercle->setY1(y1);
+    cercle->setRadius(radius);
+
+
+    this->addForm(cercle);
+}
+
 
 void Controler::setCoordinatesLineEnd(int x, int y, Line* line)
 {

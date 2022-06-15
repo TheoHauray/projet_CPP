@@ -25,6 +25,8 @@ public:
 	int GetSliderValue() {return m_slider->GetValue() ;} ;
 	bool GetCheckBoxValue() {return m_checkBox->GetValue() ;} ;
 	bool GetRadioButtonLineValue() {return m_radioButtonLine->GetValue();} ;
+	bool GetRadioButtonCircleValue() {return m_radioButtonCircle->GetValue();} ;
+
 	bool GetLineValue() {return m_line->GetValue();} ; 
 	void setControler(Controler *controler) ;
 

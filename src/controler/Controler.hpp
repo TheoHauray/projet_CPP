@@ -7,6 +7,8 @@
 #include "../view/MyFrame.hpp"
 #include "../model/Dessin.hpp"
 #include "../model/Line.hpp"
+#include "../model/Cercle.hpp"
+
 
 #include "wx/wxprec.h"
 
@@ -30,8 +32,12 @@ class Controler
         virtual ~Controler();
 
         bool getBoolLine();
+        bool getBoolCircle();
         void setCoordinatesLine(int x1, int y1, int x2, int y2);
         void setCoordinatesLineEnd(int x, int y, Line* line);
+
+        void setCoordinatesCircle(int x1, int x2, int radius);
+
         int getClic();
         void setClic(int x);
 
@@ -48,6 +54,7 @@ class Controler
         Dessin *dessin;
 
         Line* tempLine;
+        Cercle* tempCircle;
 };
 
 #endif //__CONTROLER_H__

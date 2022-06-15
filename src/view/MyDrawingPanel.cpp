@@ -13,10 +13,14 @@
 #include "MyFrame.hpp"
 #include "../model/Line.hpp"
 #include "../model/Dessin.hpp"
+#include "../model/Cercle.hpp"
+
 
 
 #include <vector>
 #include "Constant.hpp"
+
+#include <cmath>
 
 #include "../controler/Controler.hpp"
 
@@ -60,6 +64,7 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 	static int x1, x2, y1, y2 = 0;
 		
 	bool line = controler->getBoolLine(); //Faire les méthodes pour savoir quel bouton de dessin est activé
+	bool circle = controler->getBoolCircle();
 	//bool circle = controler.getBoolCircle();
 	
 	//Dans le cas de la ligne :
@@ -80,7 +85,23 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 		x1, y1 = 0;
 		//La ligne est posée
 	}
-	
+
+	if(circle && controler->getClic()==0)
+	{
+		x1 = m_onePoint.x;
+		y1 = m_onePoint.y;
+
+		controler->setClic(1);
+	}
+
+	else if(circle && controler->getClic()==1)
+	{	
+		int disX = abs(x1 - m_onePoint.x);
+		int disY = abs(y1 - m_onePoint.y);
+		int radius = sqrt(pow(disX, 2) + pow(disY, 2));
+		controler->setCoordinatesCircle(x1, y1, radius);
+		controler->setClic(0);
+	}	
 	Refresh() ; // send an event that calls the OnPaint method
 }
 
@@ -95,6 +116,9 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 	MyFrame* frame =  (MyFrame*)GetParent() ;
 	int radius = frame->GetControlPanel()->GetSliderValue() ;
 	bool check = frame->GetControlPanel()->GetCheckBoxValue() ;
+	bool line = controler->getBoolLine();
+	bool circle = controler->getBoolCircle();
+
 
 	Dessin dessin = controler->getDessin();
 	int vecLen = dessin.getVector().size();
@@ -105,11 +129,14 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 	// then paint
 	wxPaintDC dc(this);	
 	
-	if(controler->getClic()==1){
-	dc.DrawLine(m_mousePoint, m_onePoint) ;
+	if(controler->getClic()==1 && line){
+		dc.DrawLine(m_mousePoint, m_onePoint) ;
 	}
-	dc.DrawCircle(wxPoint(m_mousePoint), radius/2) ;
-
+	if(controler->getClic()==1 && circle)
+	{
+		//int radius = sqrt(pow(m_mousePoint.x, 2) + pow(y1, 2));
+		//dc.DrawCircle(wxPoint(m_mousePoint), radius);
+	}
 
 	
 	if (check)

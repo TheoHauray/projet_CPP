@@ -1,11 +1,13 @@
-#ifndef __Crecle_h__
-#define __Cercle_h__
+#ifndef __CERCLE_H__
+#define __CERCLE_H__
 #include "Forme.hpp"
 #include "Point.hpp"
 
 class Cercle : public Forme
 {
     private:
+        int x1;
+        int y1;
 	    int m_radius;
     
     public:
@@ -15,6 +17,9 @@ class Cercle : public Forme
         Cercle& operator=(const Cercle& c);
         virtual ~Cercle();
 
+        void setX1(int x1);
+        void setY1(int y1);
+        void setRadius(int radius);
         void draw(wxClientDC* dc) override;
 
 };
