@@ -49,7 +49,7 @@ Rectangle::~Rectangle()
 {
 }
 
-void Rectangle::draw(wxClientDC* dc)
+void Rectangle::draw(wxDC* dc)
 {
     dc->DrawRectangle(x1, y1, x2-x1, y2-y1);
 }

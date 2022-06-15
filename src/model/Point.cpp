@@ -2,7 +2,6 @@
 #include <cstdlib>
 #include <cmath>
 #include "Point.hpp"
-#include "Forme.hpp"
 
 using namespace std;
 
@@ -11,15 +10,12 @@ using namespace std;
 
 Point::Point()
 {
-    m_label = "Point"
     m_x = 0;
     m_y = 0;
-
 }
 
 Point::Point(int xy)
 {
-    m_label = "Point"
     m_x = xy;
     m_y = xy;
 
