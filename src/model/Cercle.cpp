@@ -49,3 +49,8 @@ Cercle& Cercle::operator=(const Cercle& c)
 
     return *this;
 }
+
+void Cercle::draw(wxClientDC* dc)
+{
+    
+}

@@ -65,3 +65,8 @@ Point Forme::getCenter() const
 {
     return center;
 }
+
+void Forme::draw(wxClientDC* dc)
+{
+    
+}

@@ -34,10 +34,10 @@ class Forme
 
         void setLabel(const std::string& s); 
 	    std::string getLabel() const;
-
-
         void setCenter(const Point& point); 
 	    Point getCenter() const;
+
+        virtual void draw(wxClientDC* dc);
 };
 
 #endif //__FORME_H__

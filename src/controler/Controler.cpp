@@ -25,7 +25,7 @@ Controler::Controler(MyControlPanel& myControlPanel, MyDrawingPanel& myDrawingPa
     this->myFrame = &myFrame;
     this->clic = 0;
     Dessin dessin;
-    this->dessin = dessin;
+    this->dessin = new Dessin();
 }
 
 Controler::Controler()
@@ -47,20 +47,25 @@ bool Controler::getBoolLine()
     return this->myFrame->GetControlPanel()->GetRadioButtonLineValue() ;
 }
 
-void Controler::setCoordinatesLine(int x, int y)
+void Controler::setCoordinatesLine(int x1, int y1, int x2, int y2)
 {
-    Line* lineFinal = new Line;
+    Line* line = new Line;
 
-    if(this->clic==0){
-        lineFinal->setX1(x);
-        lineFinal->setY1(y);
-    }
-    else{
-        lineFinal->setX2(x);
-        lineFinal->setY2(y);
+    line->setX1(x1);
+    line->setY1(y1);
+    line->setX2(x2);
+    line->setY2(y2);
+    this->addForm(line);
+}
 
-        this->addForm(lineFinal);
-    }
+void Controler::setCoordinatesLineEnd(int x, int y, Line* line)
+{
+    line->setX2(x);
+    line->setY2(y);
+
+    this->addForm(line);
+
+
 }
 
 int Controler::getClic()
@@ -75,10 +80,18 @@ void Controler::setClic(int x)
 
 Dessin& Controler::getDessin()
 {
-    return dessin;
+    return *dessin;
 }
 
 void Controler::addForm(Forme *forme)
 {
-    this->dessin.addVector(forme);
+    this->dessin->addVector(forme);
+}
+
+void Controler::drawForms(wxClientDC* dc)
+{
+    for(int i = 0; i < dessin->getVector().size(); i++)
+    {
+        dessin->getVector().at(i)->draw(dc);
+    }
 }
