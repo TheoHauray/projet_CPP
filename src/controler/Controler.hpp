@@ -54,6 +54,8 @@ class Controler
         void drawForms(wxClientDC* dc);
         bool saveImage(wxString fileName, int heigth, int width);
 
+        void changeBackgroundColor();
+
 
     private:
         MyControlPanel *myControlPanel;

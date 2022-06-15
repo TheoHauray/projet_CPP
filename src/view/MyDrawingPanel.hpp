@@ -11,6 +11,7 @@
 #include <wx/image.h>
 #include <wx/file.h>
 #include <wx/bitmap.h>
+#include <wx/brush.h>
 
 #include "../controler/Controler.hpp"
 
@@ -29,7 +30,11 @@ private:
 	wxPoint m_mousePoint ;
 	wxPoint m_onePoint ;
 	Controler *controler;
+<<<<<<< HEAD
 	bool dragging;
+=======
+	wxBrush backgroundColor;
+>>>>>>> 14dc21b29fa5c9ff85fbf0629f50feeea15c271c
 	
 public:
 	MyDrawingPanel( wxWindow *parent ) ;
@@ -38,8 +43,7 @@ public:
 	void setControler(Controler *controler) ;
 	int clic;
 
-
-
+	void setBackgroundColor();
 };
 
 #endif // __MYDRAWINGPANEL_H__

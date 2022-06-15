@@ -149,6 +149,10 @@ void Controler::drawForms(wxClientDC* dc)
 bool Controler::saveImage(wxString fileName, int height, int width)
 {
     bool isImageSaved = dessin->saveImage(fileName, height, width);
-
     return isImageSaved;
+}
+
+void Controler::changeBackgroundColor()
+{
+
 }

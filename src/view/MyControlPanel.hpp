@@ -11,6 +11,7 @@
 #include <wx/image.h>
 #include <wx/file.h>
 #include <wx/bitmap.h>
+#include <wx/clrpicker.h>
 
 #include "../controler/Controler.hpp"
 
@@ -39,6 +40,7 @@ private:
 	void OnSlider(wxScrollEvent &event) ;
 	void OnCheckBox(wxCommandEvent &event) ;
 	void OnCheckBoxLine(wxCommandEvent &event) ;
+	void onColourPicker(wxCommandEvent &event) ;
 
 	wxButton* m_button ;
 	wxSlider* m_slider ;
@@ -47,7 +49,14 @@ private:
 	wxRadioButton* m_radioButtonLine;
 	wxRadioButton* m_radioButtonCircle;
 	wxRadioButton* m_radioButtonRectangle;
+<<<<<<< HEAD
 	wxRadioButton* m_radioButtonPen;
+=======
+	wxButton* m_button_applyColor ;
+	wxRadioButton* m_radioButton_Background;
+	wxRadioButton* m_radioButton_Form;
+	wxColourPickerCtrl* m_colourPicker ;
+>>>>>>> 14dc21b29fa5c9ff85fbf0629f50feeea15c271c
 
 	Controler *controler;
 };
