@@ -10,12 +10,14 @@ using namespace std;
 
 Point::Point()
 {
+    m_label = "Point";
     m_x = 0;
     m_y = 0;
 }
 
 Point::Point(int xy)
 {
+    m_label = "Point";
     m_x = xy;
     m_y = xy;
 
@@ -23,6 +25,7 @@ Point::Point(int xy)
 
 Point::Point(int x, int y)
 {
+    m_label = "Point";
     m_x = x;
     m_y = y;
 
@@ -30,6 +33,7 @@ Point::Point(int x, int y)
 
 Point::Point(const Point& point)
 {
+    m_label = "Point";
     m_x = point.m_x;
     m_y = point.m_y;
 
@@ -106,5 +110,5 @@ float Point::distance(const Point& point) const
 
 void Point::draw(wxDC* dc)
 {
-    
+
 }

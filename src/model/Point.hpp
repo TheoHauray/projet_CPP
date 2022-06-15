@@ -1,6 +1,8 @@
 #ifndef __Point_h__
 #define __Point_h__
 
+#include "Forme.hpp"
+
 class Point : public Forme
 {
     public:
