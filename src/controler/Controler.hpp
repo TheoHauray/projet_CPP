@@ -30,15 +30,14 @@ class Controler
         virtual ~Controler();
 
         bool getBoolLine();
-
-        void setCoordinatesLine(int x, int y);
-
+        void setCoordinatesLine(int x1, int y1, int x2, int y2);
+        void setCoordinatesLineEnd(int x, int y, Line* line);
         int getClic();
         void setClic(int x);
 
         Dessin& getDessin();
-
         void addForm(Forme* forme);
+        void drawForms(wxClientDC* dc);
 
         Line getLine();
 
@@ -47,7 +46,9 @@ class Controler
         MyDrawingPanel *myDrawingPanel;
         MyFrame *myFrame;
         int clic;
-        Dessin dessin;
+        Dessin *dessin;
+
+        Line* tempLine;
 };
 
 #endif //__CONTROLER_H__

@@ -14,6 +14,9 @@ class Cercle : public Forme
         Cercle(const Cercle& c);
         Cercle& operator=(const Cercle& c);
         virtual ~Cercle();
+
+        void draw(wxClientDC* dc) override;
+
 };
 
 #endif  

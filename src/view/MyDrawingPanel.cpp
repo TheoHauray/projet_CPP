@@ -20,7 +20,7 @@
 
 #include "../controler/Controler.hpp"
 
-
+using namespace std;
 
 MyDrawingPanel::MyDrawingPanel(wxWindow *parent) : wxPanel(parent)
 //------------------------------------------------------------------------
@@ -57,30 +57,35 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 	m_onePoint.x = event.m_x ; //Récupère les coordonnées x et y de la souris dès qu'un clic gauche est réalisé
 	m_onePoint.y = event.m_y ;
 
-	Controler controlerFinal = *(this->controler);	
-	bool line = controlerFinal.getBoolLine(); //Faire les méthodes pour savoir quel bouton de dessin est activé
+	static int x1, x2, y1, y2 = 0;
+		
+	bool line = controler->getBoolLine(); //Faire les méthodes pour savoir quel bouton de dessin est activé
 	//bool circle = controler.getBoolCircle();
-
-	clic = controlerFinal.getClic(); //Permet de savoir si on est sur le clic numéro 1 pour placer l'origine de la forme, ou bien sur le clic numéro 2 pour placer la forme
-
-
+	
 	//Dans le cas de la ligne :
 
-	if (line && clic==0)
+	if (line && controler->getClic()==0)
 	{
-		controlerFinal.setCoordinatesLine(m_onePoint.x, m_onePoint.y); //Donne au controler les coordonnées de la souris pour avoir le premier point de la ligne
-		controlerFinal.setClic(1); //Indique au controleur que le prochain clic permettra de placer le deuxième point de la ligne
+		x1 = m_onePoint.x;
+		y1 = m_onePoint.y;
+		//controler->setCoordinatesLineStart(m_onePoint.x, m_onePoint.y); //Donne au controler les coordonnées de la souris pour avoir le premier point de la ligne
+		controler->setClic(1); //Indique au controleur que le prochain clic permettra de placer le deuxième point de la ligne
 		//Le premier point est posé
 	}
-	else if (line && clic==1)
+	else if (line && controler->getClic()==1)
 	{
+<<<<<<< HEAD
 		controlerFinal.setCoordinatesLine(m_onePoint.x, m_onePoint.y); //Donne au controleur les coordonnées de la souris pour avoir le second point de la ligne
 		controlerFinal.drawLine(); //Dessine la ligne entre le premier point et le second point.
 		controlerFinal.setClic(0); //Indique au controleur que le prochain clic réinitialise la séquence et sera donc pour une nouvelle ligne
+=======
+
+		controler->setCoordinatesLine(x1, y1, m_onePoint.x, m_onePoint.y); //Donne au controleur les coordonnées de la souris pour avoir le second point de la ligne
+		controler->setClic(0); //Indique au controleur que le prochain clic réinitialise la séquence et sera donc pour une nouvelle ligne
+		x1, y1 = 0;
+>>>>>>> 975711440e3e6feb95fe537297eab1d6d5179f61
 		//La ligne est posée
 	}
-
-
 	
 	Refresh() ; // send an event that calls the OnPaint method
 }
@@ -97,12 +102,16 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 	int radius = frame->GetControlPanel()->GetSliderValue() ;
 	bool check = frame->GetControlPanel()->GetCheckBoxValue() ;
 
+<<<<<<< HEAD
 	Controler controlerFinal = *(this->controler);	
 	Dessin dessin = controlerFinal.getDessin();
+=======
+	Dessin dessin = controler->getDessin();
+>>>>>>> 975711440e3e6feb95fe537297eab1d6d5179f61
 	int vecLen = dessin.getVector().size();
 
 
-	std::vector<Forme*> vecFormes = dessin.getVector();
+	//std::vector<Forme*> vecFormes = dessin.getVector();
 
 	// then paint
 	wxPaintDC dc(this);	
@@ -120,16 +129,14 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 		dc.DrawText(coordinates, wxPoint(m_mousePoint.x, m_mousePoint.y+20));
 	}
 	
-
-  
+	/*
 	for(int i = 0; i<vecLen; i++)
 	{
-		dc.DrawLine(vecFormes[i]->getX1(), dessin.getVector().at(i)->getY1(), dessin.getVector().at(i).getX2(), dessin.getVector().at(i).getY2());
+		dc.DrawLine(((Line*)vecFormes[i])->getX1(), ((Line*)vecFormes[i])->getY1(), ((Line*)vecFormes[i])->getX2(), ((Line*)vecFormes[i])->getY2());
 	}
+	*/
 
-
-	
-
+	controler->drawForms(&dc);
 }
 
 //------------------------------------------------------------------------

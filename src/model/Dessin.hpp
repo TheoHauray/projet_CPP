@@ -14,7 +14,7 @@ public:
     Dessin& operator=(const Dessin& dessin);
     ~Dessin();
 
-    std::vector<Forme*> getVector();
+    std::vector<Forme*>& getVector();
     void addVector(Forme* forme);
 
 private:

@@ -26,7 +26,7 @@ Dessin::~Dessin()
 }
 
 
-std::vector<Forme*> Dessin::getVector()
+std::vector<Forme*>& Dessin::getVector()
 { 
     return dessins; 
 }
