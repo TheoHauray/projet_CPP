@@ -102,3 +102,9 @@ float Point::distance(const Point& point) const
 {
     return cbrt((point.getX() - m_x)*2 + (point.getY() - m_y)*2);
 }
+
+
+void Point::draw(wxDC* dc)
+{
+    
+}
