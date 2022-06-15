@@ -68,10 +68,6 @@ void Controler::setCoordinatesLineEnd(int x, int y, Line* line)
 
 }
 
-Line Controler::getLine()
-{
-    return line;
-}
 
 int Controler::getClic()
 {

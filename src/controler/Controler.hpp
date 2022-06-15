@@ -39,7 +39,6 @@ class Controler
         void addForm(Forme* forme);
         void drawForms(wxClientDC* dc);
 
-        Line getLine();
 
     private:
         MyControlPanel *myControlPanel;
