@@ -29,9 +29,10 @@ public:
 	bool GetRadioButtonLineValue() {return m_radioButtonLine->GetValue();} ;
 	bool GetRadioButtonCircleValue() {return m_radioButtonCircle->GetValue();} ;
 	bool GetRadioButtonRectangleValue() {return m_radioButtonRectangle->GetValue();} ;
-	bool getRadioButtonBackgroundColor() {return m_radioButton_Background->GetValue();} ;
-	bool getRadioButtonFormColor() {return m_radioButton_Form->GetValue();} ;
+	bool getRadioButtonBackgroundValue() {return m_radioButton_Background->GetValue();} ;
+	bool getRadioButtonFormValue() {return m_radioButton_Form->GetValue();} ;
 	bool GetRadioButtonPenValue() {return m_radioButtonPen->GetValue();} ;
+	bool GetRadioButtonBorderValue() {return m_radioButton_Border->GetValue();} ;
 	wxColour getColourPickerColor() {return m_colourPicker->GetColour();} ;
 
 	bool GetLineValue() {return m_line->GetValue();} ; 
@@ -54,6 +55,7 @@ private:
 	wxButton* m_button_applyColor ;
 	wxRadioButton* m_radioButton_Background;
 	wxRadioButton* m_radioButton_Form;
+	wxRadioButton* m_radioButton_Border;
 	wxColourPickerCtrl* m_colourPicker ;
 	wxRadioButton* m_radioButtonPen;
 

@@ -139,8 +139,8 @@ void Controler::addForm(Forme *forme)
 
 void Controler::drawForms(wxClientDC* dc)
 {
-    dc->SetPen(*wxRED);
-    dc->SetBrush(wxColour(0,0,0,127));
+    dc->SetPen(colorBorder);
+    dc->SetBrush(wxColour(colorToFill));
     for(int i = 0; i < dessin->getVector().size(); i++)
     {
         dessin->getVector().at(i)->draw(dc);
@@ -162,5 +162,10 @@ void Controler::setBackgroundColor(wxColour colorPicked)
 void Controler::setFormColor(wxColour colorPicked)
 {
     colorToFill = colorPicked;
+}
+
+void Controler::setBorderColor(wxColour colorPicked)
+{
+    colorBorder = colorPicked;
 }
 

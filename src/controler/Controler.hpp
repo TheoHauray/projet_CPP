@@ -57,6 +57,7 @@ class Controler
 
         void setBackgroundColor(wxColour colorPicked);
         void setFormColor(wxColour colorPicked);
+        void setBorderColor(wxColour colorPicked);
 
 
     private:
@@ -68,7 +69,8 @@ class Controler
 
         Line* tempLine;
         Cercle* tempCircle;
-        wxBrush colorToFill;
+        wxColour colorToFill = *wxWHITE;
+        wxColour colorBorder = *wxBLACK;
         wxColour backGroundColor;
 };
 

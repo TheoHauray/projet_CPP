@@ -40,6 +40,7 @@ enum
 	ID_BUTTONAPPLYCOLOR,
 	ID_RADIOBUTTONCOLORBACK,
 	ID_RADIOBUTTONCOLORFORM,
+	ID_RADIOBUTTONCOLORBORDER,
 	ID_RADIOBUTTONPEN,
 	ID_COLORPICKER
 
@@ -105,6 +106,9 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 	y+= 20;
 	m_radioButton_Form = new wxRadioButton(this, ID_RADIOBUTTONCOLORFORM, "Form color", wxPoint(10, y), wxSize(100,20)) ;
 	//Bind(wxEVT_BUTTON, &MyControlPanel::OnButton, this, ID_RADIOBUTTONCOLORFORM) ;
+
+	y+= 20;
+	m_radioButton_Border = new wxRadioButton(this, ID_RADIOBUTTONCOLORBORDER, "Border color", wxPoint(10, y), wxSize(100,20)) ;
 }
 
 //------------------------------------------------------------------------
@@ -116,15 +120,22 @@ void MyControlPanel::OnButton(wxCommandEvent &event)
 //	free(s) ;
 	wxColour colorPicked = this->getColourPickerColor();
 
-	if(this->getRadioButtonBackgroundColor() == true)
+	if(this->getRadioButtonBackgroundValue() == true)
 	{
 		controler->setBackgroundColor(colorPicked);
+		wxMessageBox(wxT("Background color changed !")) ;
+	}
+	else if(this->GetRadioButtonBorderValue() == true)
+	{
+		controler->setBorderColor(colorPicked);
+		wxMessageBox(wxT("Border color is setted, let's draw !")) ;
 	}
 	else
 	{
 		controler->setFormColor(colorPicked);
+		wxMessageBox(wxT("Color to fill the form setted, let's draw !")) ;
 	}
-	//wxMessageBox(wxT("You just pressed the button!")) ;
+	
 }
 
 void MyControlPanel::OnCheckBoxLine(wxCommandEvent &event)
