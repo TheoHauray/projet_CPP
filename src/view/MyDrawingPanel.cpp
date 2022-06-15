@@ -8,6 +8,7 @@
 #include <wx/image.h>
 #include <wx/file.h>
 #include <wx/bitmap.h>
+#include <wx/brush.h>
 
 #include "MyDrawingPanel.hpp"
 #include "MyFrame.hpp"
@@ -78,7 +79,6 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 	}
 	else if (line && controler->getClic()==1)
 	{
-
 		controler->setCoordinatesLine(x1, y1, m_onePoint.x, m_onePoint.y); //Donne au controleur les coordonnées de la souris pour avoir le second point de la ligne
 		controler->setClic(0); //Indique au controleur que le prochain clic réinitialise la séquence et sera donc pour une nouvelle ligne
 		x1, y1 = 0;
@@ -119,8 +119,6 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 }
 
 
-
-
 //------------------------------------------------------------------------
 void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 //------------------------------------------------------------------------
@@ -140,12 +138,8 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 	Dessin dessin = controler->getDessin();
 	int vecLen = dessin.getVector().size();
 
-
 	// then paint
 	wxPaintDC dc(this);	
-	
-
-
 	
 	if (check)
 	{
@@ -154,8 +148,6 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 		dc.DrawText(coordinates, wxPoint(m_mousePoint.x, m_mousePoint.y+20));
 	}
 	
-
-
 	controler->drawForms(&dc);
 
 	if(controler->getClic()==1 && line){
@@ -190,18 +182,13 @@ void MyDrawingPanel::OpenFile(wxString fileName)
 void MyDrawingPanel::SaveFile(wxString fileName)
 //------------------------------------------------------------------------
 {
-	// just to create a tiny file
-	//FILE* f = fopen(fileName, "w") ;
-
 	bool isImageSaved = controler->saveImage(fileName, APPLICATION_HEIGHT, APPLICATION_WIDTH);
 
 	if (isImageSaved == false)
 		wxMessageBox(wxT("Cannot save file"));
 	else
 	{
-		//fprintf(f, "S1102 software can create and write a file") ;
 		wxMessageBox(wxT("The file was saved")) ;
-		//fclose(f) ;
 	}
 }
 
@@ -209,4 +196,9 @@ void MyDrawingPanel::setControler(Controler *controler)
 //------------------------------------------------------------------------
 {
 	this->controler = controler;
+}
+
+void MyDrawingPanel::setBackgroundColor()
+{
+	
 }
