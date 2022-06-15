@@ -24,12 +24,17 @@ class MyDrawingPanel: public wxPanel
 private:
 	void OnMouseMove(wxMouseEvent &event) ;
 	void OnMouseLeftDown(wxMouseEvent &event) ;
+	void OnMouseLeftUp(wxMouseEvent &event);
 	void OnPaint(wxPaintEvent &event) ;
 	
 	wxPoint m_mousePoint ;
 	wxPoint m_onePoint ;
 	Controler *controler;
+<<<<<<< HEAD
+	bool dragging;
+=======
 	wxBrush backgroundColor;
+>>>>>>> 14dc21b29fa5c9ff85fbf0629f50feeea15c271c
 	
 public:
 	MyDrawingPanel( wxWindow *parent ) ;

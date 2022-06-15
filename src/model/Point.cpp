@@ -2,7 +2,6 @@
 #include <cstdlib>
 #include <cmath>
 #include "Point.hpp"
-#include "Forme.hpp"
 
 using namespace std;
 
@@ -14,7 +13,6 @@ Point::Point()
     m_label = "Point";
     m_x = 0;
     m_y = 0;
-
 }
 
 Point::Point(int xy)
@@ -112,5 +110,5 @@ float Point::distance(const Point& point) const
 
 void Point::draw(wxDC* dc)
 {
-
+    dc->DrawPoint(m_x, m_y);
 }

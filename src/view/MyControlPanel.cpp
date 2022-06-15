@@ -37,10 +37,14 @@ enum
 	ID_RADIOBUTTONLINE,
 	ID_RADIOBUTTONCERCLE,
 	ID_RADIOBUTTONRECTANGLE,
+<<<<<<< HEAD
+	ID_RADIOBUTTONPEN
+=======
 	ID_BUTTONAPPLYCOLOR,
 	ID_RADIOBUTTONCOLORBACK,
 	ID_RADIOBUTTONCOLORFORM,
 	ID_COLORPICKER
+>>>>>>> 14dc21b29fa5c9ff85fbf0629f50feeea15c271c
 
 };
 
@@ -85,6 +89,9 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 	y+= WIDGET_Y_STEP ;
 	m_radioButtonRectangle = new wxRadioButton(this, ID_RADIOBUTTONRECTANGLE, "Rectangle", wxPoint(10, y), wxSize(100,20)) ;
 	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTONRECTANGLE);
+		y+= WIDGET_Y_STEP ;
+	m_radioButtonPen = new wxRadioButton(this, ID_RADIOBUTTONPEN, "Pen", wxPoint(10, y), wxSize(100,20)) ;
+	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTONPEN);
 
 	y+= WIDGET_Y_STEP;
 	m_colourPicker = new wxColourPickerCtrl(this, ID_COLORPICKER, *wxWHITE, wxPoint(10, y), wxDefaultSize, wxCLRP_DEFAULT_STYLE, wxDefaultValidator, "Pick a color") ;
