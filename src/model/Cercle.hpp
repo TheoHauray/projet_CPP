@@ -10,7 +10,7 @@ class Cercle : public Forme
     
     public:
         Cercle();
-        Cercle(int x, int y, int radius, const std::string label);
+        Cercle(int x, int y, int radius);
         Cercle(const Cercle& c);
         Cercle& operator=(const Cercle& c);
         virtual ~Cercle();

@@ -13,7 +13,6 @@ int Line::nbLine = 0;
 
 //Default constructor
 Line::Line()
-: Forme()
 {
     x1,y1,x2,y2 = 0;
 }
@@ -27,8 +26,6 @@ Line::Line(int x1, int y1, int x2, int y2)
     this->y1 = y1;
     this->y2 = y2;
 
-    Point center((x1 + x2)/2, (y1 + y2)/2);
-
     //Forme(string("Line"), center);
 
     this->nbLine++;
@@ -38,7 +35,6 @@ Line::Line(int x1, int y1, int x2, int y2)
 //Copy constructor
 
 Line::Line(Line& copy)
-: Forme(*copy.m_label, copy.center)
 {
     this->x1 = copy.x1;
     this->x2 = copy.x2;
