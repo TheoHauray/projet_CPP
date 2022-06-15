@@ -10,6 +10,7 @@
 #include "../model/Cercle.hpp"
 #include "../model/Rectangle.hpp"
 
+#include <wx/colour.h>
 
 #include "wx/wxprec.h"
 
@@ -50,7 +51,8 @@ class Controler
         void drawForms(wxClientDC* dc);
         bool saveImage(wxString fileName, int heigth, int width);
 
-        void changeBackgroundColor();
+        void setBackgroundColor(wxColour colorPicked);
+        void setFormColor(wxColour colorPicked);
 
 
     private:
@@ -62,6 +64,8 @@ class Controler
 
         Line* tempLine;
         Cercle* tempCircle;
+        wxBrush colorToFill;
+        wxColour backGroundColor;
 };
 
 #endif //__CONTROLER_H__

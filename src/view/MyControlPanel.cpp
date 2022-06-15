@@ -10,6 +10,7 @@
 #include <wx/file.h>
 #include <wx/bitmap.h>
 #include <wx/clrpicker.h>
+#include <wx/colour.h>
 
 #include "MyControlPanel.hpp"
 #include "MyFrame.hpp"
@@ -109,8 +110,17 @@ void MyControlPanel::OnButton(wxCommandEvent &event)
 //	char* s = GetCString() ;
 //	wxMessageBox(wxString::FromAscii(s)) ; // call a C function located in the sample.cp module
 //	free(s) ;
-	wxMessageBox(wxT("You just pressed the button!")) ;
-	controler->changeBackgroundColor();
+	wxColour colorPicked = this->getColourPickerColor();
+
+	if(this->getRadioButtonBackgroundColor() == true)
+	{
+		controler->setBackgroundColor(colorPicked);
+	}
+	else
+	{
+		controler->setFormColor(colorPicked);
+	}
+	//wxMessageBox(wxT("You just pressed the button!")) ;
 }
 
 void MyControlPanel::OnCheckBoxLine(wxCommandEvent &event)

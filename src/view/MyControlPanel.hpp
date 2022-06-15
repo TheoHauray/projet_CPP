@@ -12,6 +12,7 @@
 #include <wx/file.h>
 #include <wx/bitmap.h>
 #include <wx/clrpicker.h>
+#include <wx/colour.h>
 
 #include "../controler/Controler.hpp"
 
@@ -28,7 +29,9 @@ public:
 	bool GetRadioButtonLineValue() {return m_radioButtonLine->GetValue();} ;
 	bool GetRadioButtonCircleValue() {return m_radioButtonCircle->GetValue();} ;
 	bool GetRadioButtonRectangleValue() {return m_radioButtonRectangle->GetValue();} ;
-
+	bool getRadioButtonBackgroundColor() {return m_radioButton_Background->GetValue();} ;
+	bool getRadioButtonFormColor() {return m_radioButton_Form->GetValue();} ;
+	wxColour getColourPickerColor() {return m_colourPicker->GetColour();} ;
 
 	bool GetLineValue() {return m_line->GetValue();} ; 
 	void setControler(Controler *controler) ;

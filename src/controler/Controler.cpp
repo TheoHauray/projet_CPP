@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <cmath>
 #include <string>
+#include <wx/colour.h>
 
 #include "Controler.hpp"
 
@@ -102,8 +103,6 @@ void Controler::setCoordinatesLineEnd(int x, int y, Line* line)
     line->setY2(y);
 
     this->addForm(line);
-
-
 }
 
 
@@ -137,11 +136,18 @@ void Controler::drawForms(wxClientDC* dc)
 
 bool Controler::saveImage(wxString fileName, int height, int width)
 {
-    bool isImageSaved = dessin->saveImage(fileName, height, width);
+    bool isImageSaved = dessin->saveImage(fileName, height, width, backGroundColor);
     return isImageSaved;
 }
 
-void Controler::changeBackgroundColor()
+void Controler::setBackgroundColor(wxColour colorPicked)
 {
-
+    backGroundColor = colorPicked;
+    myDrawingPanel->SetBackgroundColour(colorPicked);
 }
+
+void Controler::setFormColor(wxColour colorPicked)
+{
+    currentColor = colorPicked;
+}
+

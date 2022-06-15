@@ -14,6 +14,7 @@
 
 #include "Forme.hpp"
 #include <vector>
+#include <wx/colour.h>
 
 class Dessin
 {
@@ -27,7 +28,7 @@ public:
 
     std::vector<Forme*>& getVector();
     void addVector(Forme* forme);
-    bool saveImage(wxString fileName, int height, int width);
+    bool saveImage(wxString fileName, int height, int width, wxColour color);
 
 
 private:

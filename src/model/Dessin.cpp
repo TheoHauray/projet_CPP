@@ -9,6 +9,7 @@
 #include <wx/file.h>
 #include <wx/bitmap.h>
 #include <wx/dcsvg.h>
+#include <wx/brush.h>
 
 
 #include "Dessin.hpp"
@@ -50,11 +51,15 @@ void Dessin::addVector(Forme* forme)
     this->dessins.push_back(forme);
 }
 
-bool Dessin::saveImage(wxString fileName, int height, int width)
+bool Dessin::saveImage(wxString fileName, int height, int width, wxColour color)
 {
     bool isFileSaved = true;
 
     wxSVGFileDC dcFile(fileName, width, height);
+    dcFile.SetBrush(color);
+    dcFile.DrawRectangle(0, 0, width, height);
+    dcFile.SetBrush(*wxWHITE_BRUSH);
+
 
     for(int i = 0; i < dessins.size(); i++)
     {
