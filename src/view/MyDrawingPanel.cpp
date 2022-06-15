@@ -74,16 +74,10 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 	}
 	else if (line && controler->getClic()==1)
 	{
-<<<<<<< HEAD
-		controlerFinal.setCoordinatesLine(m_onePoint.x, m_onePoint.y); //Donne au controleur les coordonnées de la souris pour avoir le second point de la ligne
-		controlerFinal.drawLine(); //Dessine la ligne entre le premier point et le second point.
-		controlerFinal.setClic(0); //Indique au controleur que le prochain clic réinitialise la séquence et sera donc pour une nouvelle ligne
-=======
 
 		controler->setCoordinatesLine(x1, y1, m_onePoint.x, m_onePoint.y); //Donne au controleur les coordonnées de la souris pour avoir le second point de la ligne
 		controler->setClic(0); //Indique au controleur que le prochain clic réinitialise la séquence et sera donc pour une nouvelle ligne
 		x1, y1 = 0;
->>>>>>> 975711440e3e6feb95fe537297eab1d6d5179f61
 		//La ligne est posée
 	}
 	
@@ -102,12 +96,7 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 	int radius = frame->GetControlPanel()->GetSliderValue() ;
 	bool check = frame->GetControlPanel()->GetCheckBoxValue() ;
 
-<<<<<<< HEAD
-	Controler controlerFinal = *(this->controler);	
-	Dessin dessin = controlerFinal.getDessin();
-=======
 	Dessin dessin = controler->getDessin();
->>>>>>> 975711440e3e6feb95fe537297eab1d6d5179f61
 	int vecLen = dessin.getVector().size();
 
 

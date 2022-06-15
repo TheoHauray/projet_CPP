@@ -26,12 +26,8 @@ class Line : public Forme
 
         Line getAllCoordinates();
 
-<<<<<<< HEAD
-        Line& operator=(const Line& line);
-=======
         void draw(wxClientDC* dc) override;
 
->>>>>>> 975711440e3e6feb95fe537297eab1d6d5179f61
 
     private:
 
