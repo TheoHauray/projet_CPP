@@ -49,13 +49,18 @@ void Controler::setCoordinatesLine(int x, int y)
     Line *line = new Line();
 
     if(this->clic==0){
-        line.setX1(x);
-        line.setY1(y);
+        line->setX1(x);
+        line->setY1(y);
     }
     else{
-        line.setX2(x);
-        line.setY2(y);
+        line->setX2(x);
+        line->setY2(y);
     }
+}
+
+Line Controler::getLine()
+{
+    return line;
 }
 
 int Controler::getClic()

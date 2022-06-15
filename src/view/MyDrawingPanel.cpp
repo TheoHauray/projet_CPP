@@ -68,13 +68,13 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 
 	if (line && clic==0)
 	{
-		controlerFinal.setCoordinatesLineStart(m_onePoint.x, m_onePoint.y); //Donne au controler les coordonnées de la souris pour avoir le premier point de la ligne
+		controlerFinal.setCoordinatesLine(m_onePoint.x, m_onePoint.y); //Donne au controler les coordonnées de la souris pour avoir le premier point de la ligne
 		controlerFinal.setClic(1); //Indique au controleur que le prochain clic permettra de placer le deuxième point de la ligne
 		//Le premier point est posé
 	}
 	else if (line && clic==1)
 	{
-		controlerFinal.setCoordinatesLineEnd(m_onePoint.x, m_onePoint.y); //Donne au controleur les coordonnées de la souris pour avoir le second point de la ligne
+		controlerFinal.setCoordinatesLine(m_onePoint.x, m_onePoint.y); //Donne au controleur les coordonnées de la souris pour avoir le second point de la ligne
 		controlerFinal.drawLine(); //Dessine la ligne entre le premier point et le second point.
 		controlerFinal.setClic(0); //Indique au controleur que le prochain clic réinitialise la séquence et sera donc pour une nouvelle ligne
 		//La ligne est posée
@@ -96,8 +96,8 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 	MyFrame* frame =  (MyFrame*)GetParent() ;
 	int radius = frame->GetControlPanel()->GetSliderValue() ;
 	bool check = frame->GetControlPanel()->GetCheckBoxValue() ;
-	Controler controlerFinal = *(this->controler);	
 
+	Controler controlerFinal = *(this->controler);	
 	Dessin dessin = controlerFinal.getDessin();
 	int vecLen = dessin.getVector().size();
 
@@ -120,11 +120,15 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 		dc.DrawText(coordinates, wxPoint(m_mousePoint.x, m_mousePoint.y+20)) ;
 	}
 
-  
+	Line* line = controler->getLine();
+	dc.DrawLine(line->getX1(), line->getY1(), line->getX2(), line->getY2());
+
+/*  
 	for(int i = 0; i<vecLen; i++){
-		dc.DrawLine(dessin.getVector().at(i).x1, dessin.getVector().at(i)->y1, dessin.getVector().at(i)->x2, dessin.getVector().at(i)->y2);
+		dc.DrawLine(dessin.getVector().at(i).getX1(), dessin.getVector().at(i).getY1(), dessin.getVector().at(i).getX2(), dessin.getVector().at(i).getY2());
 	}
 
+*/
 
 	
 

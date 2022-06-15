@@ -26,6 +26,8 @@ class Line : public Forme
 
         Line getAllCoordinates();
 
+        Line& operator=(const Line& line);
+
     private:
 
         int x1;

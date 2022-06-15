@@ -40,6 +40,8 @@ class Controler
 
         void drawLine();
 
+        Line getLine();
+
     private:
         MyControlPanel *myControlPanel;
         MyDrawingPanel *myDrawingPanel;
