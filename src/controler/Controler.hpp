@@ -36,9 +36,9 @@ class Controler
         int getClic();
         void setClic(int x);
 
-        Dessin getDessin();
+        Dessin& getDessin();
 
-        void drawLine();
+        void addForm(Forme* forme);
 
         Line getLine();
 
@@ -47,7 +47,6 @@ class Controler
         MyDrawingPanel *myDrawingPanel;
         MyFrame *myFrame;
         int clic;
-        Line line;
         Dessin dessin;
 };
 
