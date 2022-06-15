@@ -110,5 +110,5 @@ float Point::distance(const Point& point) const
 
 void Point::draw(wxDC* dc)
 {
-
+    dc->DrawPoint(m_x, m_y);
 }

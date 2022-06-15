@@ -23,11 +23,13 @@ class MyDrawingPanel: public wxPanel
 private:
 	void OnMouseMove(wxMouseEvent &event) ;
 	void OnMouseLeftDown(wxMouseEvent &event) ;
+	void OnMouseLeftUp(wxMouseEvent &event);
 	void OnPaint(wxPaintEvent &event) ;
 	
 	wxPoint m_mousePoint ;
 	wxPoint m_onePoint ;
 	Controler *controler;
+	bool dragging;
 	
 public:
 	MyDrawingPanel( wxWindow *parent ) ;

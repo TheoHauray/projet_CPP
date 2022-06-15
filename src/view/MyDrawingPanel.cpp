@@ -41,6 +41,8 @@ MyDrawingPanel::MyDrawingPanel(wxWindow *parent) : wxPanel(parent)
 	m_onePoint.x = (w-WIDGET_PANEL_WIDTH)/2 ;
 	m_onePoint.y = h/2 ;
 	m_mousePoint = m_onePoint ;
+
+	dragging = false;
 }
 
 //------------------------------------------------------------------------
@@ -50,6 +52,13 @@ void MyDrawingPanel::OnMouseMove(wxMouseEvent &event)
 {
 	m_mousePoint.x = event.m_x ;
 	m_mousePoint.y = event.m_y ;
+
+	if (dragging){
+		int x1 = m_mousePoint.x;
+		int y1 = m_mousePoint.y;
+		controler->setCoordinatesPoint(x1, y1);
+
+	}
 	Refresh() ;	// send an event that calls the OnPaint method
 }
 
@@ -66,6 +75,8 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 	bool line = controler->getBoolLine(); //Faire les méthodes pour savoir quel bouton de dessin est activé
 	bool circle = controler->getBoolCircle();
 	bool rectangle = controler->getBoolRectangle();
+	bool pen = controler->getBoolPen();
+
 	
 	//Dans le cas de la ligne :
 
@@ -115,6 +126,15 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 		controler->setCoordinatesRectangle(x1, y1, m_onePoint.x, m_onePoint.y);
 		controler->setClic(0);
 	}
+
+	if (pen)
+	{
+		dragging = true;
+	}
+	else
+	{
+		dragging = false;
+	}
 	Refresh() ; // send an event that calls the OnPaint method
 }
 
@@ -135,6 +155,7 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 	bool line = controler->getBoolLine();
 	bool circle = controler->getBoolCircle();
 	bool rectangle = controler->getBoolRectangle();
+	bool pen = controler->getBoolPen();
 
 
 	Dessin dessin = controler->getDessin();

@@ -34,7 +34,8 @@ enum
 
 	ID_RADIOBUTTONLINE,
 	ID_RADIOBUTTONCERCLE,
-	ID_RADIOBUTTONRECTANGLE
+	ID_RADIOBUTTONRECTANGLE,
+	ID_RADIOBUTTONPEN
 
 };
 
@@ -71,7 +72,7 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 //Ajout de boutons radio pour test, voir à quelle méthode ils peuvent être liés
 
 	y+= 2* WIDGET_Y_STEP ;
-	m_radioButtonLine = new wxRadioButton(this, ID_RADIOBUTTONLINE, "Ligne", wxPoint(10, y), wxSize(100,20)) ;
+	m_radioButtonLine = new wxRadioButton(this, ID_RADIOBUTTONLINE, "Ligne", wxPoint(10, y), wxSize(100,20), wxRB_GROUP) ;
 	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, 	ID_RADIOBUTTONLINE);
 		y+= WIDGET_Y_STEP ;
 	m_radioButtonCircle = new wxRadioButton(this, ID_RADIOBUTTONCERCLE, "Cercle", wxPoint(10, y), wxSize(100,20)) ;
@@ -79,6 +80,9 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 		y+= WIDGET_Y_STEP ;
 	m_radioButtonRectangle = new wxRadioButton(this, ID_RADIOBUTTONRECTANGLE, "Rectangle", wxPoint(10, y), wxSize(100,20)) ;
 	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTONRECTANGLE);
+		y+= WIDGET_Y_STEP ;
+	m_radioButtonPen = new wxRadioButton(this, ID_RADIOBUTTONPEN, "Pen", wxPoint(10, y), wxSize(100,20)) ;
+	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTONPEN);
 
 
 }

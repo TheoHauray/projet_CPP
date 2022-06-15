@@ -9,6 +9,7 @@
 #include "../model/Line.hpp"
 #include "../model/Cercle.hpp"
 #include "../model/Rectangle.hpp"
+#include "../model/Point.hpp"
 
 
 #include "wx/wxprec.h"
@@ -35,12 +36,15 @@ class Controler
         bool getBoolLine();
         bool getBoolCircle();
         bool getBoolRectangle();
+        bool getBoolPen();
+        
         void setCoordinatesLine(int x1, int y1, int x2, int y2);
-        void setCoordinatesLineEnd(int x, int y, Line* line);
 
         void setCoordinatesCircle(int x1, int x2, int radius);
 
         void setCoordinatesRectangle(int x1, int y1, int width, int height);
+
+        void setCoordinatesPoint(int x1, int y1);
 
         int getClic();
         void setClic(int x);

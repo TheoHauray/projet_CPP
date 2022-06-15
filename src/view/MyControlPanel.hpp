@@ -27,6 +27,8 @@ public:
 	bool GetRadioButtonLineValue() {return m_radioButtonLine->GetValue();} ;
 	bool GetRadioButtonCircleValue() {return m_radioButtonCircle->GetValue();} ;
 	bool GetRadioButtonRectangleValue() {return m_radioButtonRectangle->GetValue();} ;
+	bool GetRadioButtonPenValue() {return m_radioButtonPen->GetValue();} ;
+
 
 
 	bool GetLineValue() {return m_line->GetValue();} ; 
@@ -45,6 +47,7 @@ private:
 	wxRadioButton* m_radioButtonLine;
 	wxRadioButton* m_radioButtonCircle;
 	wxRadioButton* m_radioButtonRectangle;
+	wxRadioButton* m_radioButtonPen;
 
 	Controler *controler;
 };

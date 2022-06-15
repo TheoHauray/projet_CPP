@@ -12,6 +12,8 @@
 #include "../model/Line.hpp"
 #include "../model/Cercle.hpp"
 #include "../model/Rectangle.hpp"
+#include "../model/Point.hpp"
+
 
 
 
@@ -60,6 +62,11 @@ bool Controler::getBoolRectangle()
     return this->myFrame->GetControlPanel()->GetRadioButtonRectangleValue();
 }
 
+bool Controler::getBoolPen()
+{
+    return this->myFrame->GetControlPanel()->GetRadioButtonPenValue();
+}
+
 void Controler::setCoordinatesLine(int x1, int y1, int x2, int y2)
 {
     Line* line = new Line;
@@ -95,16 +102,18 @@ void Controler::setCoordinatesRectangle(int x1, int y1, int x2, int y2)
     this->addForm(rectangle);
 }
 
-
-void Controler::setCoordinatesLineEnd(int x, int y, Line* line)
+void Controler::setCoordinatesPoint(int x1, int y1)
 {
-    line->setX2(x);
-    line->setY2(y);
+    Point* point = new Point;
 
-    this->addForm(line);
+    point->setX(x1);
+    point->setY(y1);
 
-
+    this->addForm(point);
 }
+
+
+
 
 
 int Controler::getClic()
@@ -129,6 +138,8 @@ void Controler::addForm(Forme *forme)
 
 void Controler::drawForms(wxClientDC* dc)
 {
+    dc->SetPen(*wxRED);
+    dc->SetBrush(wxColour(0,0,0,127));
     for(int i = 0; i < dessin->getVector().size(); i++)
     {
         dessin->getVector().at(i)->draw(dc);
