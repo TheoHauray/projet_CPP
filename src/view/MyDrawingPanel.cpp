@@ -104,9 +104,10 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 
 	// then paint
 	wxPaintDC dc(this);	
-		
+	
+	if(controler->getClic()==1){
 	dc.DrawLine(m_mousePoint, m_onePoint) ;
-	dc.DrawRectangle(wxPoint(m_onePoint.x-radius/2, m_onePoint.y-radius/2), wxSize(radius,radius)) ;
+	}
 	dc.DrawCircle(wxPoint(m_mousePoint), radius/2) ;
 
 

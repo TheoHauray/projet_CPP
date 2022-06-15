@@ -48,17 +48,6 @@ Line::Line(Line& copy)
     this->nbLine++;
 }
 
-Line& Line::operator=(const Line& line)
-{
-    x1 = line.x1;
-    y1 = line.y1;
-    x2 = line.x2;
-    y2 = line.y2;
-
-
-    return *this;
-}
-
 Line::~Line()
 {
     nbLine--;
