@@ -29,15 +29,10 @@ public:
 	bool GetRadioButtonLineValue() {return m_radioButtonLine->GetValue();} ;
 	bool GetRadioButtonCircleValue() {return m_radioButtonCircle->GetValue();} ;
 	bool GetRadioButtonRectangleValue() {return m_radioButtonRectangle->GetValue();} ;
-<<<<<<< HEAD
 	bool getRadioButtonBackgroundColor() {return m_radioButton_Background->GetValue();} ;
 	bool getRadioButtonFormColor() {return m_radioButton_Form->GetValue();} ;
-	wxColour getColourPickerColor() {return m_colourPicker->GetColour();} ;
-=======
 	bool GetRadioButtonPenValue() {return m_radioButtonPen->GetValue();} ;
-
-
->>>>>>> refs/remotes/origin/main
+	wxColour getColourPickerColor() {return m_colourPicker->GetColour();} ;
 
 	bool GetLineValue() {return m_line->GetValue();} ; 
 	void setControler(Controler *controler) ;
@@ -56,14 +51,12 @@ private:
 	wxRadioButton* m_radioButtonLine;
 	wxRadioButton* m_radioButtonCircle;
 	wxRadioButton* m_radioButtonRectangle;
-<<<<<<< HEAD
-	wxRadioButton* m_radioButtonPen;
-=======
 	wxButton* m_button_applyColor ;
 	wxRadioButton* m_radioButton_Background;
 	wxRadioButton* m_radioButton_Form;
 	wxColourPickerCtrl* m_colourPicker ;
->>>>>>> 14dc21b29fa5c9ff85fbf0629f50feeea15c271c
+	wxRadioButton* m_radioButtonPen;
+
 
 	Controler *controler;
 };

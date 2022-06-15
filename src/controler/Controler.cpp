@@ -105,19 +105,12 @@ void Controler::setCoordinatesRectangle(int x1, int y1, int x2, int y2)
 
 void Controler::setCoordinatesPoint(int x1, int y1)
 {
-<<<<<<< HEAD
-    line->setX2(x);
-    line->setY2(y);
-
-    this->addForm(line);
-=======
     Point* point = new Point;
 
     point->setX(x1);
     point->setY(y1);
 
     this->addForm(point);
->>>>>>> refs/remotes/origin/main
 }
 
 
@@ -168,6 +161,6 @@ void Controler::setBackgroundColor(wxColour colorPicked)
 
 void Controler::setFormColor(wxColour colorPicked)
 {
-    currentColor = colorPicked;
+    colorToFill = colorPicked;
 }
 
