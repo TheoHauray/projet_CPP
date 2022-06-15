@@ -22,22 +22,19 @@ class Forme
 //------------------------------------------------------------------------
 {
     protected:
-        Point center;
         std::string* m_label;
 
     public:
         Forme();
-        Forme(const std::string& s, const Point& point);
+        Forme(const std::string& s);
         Forme(const Forme& forme);
         Forme& operator=(const Forme& forme);
         virtual ~Forme(); 
 
         void setLabel(const std::string& s); 
 	    std::string getLabel() const;
-        void setCenter(const Point& point); 
-	    Point getCenter() const;
 
-        virtual void draw(wxClientDC* dc);
+        virtual void draw(wxClientDC* dc) = 0;
 };
 
 #endif //__FORME_H__
