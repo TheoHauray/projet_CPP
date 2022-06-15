@@ -65,15 +65,14 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 		
 	bool line = controler->getBoolLine(); //Faire les méthodes pour savoir quel bouton de dessin est activé
 	bool circle = controler->getBoolCircle();
-	//bool circle = controler.getBoolCircle();
+	bool rectangle = controler->getBoolRectangle();
 	
 	//Dans le cas de la ligne :
 
-	if (line && controler->getClic()==0)
+	if (controler->getClic()==0 && line)
 	{
 		x1 = m_onePoint.x;
 		y1 = m_onePoint.y;
-		//controler->setCoordinatesLineStart(m_onePoint.x, m_onePoint.y); //Donne au controler les coordonnées de la souris pour avoir le premier point de la ligne
 		controler->setClic(1); //Indique au controleur que le prochain clic permettra de placer le deuxième point de la ligne
 		//Le premier point est posé
 	}
@@ -86,12 +85,12 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 		//La ligne est posée
 	}
 
-	if(circle && controler->getClic()==0)
+	if (controler->getClic()==0 && circle)
 	{
 		x1 = m_onePoint.x;
 		y1 = m_onePoint.y;
-
-		controler->setClic(1);
+		controler->setClic(1); //Indique au controleur que le prochain clic permettra de placer le deuxième point de la ligne
+		//Le premier point est posé
 	}
 
 	else if(circle && controler->getClic()==1)
@@ -102,8 +101,25 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 		controler->setCoordinatesCircle(x1, y1, radius);
 		controler->setClic(0);
 	}	
+
+	if (controler->getClic()==0 && rectangle)
+	{
+		x1 = m_onePoint.x;
+		y1 = m_onePoint.y;
+		controler->setClic(1); //Indique au controleur que le prochain clic permettra de placer le deuxième point de la ligne
+		//Le premier point est posé
+	}
+
+	else if(rectangle && controler->getClic()==1)
+	{
+		controler->setCoordinatesRectangle(x1, y1, m_onePoint.x, m_onePoint.y);
+		controler->setClic(0);
+	}
 	Refresh() ; // send an event that calls the OnPaint method
 }
+
+
+
 
 //------------------------------------------------------------------------
 void MyDrawingPanel::OnPaint(wxPaintEvent &event)
@@ -118,25 +134,17 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 	bool check = frame->GetControlPanel()->GetCheckBoxValue() ;
 	bool line = controler->getBoolLine();
 	bool circle = controler->getBoolCircle();
+	bool rectangle = controler->getBoolRectangle();
 
 
 	Dessin dessin = controler->getDessin();
 	int vecLen = dessin.getVector().size();
 
 
-	//std::vector<Forme*> vecFormes = dessin.getVector();
-
 	// then paint
 	wxPaintDC dc(this);	
 	
-	if(controler->getClic()==1 && line){
-		dc.DrawLine(m_mousePoint, m_onePoint) ;
-	}
-	if(controler->getClic()==1 && circle)
-	{
-		//int radius = sqrt(pow(m_mousePoint.x, 2) + pow(y1, 2));
-		//dc.DrawCircle(wxPoint(m_mousePoint), radius);
-	}
+
 
 	
 	if (check)
@@ -146,14 +154,23 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 		dc.DrawText(coordinates, wxPoint(m_mousePoint.x, m_mousePoint.y+20));
 	}
 	
-	/*
-	for(int i = 0; i<vecLen; i++)
-	{
-		dc.DrawLine(((Line*)vecFormes[i])->getX1(), ((Line*)vecFormes[i])->getY1(), ((Line*)vecFormes[i])->getX2(), ((Line*)vecFormes[i])->getY2());
-	}
-	*/
+
 
 	controler->drawForms(&dc);
+
+	if(controler->getClic()==1 && line){
+		dc.DrawLine(m_mousePoint, m_onePoint) ;
+	}
+	if(controler->getClic()==1 && circle)
+	{
+		int disX = abs(m_mousePoint.x - m_onePoint.x);
+		int disY = abs(m_mousePoint.y - m_onePoint.y);
+		int radius = sqrt(pow(disX, 2) + pow(disY, 2)); 
+		dc.DrawCircle(wxPoint(m_onePoint), radius);
+	}
+	if(controler->getClic()==1 && rectangle){
+		dc.DrawRectangle(m_mousePoint.x, m_mousePoint.y, m_onePoint.x-m_mousePoint.x, m_onePoint.y-m_mousePoint.y) ;
+	}
 }
 
 //------------------------------------------------------------------------
