@@ -26,6 +26,8 @@ public:
 	bool GetCheckBoxValue() {return m_checkBox->GetValue() ;} ;
 	bool GetRadioButtonLineValue() {return m_radioButtonLine->GetValue();} ;
 	bool GetRadioButtonCircleValue() {return m_radioButtonCircle->GetValue();} ;
+	bool GetRadioButtonRectangleValue() {return m_radioButtonRectangle->GetValue();} ;
+
 
 	bool GetLineValue() {return m_line->GetValue();} ; 
 	void setControler(Controler *controler) ;
@@ -42,6 +44,7 @@ private:
 	wxCheckBox* m_line ;
 	wxRadioButton* m_radioButtonLine;
 	wxRadioButton* m_radioButtonCircle;
+	wxRadioButton* m_radioButtonRectangle;
 
 	Controler *controler;
 };

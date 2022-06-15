@@ -1,7 +1,7 @@
 #ifndef __Point_h__
 #define __Point_h__
 
-class Point
+class Point : public Forme
 {
     public:
         Point();

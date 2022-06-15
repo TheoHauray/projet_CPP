@@ -10,6 +10,9 @@
 #include "../view/MyFrame.hpp"
 #include "../model/Dessin.hpp"
 #include "../model/Line.hpp"
+#include "../model/Cercle.hpp"
+#include "../model/Rectangle.hpp"
+
 
 
 using namespace std;
@@ -52,6 +55,11 @@ bool Controler::getBoolCircle()
     return this->myFrame->GetControlPanel()->GetRadioButtonCircleValue() ;
 }
 
+bool Controler::getBoolRectangle()
+{
+    return this->myFrame->GetControlPanel()->GetRadioButtonRectangleValue();
+}
+
 void Controler::setCoordinatesLine(int x1, int y1, int x2, int y2)
 {
     Line* line = new Line;
@@ -73,6 +81,18 @@ void Controler::setCoordinatesCircle(int x1, int y1, int radius)
 
 
     this->addForm(cercle);
+}
+
+void Controler::setCoordinatesRectangle(int x1, int y1, int x2, int y2)
+{
+    Rectangle* rectangle = new Rectangle;
+
+    rectangle->setX1(x1);
+    rectangle->setX2(x2);
+    rectangle->setY1(y1);
+    rectangle->setY2(y2);
+
+    this->addForm(rectangle);
 }
 
 

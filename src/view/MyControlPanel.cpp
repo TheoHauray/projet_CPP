@@ -33,7 +33,8 @@ enum
 	ID_CHECKBOX2,
 
 	ID_RADIOBUTTONLINE,
-	ID_RADIOBUTTONCERCLE
+	ID_RADIOBUTTONCERCLE,
+	ID_RADIOBUTTONRECTANGLE
 
 };
 
@@ -76,6 +77,9 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 	m_radioButtonCircle = new wxRadioButton(this, ID_RADIOBUTTONCERCLE, "Cercle", wxPoint(10, y), wxSize(100,20)) ;
 	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTONCERCLE);
 		y+= WIDGET_Y_STEP ;
+	m_radioButtonRectangle = new wxRadioButton(this, ID_RADIOBUTTONRECTANGLE, "Rectangle", wxPoint(10, y), wxSize(100,20)) ;
+	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTONRECTANGLE);
+
 
 }
 
