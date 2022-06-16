@@ -63,3 +63,8 @@ void Cercle::setRadius(int radius)
 {
     this->m_radius = radius;
 }
+bool Cercle::isInside(int x, int y)
+{
+    float d = sqrt((x - x1)*(x - x1) + (y - y1)*(y - y1));
+    return d <= m_radius;
+}

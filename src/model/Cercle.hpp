@@ -21,6 +21,7 @@ class Cercle : public Forme
         void setY1(int y1);
         void setRadius(int radius);
         void draw(wxDC* dc) override;
+        bool isInside(int x, int y) override;
 
 };
 

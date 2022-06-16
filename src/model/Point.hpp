@@ -22,6 +22,7 @@ class Point : public Forme
         void setY(int y);
         float distance(const Point& point) const;
         void draw(wxDC* dc) override;
+        bool isInside(int x, int y) override;
 
 
     private:
