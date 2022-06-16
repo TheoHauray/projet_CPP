@@ -46,7 +46,8 @@ enum
 	ID_COLORPICKEROUTLINE,
 	ID_COLORPICKERBACKGROUND,
 
-	ID_SLIDERWIDTH
+	ID_SLIDERWIDTH,
+	ID_SLIDERTRANSPARENCY
 
 };
 
@@ -111,7 +112,7 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 	y+= 20;
 	m_colourPickerBackground = new wxColourPickerCtrl(this, ID_COLORPICKERBACKGROUND, *wxWHITE, wxPoint(10, y), wxDefaultSize, wxCLRP_DEFAULT_STYLE, wxDefaultValidator, "Pick a color") ;
 	Bind(wxEVT_COMMAND_COLOURPICKER_CHANGED, &MyControlPanel::onColourPicker, this, ID_COLORPICKERBACKGROUND) ;
-	
+
 	/*y+= WIDGET_Y_STEP;
 	m_button_applyColor = new wxButton(this, ID_BUTTONAPPLYCOLOR, "Apply color", wxPoint(10, y), wxSize(100,20)) ;
 	Bind(wxEVT_BUTTON, &MyControlPanel::OnButton, this, ID_BUTTONAPPLYCOLOR) ;
@@ -129,9 +130,13 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 
 	y+= WIDGET_Y_STEP ;
 	wxStaticText* text4 = new wxStaticText(this, wxID_ANY, wxT("Outline Thickness"), wxPoint(10, y)) ;
-	
 	y+= 15 ;
-	m_sliderWidth = new wxSlider(this, ID_SLIDERWIDTH, 1, 1, 20, wxPoint(10, y), wxSize(100,20)) ;
+	m_sliderWidth = new wxSlider(this, ID_SLIDERWIDTH, 1, 1, 20, wxPoint(10, y), wxSize(100,20)) ;	
+
+	y+= WIDGET_Y_STEP ;
+	wxStaticText* text5 = new wxStaticText(this, wxID_ANY, wxT("Transparency"), wxPoint(10, y)) ;
+	y+= 15 ;
+	m_sliderTransparency = new wxSlider(this, ID_SLIDERTRANSPARENCY, 255, 0, 255, wxPoint(10, y), wxSize(100,20)) ;
 }
 
 //------------------------------------------------------------------------

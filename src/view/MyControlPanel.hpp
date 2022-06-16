@@ -39,6 +39,8 @@ public:
 	wxColour getColourPickerColorBackground() {return m_colourPickerBackground->GetColour();} ;
 
 	int getSliderValue() {return m_sliderWidth->GetValue() ;} ;
+	unsigned char getSliderTransparencyValue() {return m_sliderTransparency->GetValue() ;} ;
+
 
 
 
@@ -69,6 +71,7 @@ private:
 	wxColourPickerCtrl* m_colourPickerBackground ;
 	wxRadioButton* m_radioButtonPen;
 	wxSlider* m_sliderWidth;
+	wxSlider* m_sliderTransparency;
 
 
 	Controler *controler;
