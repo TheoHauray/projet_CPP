@@ -10,7 +10,6 @@
 #include <wx/file.h>
 #include <wx/bitmap.h>
 #include <wx/clrpicker.h>
-#include <wx/colour.h>
 
 #include "MyControlPanel.hpp"
 #include "MyFrame.hpp"
@@ -37,11 +36,10 @@ enum
 	ID_RADIOBUTTONLINE,
 	ID_RADIOBUTTONCERCLE,
 	ID_RADIOBUTTONRECTANGLE,
+	ID_RADIOBUTTONPEN
 	ID_BUTTONAPPLYCOLOR,
 	ID_RADIOBUTTONCOLORBACK,
 	ID_RADIOBUTTONCOLORFORM,
-	ID_RADIOBUTTONCOLORBORDER,
-	ID_RADIOBUTTONPEN,
 	ID_COLORPICKER
 
 };
@@ -60,9 +58,7 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 	SetSize(wxRect(wxPoint(0,0), wxPoint(WIDGET_PANEL_WIDTH, h))) ;
 	SetBackgroundColour(*wxLIGHT_GREY) ;
 
-	y = WIDGET_Y0 ;
-	m_button = new wxButton(this, ID_BUTTON1, wxT("Click me"), wxPoint(10, y)) ;
-	Bind(wxEVT_BUTTON, &MyControlPanel::OnButton, this, ID_BUTTON1) ;
+	/*
 	
 	y+= WIDGET_Y_STEP ;
 	wxStaticText* text1 = new wxStaticText(this, wxID_ANY, wxT("Radius"), wxPoint(10, y)) ;
@@ -70,6 +66,7 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 	y+= 15 ;
 	m_slider = new wxSlider(this, ID_SLIDER1, 10, 2, 100, wxPoint(10, y), wxSize(100,20)) ;
 	Bind(wxEVT_SCROLL_THUMBTRACK, &MyControlPanel::OnSlider, this, ID_SLIDER1) ;	
+	*/
 	
 	y+= WIDGET_Y_STEP ;
 	m_checkBox = new wxCheckBox(this, ID_CHECKBOX1, "Show (x,y)", wxPoint(10, y), wxSize(100,20)) ;
@@ -78,7 +75,7 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 
 //Ajout de boutons radio pour test, voir à quelle méthode ils peuvent être liés
 
-	y+= 2* WIDGET_Y_STEP ;
+	y+= WIDGET_Y_STEP ;
 	m_radioButtonLine = new wxRadioButton(this, ID_RADIOBUTTONLINE, "Ligne", wxPoint(10, y), wxSize(100,20), wxRB_GROUP) ;
 	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, 	ID_RADIOBUTTONLINE);
 	y+= WIDGET_Y_STEP ;
@@ -106,9 +103,6 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 	y+= 20;
 	m_radioButton_Form = new wxRadioButton(this, ID_RADIOBUTTONCOLORFORM, "Form color", wxPoint(10, y), wxSize(100,20)) ;
 	//Bind(wxEVT_BUTTON, &MyControlPanel::OnButton, this, ID_RADIOBUTTONCOLORFORM) ;
-
-	y+= 20;
-	m_radioButton_Border = new wxRadioButton(this, ID_RADIOBUTTONCOLORBORDER, "Border color", wxPoint(10, y), wxSize(100,20)) ;
 }
 
 //------------------------------------------------------------------------
@@ -118,24 +112,8 @@ void MyControlPanel::OnButton(wxCommandEvent &event)
 //	char* s = GetCString() ;
 //	wxMessageBox(wxString::FromAscii(s)) ; // call a C function located in the sample.cp module
 //	free(s) ;
-	wxColour colorPicked = this->getColourPickerColor();
-
-	if(this->getRadioButtonBackgroundValue() == true)
-	{
-		controler->setBackgroundColor(colorPicked);
-		wxMessageBox(wxT("Background color changed !")) ;
-	}
-	else if(this->GetRadioButtonBorderValue() == true)
-	{
-		controler->setBorderColor(colorPicked);
-		wxMessageBox(wxT("Border color is setted, let's draw !")) ;
-	}
-	else
-	{
-		controler->setFormColor(colorPicked);
-		wxMessageBox(wxT("Color to fill the form setted, let's draw !")) ;
-	}
-	
+	wxMessageBox(wxT("You just pressed the button!")) ;
+	controler->changeBackgroundColor();
 }
 
 void MyControlPanel::OnCheckBoxLine(wxCommandEvent &event)
