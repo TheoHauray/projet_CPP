@@ -165,8 +165,6 @@ void Controler::addForm(Forme *forme)
 
 void Controler::drawForms(wxClientDC* dc)
 {
-    //dc->SetPen(colorBorder);
-    //dc->SetBrush(wxColour(colorToFill));
     for(int i = 0; i < dessin->getVector().size(); i++)
     {
         dc->SetBrush(dessin->getVector().at(i)->getBrushFill());
@@ -188,16 +186,6 @@ void Controler::setBackgroundColor()
     myDrawingPanel->SetBackgroundColour(backGroundColor);
 }
 
-/*
-void Controler::setFormColor(wxColour colorPicked)
-{
-    colorToFill = colorPicked;
-}
-void Controler::setBorderColor(wxColour colorPicked)
-{
-    colorBorder = colorPicked;
-}
-*/
 
 void Controler::isInside(int x, int y)
 {
@@ -209,16 +197,7 @@ void Controler::isInside(int x, int y)
 
         if(testIsInside)
         {
-            if(selectedForm != NULL)
-            {
-                selectedForm->setColourContour(selectedForm->getPrevPen().GetColour(), selectedForm->getPrevPen().GetWidth());
-                selectedForm->setIsSelected(false);
-            }
-
             selectedForm = dessin->getVector().at(i);
-            selectedForm->setPrevPen(selectedForm->getPenOutline());
-            selectedForm->setColourContour(*wxRED, 10);
-            selectedForm->setIsSelected(true);  
         }
     }
 }
