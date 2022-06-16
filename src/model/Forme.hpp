@@ -21,7 +21,8 @@ class Forme
 {
     protected:
         std::string m_label;
-
+        wxColour colourFill;
+        wxColour colourPen;
     public:
         Forme();
         Forme(const std::string& s);
@@ -30,6 +31,10 @@ class Forme
         virtual ~Forme(); 
 
         void setLabel(const std::string& s); 
+        void setColourContour(wxColour color);
+        void setColourFill(wxColour color);
+        wxColour getColourFill();
+        wxColour getColourPen();
 	    std::string getLabel() const;
 
         virtual void draw(wxDC* dc) = 0;

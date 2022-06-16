@@ -17,21 +17,18 @@
 using namespace std;
 
 Forme::Forme()
-: m_label(" ")
 {
-    
+    m_label = " ";
 }
 
 Forme::Forme(const std::string& s)
-: m_label(s)
 {
-    
+    m_label = s;
 }
 
 Forme::Forme(const Forme& forme)
-: m_label(forme.getLabel())
 {
-   
+   m_label = forme.getLabel();
 }
 
 Forme& Forme::operator=(const Forme& forme)
@@ -51,4 +48,26 @@ void Forme::setLabel(const::string& s)
 string Forme::getLabel() const
 {
     return m_label;
+}
+
+
+
+void Forme::setColourFill(wxColour color)
+{
+    colourFill = color;
+}
+
+void Forme::setColourContour(wxColour color)
+{
+    colourPen = color;
+}
+
+wxColour Forme::getColourFill()
+{
+    return colourFill;
+}
+
+wxColour Forme::getColourPen()
+{
+    return colourPen;
 }

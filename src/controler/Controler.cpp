@@ -68,7 +68,17 @@ bool Controler::getBoolPen()
     return this->myFrame->GetControlPanel()->GetRadioButtonPenValue();
 }
 
-void Controler::setCoordinatesLine(int x1, int y1, int x2, int y2)
+wxColour Controler::getColourPickedFill()
+{
+    return this->myFrame->GetControlPanel()->getColourPickerColorFill();
+}
+
+wxColour Controler::getColourPickedOutline()
+{
+    return this->myFrame->GetControlPanel()->getColourPickerColorOutline();
+}
+
+void Controler::setCoordinatesLine(int x1, int y1, int x2, int y2, wxColour colorFill, wxColour colorOutline)
 {
     Line* line = new Line;
 
@@ -76,22 +86,26 @@ void Controler::setCoordinatesLine(int x1, int y1, int x2, int y2)
     line->setY1(y1);
     line->setX2(x2);
     line->setY2(y2);
+    line->setColourContour(colorOutline);
+    line->setColourFill(colorFill);
     this->addForm(line);
 }
 
-void Controler::setCoordinatesCircle(int x1, int y1, int radius)
+void Controler::setCoordinatesCircle(int x1, int y1, int radius, wxColour colorFill, wxColour colorOutline)
 {
     Cercle* cercle = new Cercle;
 
     cercle->setX1(x1);
     cercle->setY1(y1);
     cercle->setRadius(radius);
+    cercle->setColourContour(colorOutline);
+    cercle->setColourFill(colorFill);
 
 
     this->addForm(cercle);
 }
 
-void Controler::setCoordinatesRectangle(int x1, int y1, int x2, int y2)
+void Controler::setCoordinatesRectangle(int x1, int y1, int x2, int y2, wxColour colorFill, wxColour colorOutline)
 {
     Rectangle* rectangle = new Rectangle;
 
@@ -99,16 +113,20 @@ void Controler::setCoordinatesRectangle(int x1, int y1, int x2, int y2)
     rectangle->setX2(x2);
     rectangle->setY1(y1);
     rectangle->setY2(y2);
+    rectangle->setColourContour(colorOutline);
+    rectangle->setColourFill(colorFill);
 
     this->addForm(rectangle);
 }
 
-void Controler::setCoordinatesPoint(int x1, int y1)
+void Controler::setCoordinatesPoint(int x1, int y1, wxColour colorFill, wxColour colorOutline)
 {
     Point* point = new Point;
 
     point->setX(x1);
     point->setY(y1);
+    point->setColourContour(colorOutline);
+    point->setColourFill(colorFill);
 
     this->addForm(point);
 }
@@ -139,10 +157,12 @@ void Controler::addForm(Forme *forme)
 
 void Controler::drawForms(wxClientDC* dc)
 {
-    dc->SetPen(colorBorder);
-    dc->SetBrush(wxColour(colorToFill));
+    //dc->SetPen(colorBorder);
+    //dc->SetBrush(wxColour(colorToFill));
     for(int i = 0; i < dessin->getVector().size(); i++)
     {
+        dc->SetBrush(dessin->getVector().at(i)->getColourFill());
+        dc->SetPen(dessin->getVector().at(i)->getColourPen());
         dessin->getVector().at(i)->draw(dc);
     }
 }

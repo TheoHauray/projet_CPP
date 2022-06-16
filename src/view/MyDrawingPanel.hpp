@@ -31,6 +31,7 @@ private:
 	wxPoint m_onePoint ;
 	Controler *controler;
 	bool dragging;
+	wxBrush backgroundColor;
 	
 public:
 	MyDrawingPanel( wxWindow *parent ) ;

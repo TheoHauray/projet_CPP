@@ -29,11 +29,15 @@ public:
 	bool GetRadioButtonLineValue() {return m_radioButtonLine->GetValue();} ;
 	bool GetRadioButtonCircleValue() {return m_radioButtonCircle->GetValue();} ;
 	bool GetRadioButtonRectangleValue() {return m_radioButtonRectangle->GetValue();} ;
-	bool getRadioButtonBackgroundValue() {return m_radioButton_Background->GetValue();} ;
-	bool getRadioButtonFormValue() {return m_radioButton_Form->GetValue();} ;
 	bool GetRadioButtonPenValue() {return m_radioButtonPen->GetValue();} ;
-	bool GetRadioButtonBorderValue() {return m_radioButton_Border->GetValue();} ;
-	wxColour getColourPickerColor() {return m_colourPicker->GetColour();} ;
+	/*bool getRadioButtonBackgroundValue() {return m_radioButton_Background->GetValue();} ;
+	bool getRadioButtonFormValue() {return m_radioButton_Form->GetValue();} ;
+	bool GetRadioButtonBorderValue() {return m_radioButton_Border->GetValue();} ;*/
+
+	wxColour getColourPickerColorFill() {return m_colourPickerFill->GetColour();} ;
+	wxColour getColourPickerColorOutline() {return m_colourPickerOutline->GetColour();} ;
+
+
 
 	bool GetLineValue() {return m_line->GetValue();} ; 
 	void setControler(Controler *controler) ;
@@ -52,11 +56,12 @@ private:
 	wxRadioButton* m_radioButtonLine;
 	wxRadioButton* m_radioButtonCircle;
 	wxRadioButton* m_radioButtonRectangle;
-	wxButton* m_button_applyColor ;
+	/*wxButton* m_button_applyColor ;
 	wxRadioButton* m_radioButton_Background;
 	wxRadioButton* m_radioButton_Form;
-	wxRadioButton* m_radioButton_Border;
-	wxColourPickerCtrl* m_colourPicker ;
+	wxRadioButton* m_radioButton_Border;*/
+	wxColourPickerCtrl* m_colourPickerFill ;
+	wxColourPickerCtrl* m_colourPickerOutline ;
 	wxRadioButton* m_radioButtonPen;
 
 
