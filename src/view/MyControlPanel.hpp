@@ -40,6 +40,9 @@ public:
 	wxColour getColourPickerColorOutline() {return m_colourPickerOutline->GetColour();} ;
 	wxColour getColourPickerColorBackground() {return m_colourPickerBackground->GetColour();} ;
 
+	int getSliderValue() {return m_sliderWidth->GetValue() ;} ;
+
+
 
 
 	bool GetLineValue() {return m_line->GetValue();} ; 
@@ -68,6 +71,7 @@ private:
 	wxColourPickerCtrl* m_colourPickerOutline ;
 	wxColourPickerCtrl* m_colourPickerBackground ;
 	wxRadioButton* m_radioButtonPen;
+	wxSlider* m_sliderWidth;
 
 
 	Controler *controler;

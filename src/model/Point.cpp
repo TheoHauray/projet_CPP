@@ -115,5 +115,9 @@ void Point::draw(wxDC* dc)
 
 bool Point::isInside(int x, int y)
 {
+<<<<<<< HEAD
     return (m_x == x && m_y == y);
+=======
+    return false;
+>>>>>>> 4675f87dfa37c275b7148934e8eb3663c89a8000
 }

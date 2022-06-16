@@ -57,11 +57,13 @@ void MyDrawingPanel::OnMouseMove(wxMouseEvent &event)
 	m_mousePoint.y = event.m_y ;
 	wxColour colourFill = controler->getColourPickedFill();
 	wxColour colourOutline = controler->getColourPickedOutline();
+	int width = controler->getSliderValue();
+
 
 	if (dragging){
 		int x1 = m_mousePoint.x;
 		int y1 = m_mousePoint.y;
-		controler->setCoordinatesPoint(x1, y1, colourFill, colourOutline);
+		controler->setCoordinatesPoint(x1, y1, colourFill, colourOutline, width);
 
 	}
 	Refresh() ;	// send an event that calls the OnPaint method
@@ -84,6 +86,9 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 	bool selection = controler->getBoolSelection();
 	wxColour colourFill = controler->getColourPickedFill();
 	wxColour colourOutline = controler->getColourPickedOutline();
+	int width = controler->getSliderValue();
+
+
 	
 	//Dans le cas de la ligne :
 
@@ -96,7 +101,7 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 	}
 	else if (line && controler->getClic()==1)
 	{
-		controler->setCoordinatesLine(x1, y1, m_onePoint.x, m_onePoint.y, colourFill, colourOutline); //Donne au controleur les coordonnées de la souris pour avoir le second point de la ligne
+		controler->setCoordinatesLine(x1, y1, m_onePoint.x, m_onePoint.y, colourFill, colourOutline, width); //Donne au controleur les coordonnées de la souris pour avoir le second point de la ligne
 		controler->setClic(0); //Indique au controleur que le prochain clic réinitialise la séquence et sera donc pour une nouvelle ligne
 		x1, y1 = 0;
 		//La ligne est posée
@@ -115,7 +120,7 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 		int disX = abs(x1 - m_onePoint.x);
 		int disY = abs(y1 - m_onePoint.y);
 		int radius = sqrt(pow(disX, 2) + pow(disY, 2));
-		controler->setCoordinatesCircle(x1, y1, radius,colourFill, colourOutline);
+		controler->setCoordinatesCircle(x1, y1, radius,colourFill, colourOutline, width);
 		controler->setClic(0);
 	}	
 
@@ -129,17 +134,17 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 
 	else if(rectangle && controler->getClic()==1)
 	{
-		controler->setCoordinatesRectangle(x1, y1, m_onePoint.x, m_onePoint.y,colourFill, colourOutline);
+		controler->setCoordinatesRectangle(x1, y1, m_onePoint.x, m_onePoint.y,colourFill, colourOutline,width);
 		controler->setClic(0);
 	}
 
-	if (pen)
-	{
-		dragging = true;
-	}
-	else
+	if (pen && dragging)
 	{
 		dragging = false;
+	}
+	else if (pen && !dragging)
+	{
+		dragging = true;
 	}
 
 	if(selection)
@@ -169,7 +174,7 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 	
 	wxColour colourFill = controler->getColourPickedFill();
 	wxColour colourOutline = controler->getColourPickedOutline();
-
+	int width = controler->getSliderValue();
 
 	Dessin dessin = controler->getDessin();
 	int vecLen = dessin.getVector().size();
@@ -186,7 +191,7 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 	
 	controler->drawForms(&dc);
 
-	dc.SetPen(colourOutline);
+	dc.SetPen(wxPen(colourOutline, width));
 	dc.SetBrush(colourFill);
 
 	if(controler->getClic()==1 && line){

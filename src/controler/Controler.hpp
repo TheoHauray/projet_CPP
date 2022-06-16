@@ -41,11 +41,12 @@ class Controler
         bool getBoolSelection();
         wxColour getColourPickedFill();
         wxColour getColourPickedOutline();
+        int getSliderValue();
 
-        void setCoordinatesLine(int x1, int y1, int x2, int y2, wxColour colorFill, wxColour colorOutline);
-        void setCoordinatesCircle(int x1, int x2, int radius, wxColour colorFill, wxColour colorOutline);
-        void setCoordinatesRectangle(int x1, int y1, int width, int height, wxColour colorFill, wxColour colorOutline);
-        void setCoordinatesPoint(int x1, int y1, wxColour colorFill, wxColour colorOutline);
+        void setCoordinatesLine(int x1, int y1, int x2, int y2, wxColour colorFill, wxColour colorOutline, int width);
+        void setCoordinatesCircle(int x1, int x2, int radius, wxColour colorFill, wxColour colorOutline, int width);
+        void setCoordinatesRectangle(int x1, int y1, int width, int height, wxColour colorFill, wxColour colorOutline, int widthTrait);
+        void setCoordinatesPoint(int x1, int y1, wxColour colorFill, wxColour colorOutline, int width);
 
         int getClic();
         void setClic(int x);

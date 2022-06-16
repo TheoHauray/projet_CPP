@@ -55,11 +55,14 @@ string Forme::getLabel() const
 void Forme::setColourFill(wxColour color)
 {
     colourFill = color;
+    penFill.SetColour(color);
 }
 
-void Forme::setColourContour(wxColour color)
+void Forme::setColourContour(wxColour color, int width)
 {
     colourPen = color;
+    penOutline.SetColour(color);
+    penOutline.SetWidth(width);
 }
 
 wxColour Forme::getColourFill()
@@ -70,4 +73,9 @@ wxColour Forme::getColourFill()
 wxColour Forme::getColourPen()
 {
     return colourPen;
+}
+
+wxPen Forme::getPenOutline()
+{
+    return penOutline;
 }
