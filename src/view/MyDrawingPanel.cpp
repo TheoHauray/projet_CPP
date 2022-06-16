@@ -81,11 +81,9 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 	bool circle = controler->getBoolCircle();
 	bool rectangle = controler->getBoolRectangle();
 	bool pen = controler->getBoolPen();
+	bool selection = controler->getBoolSelection();
 	wxColour colourFill = controler->getColourPickedFill();
 	wxColour colourOutline = controler->getColourPickedOutline();
-
-	controler->testIsInside(m_onePoint.x, m_onePoint.y);
-
 	
 	//Dans le cas de la ligne :
 
@@ -143,6 +141,12 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 	{
 		dragging = false;
 	}
+
+	if(selection)
+	{
+		controler->isInside(m_onePoint.x, m_onePoint.y);
+	}
+
 	Refresh() ; // send an event that calls the OnPaint method
 }
 
@@ -162,9 +166,9 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 	bool circle = controler->getBoolCircle();
 	bool rectangle = controler->getBoolRectangle();
 	bool pen = controler->getBoolPen();
+	
 	wxColour colourFill = controler->getColourPickedFill();
 	wxColour colourOutline = controler->getColourPickedOutline();
-
 
 
 	Dessin dessin = controler->getDessin();

@@ -76,6 +76,5 @@ void Rectangle::setY2(int y2)
 
 bool Rectangle::isInside(int x, int y)
 {
-    wxRect rect(x1, y1, (x1-x2), (y1-y2));
-    return rect.Contains(x, y);
+    return ((x >= x1 && x <= x2) && (y >= y1 && y <= y2));
 }   

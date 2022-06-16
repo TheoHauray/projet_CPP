@@ -68,6 +68,11 @@ bool Controler::getBoolPen()
     return this->myFrame->GetControlPanel()->GetRadioButtonPenValue();
 }
 
+bool Controler::getBoolSelection()
+{
+    return this->myFrame->GetControlPanel()->GetRadioButtonSelection();
+}
+
 wxColour Controler::getColourPickedFill()
 {
     return this->myFrame->GetControlPanel()->getColourPickerColorFill();
@@ -192,15 +197,17 @@ void Controler::setBorderColor(wxColour colorPicked)
 }
 */
 
-void Controler::testIsInside(int x, int y)
+void Controler::isInside(int x, int y)
 {
-    for(int i = 0; i < dessin->getVector().size(); i++)
+    for(int i = dessin->getVector().size()-1; i >= 0; i--)
     {
         bool testIsInside = dessin->getVector().at(i)->isInside(x, y);
 
         if(testIsInside)
         {
-            wxMessageBox(dessin->getVector().at(i)->getLabel()) ;
+            wxMessageBox("Selected");
+            selectedForm = dessin->getVector().at(i);
+            selectedForm->setColourContour(*wxRED);
         }
     }
 }

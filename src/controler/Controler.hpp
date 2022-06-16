@@ -38,6 +38,7 @@ class Controler
         bool getBoolCircle();
         bool getBoolRectangle();
         bool getBoolPen();
+        bool getBoolSelection();
         wxColour getColourPickedFill();
         wxColour getColourPickedOutline();
 
@@ -57,7 +58,8 @@ class Controler
         void setBackgroundColor();
         void setFormColor(wxColour colorPicked);
         void setBorderColor(wxColour colorPicked);
-        void testIsInside(int x, int y);
+        void isInside(int x, int y);
+        
     private:
         MyControlPanel *myControlPanel;
         MyDrawingPanel *myDrawingPanel;
@@ -67,6 +69,7 @@ class Controler
 
         Line* tempLine;
         Cercle* tempCircle;
+        Forme* selectedForm;
         wxColour colorToFill = *wxWHITE;
         wxColour colorBorder = *wxBLACK;
         wxColour backGroundColor = *wxWHITE;
