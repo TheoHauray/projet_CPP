@@ -23,6 +23,8 @@ class Forme
         std::string m_label;
         wxColour colourFill;
         wxColour colourPen;
+        wxPen penFill;
+        wxPen penOutline;
     public:
         Forme();
         Forme(const std::string& s);
@@ -31,18 +33,16 @@ class Forme
         virtual ~Forme(); 
 
         void setLabel(const std::string& s); 
-        void setColourContour(wxColour color);
+        void setColourContour(wxColour color, int width);
         void setColourFill(wxColour color);
         wxColour getColourFill();
         wxColour getColourPen();
+        wxPen getPenOutline();
+        wxPen getPenFill();
 	    std::string getLabel() const;
 
         virtual void draw(wxDC* dc) = 0;
-<<<<<<< HEAD
-        //virtual void isInside(int x, int y) = 0;
-=======
         virtual bool isInside(int x, int y) = 0;
->>>>>>> 0de8546bc336e79e37d86453c40f7fd77ddf3c2e
 };
 
 #endif //__FORME_H__

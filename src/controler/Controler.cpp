@@ -78,7 +78,12 @@ wxColour Controler::getColourPickedOutline()
     return this->myFrame->GetControlPanel()->getColourPickerColorOutline();
 }
 
-void Controler::setCoordinatesLine(int x1, int y1, int x2, int y2, wxColour colorFill, wxColour colorOutline)
+int Controler::getSliderValue()
+{
+    return this->myFrame->GetControlPanel()->getSliderValue();
+}
+
+void Controler::setCoordinatesLine(int x1, int y1, int x2, int y2, wxColour colorFill, wxColour colorOutline, int width)
 {
     Line* line = new Line;
 
@@ -86,26 +91,26 @@ void Controler::setCoordinatesLine(int x1, int y1, int x2, int y2, wxColour colo
     line->setY1(y1);
     line->setX2(x2);
     line->setY2(y2);
-    line->setColourContour(colorOutline);
+    line->setColourContour(colorOutline, width);
     line->setColourFill(colorFill);
     this->addForm(line);
 }
 
-void Controler::setCoordinatesCircle(int x1, int y1, int radius, wxColour colorFill, wxColour colorOutline)
+void Controler::setCoordinatesCircle(int x1, int y1, int radius, wxColour colorFill, wxColour colorOutline, int width)
 {
     Cercle* cercle = new Cercle;
 
     cercle->setX1(x1);
     cercle->setY1(y1);
     cercle->setRadius(radius);
-    cercle->setColourContour(colorOutline);
+    cercle->setColourContour(colorOutline, width);
     cercle->setColourFill(colorFill);
 
 
     this->addForm(cercle);
 }
 
-void Controler::setCoordinatesRectangle(int x1, int y1, int x2, int y2, wxColour colorFill, wxColour colorOutline)
+void Controler::setCoordinatesRectangle(int x1, int y1, int x2, int y2, wxColour colorFill, wxColour colorOutline, int width)
 {
     Rectangle* rectangle = new Rectangle;
 
@@ -113,19 +118,19 @@ void Controler::setCoordinatesRectangle(int x1, int y1, int x2, int y2, wxColour
     rectangle->setX2(x2);
     rectangle->setY1(y1);
     rectangle->setY2(y2);
-    rectangle->setColourContour(colorOutline);
+    rectangle->setColourContour(colorOutline, width);
     rectangle->setColourFill(colorFill);
 
     this->addForm(rectangle);
 }
 
-void Controler::setCoordinatesPoint(int x1, int y1, wxColour colorFill, wxColour colorOutline)
+void Controler::setCoordinatesPoint(int x1, int y1, wxColour colorFill, wxColour colorOutline, int width)
 {
     Point* point = new Point;
 
     point->setX(x1);
     point->setY(y1);
-    point->setColourContour(colorOutline);
+    point->setColourContour(colorOutline, width);
     point->setColourFill(colorFill);
 
     this->addForm(point);
@@ -162,7 +167,7 @@ void Controler::drawForms(wxClientDC* dc)
     for(int i = 0; i < dessin->getVector().size(); i++)
     {
         dc->SetBrush(dessin->getVector().at(i)->getColourFill());
-        dc->SetPen(dessin->getVector().at(i)->getColourPen());
+        dc->SetPen(dessin->getVector().at(i)->getPenOutline());
         dessin->getVector().at(i)->draw(dc);
     }
 }
@@ -189,9 +194,6 @@ void Controler::setBorderColor(wxColour colorPicked)
 {
     colorBorder = colorPicked;
 }
-<<<<<<< HEAD
-*/
-=======
 */
 
 void Controler::testIsInside(int x, int y)
@@ -206,4 +208,3 @@ void Controler::testIsInside(int x, int y)
         }
     }
 }
->>>>>>> 0de8546bc336e79e37d86453c40f7fd77ddf3c2e

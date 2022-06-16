@@ -44,7 +44,9 @@ enum
 	ID_RADIOBUTTONPEN,
 	ID_COLORPICKERFILL,
 	ID_COLORPICKEROUTLINE,
-	ID_COLORPICKERBACKGROUND
+	ID_COLORPICKERBACKGROUND,
+
+	ID_SLIDERWIDTH
 
 };
 
@@ -124,6 +126,12 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 
 	y+= 20;
 	m_radioButton_Border = new wxRadioButton(this, ID_RADIOBUTTONCOLORBORDER, "Border color", wxPoint(10, y), wxSize(100,20)) ;*/
+
+	y+= WIDGET_Y_STEP ;
+	wxStaticText* text4 = new wxStaticText(this, wxID_ANY, wxT("Outline Thickness"), wxPoint(10, y)) ;
+	
+	y+= 15 ;
+	m_sliderWidth = new wxSlider(this, ID_SLIDERWIDTH, 1, 1, 20, wxPoint(10, y), wxSize(100,20)) ;
 }
 
 //------------------------------------------------------------------------
