@@ -185,7 +185,6 @@ void Controler::setFormColor(wxColour colorPicked)
 {
     colorToFill = colorPicked;
 }
-
 void Controler::setBorderColor(wxColour colorPicked)
 {
     colorBorder = colorPicked;
