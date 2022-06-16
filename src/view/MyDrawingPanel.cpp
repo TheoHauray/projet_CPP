@@ -84,7 +84,7 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 	wxColour colourFill = controler->getColourPickedFill();
 	wxColour colourOutline = controler->getColourPickedOutline();
 
-	
+	controler->testIsInside(m_onePoint.x, m_onePoint.y);
 
 	
 	//Dans le cas de la ligne :

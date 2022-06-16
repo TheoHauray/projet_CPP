@@ -17,7 +17,7 @@ public:
     void setY1(int y1);
     void setY2(int y2);
     void draw(wxDC* dc) override;
-
+    bool isInside(int x, int y) override;
 
 
 private:

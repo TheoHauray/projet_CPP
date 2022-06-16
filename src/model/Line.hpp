@@ -27,7 +27,8 @@ class Line : public Forme
         Line getAllCoordinates();
 
         void draw(wxDC* dc) override;
-
+        bool isInside(int x, int y) override;
+        
 
     private:
 

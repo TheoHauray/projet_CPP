@@ -191,3 +191,16 @@ void Controler::setBorderColor(wxColour colorPicked)
     colorBorder = colorPicked;
 }
 */
+
+void Controler::testIsInside(int x, int y)
+{
+    for(int i = 0; i < dessin->getVector().size(); i++)
+    {
+        bool testIsInside = dessin->getVector().at(i)->isInside(x, y);
+
+        if(testIsInside)
+        {
+            wxMessageBox(dessin->getVector().at(i)->getLabel()) ;
+        }
+    }
+}
