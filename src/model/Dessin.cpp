@@ -63,6 +63,8 @@ bool Dessin::saveImage(wxString fileName, int height, int width, wxColour color)
 
     for(int i = 0; i < dessins.size(); i++)
     {
+        dcFile.SetBrush(dessins[i]->getColourFill());
+        dcFile.SetPen(dessins[i]->getColourPen());
         dessins[i]->draw(&dcFile);
     }
 

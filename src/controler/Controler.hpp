@@ -58,7 +58,7 @@ class Controler
         void drawForms(wxClientDC* dc);
         bool saveImage(wxString fileName, int heigth, int width);
 
-        void setBackgroundColor(wxColour colorPicked);
+        void setBackgroundColor();
         void setFormColor(wxColour colorPicked);
         void setBorderColor(wxColour colorPicked);
 
@@ -74,7 +74,7 @@ class Controler
         Cercle* tempCircle;
         wxColour colorToFill = *wxWHITE;
         wxColour colorBorder = *wxBLACK;
-        wxColour backGroundColor;
+        wxColour backGroundColor = *wxWHITE;
 };
 
 #endif //__CONTROLER_H__
