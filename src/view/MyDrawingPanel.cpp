@@ -148,7 +148,7 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 {
 	// read the control values
 	MyFrame* frame =  (MyFrame*)GetParent() ;
-	int radius = frame->GetControlPanel()->GetSliderValue() ;
+	//int radius = frame->GetControlPanel()->GetSliderValue() ;
 	bool check = frame->GetControlPanel()->GetCheckBoxValue() ;
 	bool line = controler->getBoolLine();
 	bool circle = controler->getBoolCircle();

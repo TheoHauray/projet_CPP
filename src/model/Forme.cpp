@@ -52,6 +52,3 @@ string Forme::getLabel() const
 {
     return m_label;
 }
-
-
-

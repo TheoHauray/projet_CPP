@@ -24,7 +24,7 @@ class MyControlPanel: public wxPanel
 {
 public:
 	MyControlPanel( wxWindow *parent ) ;
-	int GetSliderValue() {return m_slider->GetValue() ;} ;
+	//int GetSliderValue() {return m_slider->GetValue() ;} ;
 	bool GetCheckBoxValue() {return m_checkBox->GetValue() ;} ;
 	bool GetRadioButtonLineValue() {return m_radioButtonLine->GetValue();} ;
 	bool GetRadioButtonCircleValue() {return m_radioButtonCircle->GetValue();} ;
@@ -45,8 +45,8 @@ private:
 	void OnCheckBoxLine(wxCommandEvent &event) ;
 	void onColourPicker(wxCommandEvent &event) ;
 
-	wxButton* m_button ;
-	wxSlider* m_slider ;
+	//wxButton* m_button ;
+	//wxSlider* m_slider ;
 	wxCheckBox* m_checkBox ;
 	wxCheckBox* m_line ;
 	wxRadioButton* m_radioButtonLine;
