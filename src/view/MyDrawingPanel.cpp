@@ -150,6 +150,7 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 	if(selection)
 	{
 		controler->isInside(m_onePoint.x, m_onePoint.y);
+		controler->changeColorsSelectedForm();
 	}
 
 	Refresh() ; // send an event that calls the OnPaint method

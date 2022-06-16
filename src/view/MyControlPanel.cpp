@@ -114,7 +114,7 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 	wxStaticText* text3 = new wxStaticText(this, wxID_ANY, wxT("Background color"), wxPoint(10, y)) ;
 	y+= 20;
 	m_colourPickerBackground = new wxColourPickerCtrl(this, ID_COLORPICKERBACKGROUND, *wxWHITE, wxPoint(10, y), wxDefaultSize, wxCLRP_DEFAULT_STYLE, wxDefaultValidator, "Pick a color") ;
-	Bind(wxEVT_COMMAND_COLOURPICKER_CHANGED, &MyControlPanel::OnCheckBox, this, ID_COLORPICKERBACKGROUND) ;
+	Bind(wxEVT_COMMAND_COLOURPICKER_CHANGED, &MyControlPanel::onColourPicker, this, ID_COLORPICKERBACKGROUND) ;
 	
 	/*y+= WIDGET_Y_STEP;
 	m_button_applyColor = new wxButton(this, ID_BUTTONAPPLYCOLOR, "Apply color", wxPoint(10, y), wxSize(100,20)) ;
@@ -142,26 +142,7 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 void MyControlPanel::OnButton(wxCommandEvent &event)
 //------------------------------------------------------------------------
 {
-//	char* s = GetCString() ;
-//	wxMessageBox(wxString::FromAscii(s)) ; // call a C function located in the sample.cp module
-//	free(s) ;
-	//wxColour colorPicked = this->getColourPickerColor();
 
-	/*if(this->getRadioButtonBackgroundValue() == true)
-	{
-		controler->setBackgroundColor(colorPicked);
-		wxMessageBox(wxT("Background color changed !")) ;
-	}
-	else if(this->GetRadioButtonBorderValue() == true)
-	{
-		controler->setBorderColor(colorPicked);
-		wxMessageBox(wxT("Border color is set, let's draw !")) ;
-	}
-	else
-	{
-		controler->setFormColor(colorPicked);
-		wxMessageBox(wxT("Color to fill the form set, let's draw !")) ;
-	}*/
 	
 }
 

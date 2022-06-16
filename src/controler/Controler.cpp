@@ -14,7 +14,7 @@
 #include "../model/Cercle.hpp"
 #include "../model/Rectangle.hpp"
 #include "../model/Point.hpp"
-
+#include "../model/Forme.hpp"
 
 
 
@@ -32,6 +32,7 @@ Controler::Controler(MyControlPanel& myControlPanel, MyDrawingPanel& myDrawingPa
     this->clic = 0;
     Dessin dessin;
     this->dessin = new Dessin();
+    this->selectedForm = NULL;
 }
 
 Controler::Controler()
@@ -142,9 +143,6 @@ void Controler::setCoordinatesPoint(int x1, int y1, wxColour colorFill, wxColour
 }
 
 
-
-
-
 int Controler::getClic()
 {
     return this->clic;
@@ -171,7 +169,7 @@ void Controler::drawForms(wxClientDC* dc)
     //dc->SetBrush(wxColour(colorToFill));
     for(int i = 0; i < dessin->getVector().size(); i++)
     {
-        dc->SetBrush(dessin->getVector().at(i)->getColourFill());
+        dc->SetBrush(dessin->getVector().at(i)->getBrushFill());
         dc->SetPen(dessin->getVector().at(i)->getPenOutline());
         dessin->getVector().at(i)->draw(dc);
     }
@@ -203,15 +201,33 @@ void Controler::setBorderColor(wxColour colorPicked)
 
 void Controler::isInside(int x, int y)
 {
-    for(int i = dessin->getVector().size()-1; i >= 0; i--)
+    bool testIsInside = false;
+
+    for(int i = dessin->getVector().size()-1; i >= 0 && testIsInside == false; i--)
     {
-        bool testIsInside = dessin->getVector().at(i)->isInside(x, y);
+        testIsInside = dessin->getVector().at(i)->isInside(x, y);
 
         if(testIsInside)
         {
-            wxMessageBox("Selected");
+            if(selectedForm != NULL)
+            {
+                selectedForm->setColourContour(selectedForm->getPrevPen().GetColour(), selectedForm->getPrevPen().GetWidth());
+                selectedForm->setIsSelected(false);
+            }
+
             selectedForm = dessin->getVector().at(i);
-            selectedForm->setColourContour(*wxRED);
+            selectedForm->setPrevPen(selectedForm->getPenOutline());
+            selectedForm->setColourContour(*wxRED, 10);
+            selectedForm->setIsSelected(true);  
         }
+    }
+}
+
+void Controler::changeColorsSelectedForm()
+{
+    if(selectedForm != NULL)
+    {
+        selectedForm->setColourContour(getColourPickedOutline(), 5);
+        selectedForm->setColourFill(getColourPickedFill());
     }
 }

@@ -25,6 +25,7 @@ class Line : public Forme
         int getNbLine();
 
         Line getAllCoordinates();
+        double calculateDistance(int x1, int y1, int x2, int y2);
 
         void draw(wxDC* dc) override;
         bool isInside(int x, int y) override;
