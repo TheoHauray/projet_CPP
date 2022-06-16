@@ -36,6 +36,7 @@ public:
 
 	wxColour getColourPickerColorFill() {return m_colourPickerFill->GetColour();} ;
 	wxColour getColourPickerColorOutline() {return m_colourPickerOutline->GetColour();} ;
+	wxColour getColourPickerColorBackground() {return m_colourPickerBackground->GetColour();} ;
 
 
 
@@ -62,6 +63,7 @@ private:
 	wxRadioButton* m_radioButton_Border;*/
 	wxColourPickerCtrl* m_colourPickerFill ;
 	wxColourPickerCtrl* m_colourPickerOutline ;
+	wxColourPickerCtrl* m_colourPickerBackground ;
 	wxRadioButton* m_radioButtonPen;
 
 

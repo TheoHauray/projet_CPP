@@ -173,12 +173,14 @@ bool Controler::saveImage(wxString fileName, int height, int width)
     return isImageSaved;
 }
 
-void Controler::setBackgroundColor(wxColour colorPicked)
+
+void Controler::setBackgroundColor()
 {
-    backGroundColor = colorPicked;
-    myDrawingPanel->SetBackgroundColour(colorPicked);
+    backGroundColor = myControlPanel->getColourPickerColorBackground();
+    myDrawingPanel->SetBackgroundColour(backGroundColor);
 }
 
+/*
 void Controler::setFormColor(wxColour colorPicked)
 {
     colorToFill = colorPicked;
@@ -188,4 +190,4 @@ void Controler::setBorderColor(wxColour colorPicked)
 {
     colorBorder = colorPicked;
 }
-
+*/

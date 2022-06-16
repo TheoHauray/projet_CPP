@@ -43,7 +43,8 @@ enum
 	//ID_RADIOBUTTONCOLORBORDER,
 	ID_RADIOBUTTONPEN,
 	ID_COLORPICKERFILL,
-	ID_COLORPICKEROUTLINE
+	ID_COLORPICKEROUTLINE,
+	ID_COLORPICKERBACKGROUND
 
 };
 
@@ -100,9 +101,15 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 	y+=WIDGET_Y_STEP;
 	wxStaticText* text2 = new wxStaticText(this, wxID_ANY, wxT("Outline color"), wxPoint(10, y)) ;
 	y+= 20;
-	m_colourPickerOutline = new wxColourPickerCtrl(this, ID_COLORPICKEROUTLINE, *wxWHITE, wxPoint(10, y), wxDefaultSize, wxCLRP_DEFAULT_STYLE, wxDefaultValidator, "Pick a color") ;
+	m_colourPickerOutline = new wxColourPickerCtrl(this, ID_COLORPICKEROUTLINE, *wxBLACK, wxPoint(10, y), wxDefaultSize, wxCLRP_DEFAULT_STYLE, wxDefaultValidator, "Pick a color") ;
 	//Bind(wxEVT_BUTTON, &MyControlPanel::onColourPicker, this, ID_BUTTONCOLOR) ;
 
+	y+=WIDGET_Y_STEP;
+	wxStaticText* text3 = new wxStaticText(this, wxID_ANY, wxT("Background color"), wxPoint(10, y)) ;
+	y+= 20;
+	m_colourPickerBackground = new wxColourPickerCtrl(this, ID_COLORPICKERBACKGROUND, *wxWHITE, wxPoint(10, y), wxDefaultSize, wxCLRP_DEFAULT_STYLE, wxDefaultValidator, "Pick a color") ;
+	Bind(wxEVT_COMMAND_COLOURPICKER_CHANGED, &MyControlPanel::onColourPicker, this, ID_COLORPICKERBACKGROUND) ;
+	
 	/*y+= WIDGET_Y_STEP;
 	m_button_applyColor = new wxButton(this, ID_BUTTONAPPLYCOLOR, "Apply color", wxPoint(10, y), wxSize(100,20)) ;
 	Bind(wxEVT_BUTTON, &MyControlPanel::OnButton, this, ID_BUTTONAPPLYCOLOR) ;
@@ -155,8 +162,7 @@ void MyControlPanel::OnCheckBoxLine(wxCommandEvent &event)
 
 void MyControlPanel::onColourPicker(wxCommandEvent &event)
 {
-	MyFrame* frame = (MyFrame*)GetParent() ;
-	frame->RefreshDrawing() ;
+	controler->setBackgroundColor();
 }
 
 //------------------------------------------------------------------------
