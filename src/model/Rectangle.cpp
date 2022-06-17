@@ -76,7 +76,15 @@ void Rectangle::setY2(int y2)
 
 bool Rectangle::isInside(int x, int y)
 {
-    return ((x >= x1 && x <= x2) && (y >= y1 && y <= y2));
+    if(y1 > y2)
+    {
+        return ((x <= x1 && x >= x2) && (y <= y1 && y >= y2));
+    }
+    else
+    {
+        return ((x >= x1 && x <= x2) && (y >= y1 && y <= y2));
+    }
+    
 }   
 
 void Rectangle::move(int x, int y)
