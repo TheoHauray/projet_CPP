@@ -43,6 +43,9 @@ class Controler
         wxColour getColourPickedOutline();
         int getSliderValue();
         unsigned int getSliderTransparencyValue();
+        bool getBoolSelectionColor();
+        bool getBoolSelectionPosition();
+
 
         void eraseAll();
         void popLastDrawing();
@@ -67,6 +70,10 @@ class Controler
         void isInside(int x, int y);
         void changeColorsSelectedForm(int x, int y);
         void moveForm(int x, int y);
+        void setOnMove(bool val);
+        bool getOnMove();
+        void setSelectedForm(Forme* forme);
+        Forme* getSelectedForm();
         
     private:
         MyControlPanel *myControlPanel;
@@ -81,6 +88,8 @@ class Controler
         wxColour colorToFill = *wxWHITE;
         wxColour colorBorder = *wxBLACK;
         wxColour backGroundColor = *wxWHITE;
+
+        bool onMove = false;
 
 };
 

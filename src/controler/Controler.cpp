@@ -94,7 +94,15 @@ unsigned int Controler::getSliderTransparencyValue()
     return this->myFrame->GetControlPanel()->getSliderTransparencyValue();
 }
 
+bool Controler::getBoolSelectionColor()
+{
+    return this->myFrame->GetControlPanel()->GetRadioButtonSelectColor();
+}
 
+bool Controler::getBoolSelectionPosition()
+{
+    return this->myFrame->GetControlPanel()->GetRadioButtonSelectPosition();
+}
 
 void Controler::setCoordinatesLine(int x1, int y1, int x2, int y2, wxColour colorFill, wxColour colorOutline, int width)
 {
@@ -219,7 +227,6 @@ void Controler::changeColorsSelectedForm(int x, int y)
     }
 }
 
-<<<<<<< HEAD
 void Controler::moveForm(int x, int y)
 {
     if(selectedForm != NULL)
@@ -227,7 +234,16 @@ void Controler::moveForm(int x, int y)
         selectedForm->move(x, y);
     }
 }
-=======
+
+void Controler::setOnMove(bool val)
+{
+    onMove = val;
+}
+
+bool Controler::getOnMove()
+{
+    return onMove;
+}
 
 
 void Controler::eraseAll()
@@ -245,4 +261,13 @@ void Controler::redoLastDrawing()
 {
     dessin->redoVector();
 }
->>>>>>> c023ea9484398cea1c9c1ea4d975c928bb23e7b9
+
+void Controler::setSelectedForm(Forme* forme)
+{
+    selectedForm = forme;
+}
+
+Forme* Controler::getSelectedForm()
+{
+    return selectedForm;
+}

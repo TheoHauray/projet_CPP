@@ -58,14 +58,11 @@ void MyDrawingPanel::OnMouseMove(wxMouseEvent &event)
 	wxColour colourFill = controler->getColourPickedFill();
 	wxColour colourOutline = controler->getColourPickedOutline();
 	int width = controler->getSliderValue();
-<<<<<<< HEAD
 	bool selection = controler->getBoolSelection();
 
-=======
 	unsigned int transparency = controler->getSliderTransparencyValue();
 	wxColour transparencyFillColor = wxColour(colourFill.Red(), colourFill.Green(), colourFill.Blue(), transparency);
 	wxColour transparencyOutlineColor = wxColour(colourOutline.Red(), colourOutline.Green(), colourOutline.Blue(), transparency);
->>>>>>> c023ea9484398cea1c9c1ea4d975c928bb23e7b9
 
 	if (dragging){
 		int x1 = m_mousePoint.x;
@@ -74,7 +71,7 @@ void MyDrawingPanel::OnMouseMove(wxMouseEvent &event)
 
 	}
 
-	if(selection)
+	if(selection && controler->getOnMove())
 	{
 		controler->moveForm(m_mousePoint.x, m_mousePoint.y);
 	}
@@ -96,6 +93,9 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 	bool rectangle = controler->getBoolRectangle();
 	bool pen = controler->getBoolPen();
 	bool selection = controler->getBoolSelection();
+	bool selectionColor = controler->getBoolSelectionColor();
+	bool selectionPosition = controler->getBoolSelectionPosition();
+
 	wxColour colourFill = controler->getColourPickedFill();
 	wxColour colourOutline = controler->getColourPickedOutline();
 	int width = controler->getSliderValue();
@@ -168,7 +168,22 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 	if(selection)
 	{
 		controler->isInside(m_onePoint.x, m_onePoint.y);
-		controler->changeColorsSelectedForm(m_onePoint.x, m_onePoint.y);
+
+		if(selectionColor)
+		{
+			controler->changeColorsSelectedForm(m_onePoint.x, m_onePoint.y);
+		}
+		else if(selectionPosition && controler->getClic()==0 && controler->getSelectedForm() != NULL)
+		{
+			controler->setOnMove(true);
+			controler->setClic(1);
+		}
+		else if(selectionPosition && controler->getClic()==1 && controler->getSelectedForm() != NULL)
+		{
+			controler->setSelectedForm(NULL);
+			controler->setOnMove(false);
+			controler->setClic(0);
+		}
 	}
 
 	Refresh() ; // send an event that calls the OnPaint method

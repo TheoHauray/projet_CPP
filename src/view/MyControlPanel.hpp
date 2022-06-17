@@ -31,6 +31,8 @@ public:
 	bool GetRadioButtonRectangleValue() {return m_radioButtonRectangle->GetValue();} ;
 	bool GetRadioButtonPenValue() {return m_radioButtonPen->GetValue();} ;
 	bool GetRadioButtonSelection() {return m_radioButtonSelection->GetValue();} ;
+	bool GetRadioButtonSelectColor() {return m_radioButtonSelectColor->GetValue();} ;
+	bool GetRadioButtonSelectPosition() {return m_radioButtonSelectPosition->GetValue();} ;
 
 
 
@@ -40,10 +42,6 @@ public:
 
 	int getSliderValue() {return m_sliderWidth->GetValue() ;} ;
 	unsigned char getSliderTransparencyValue() {return m_sliderTransparency->GetValue() ;} ;
-
-
-
-
 
 	bool GetLineValue() {return m_line->GetValue();} ; 
 	void setControler(Controler *controler) ;
@@ -74,6 +72,8 @@ private:
 	wxButton* m_buttonEraseAll ;
 	wxButton* m_buttonUndo;
 	wxButton* m_buttonRedo;
+	wxRadioButton* m_radioButtonSelectColor;
+	wxRadioButton* m_radioButtonSelectPosition;
 
 
 
