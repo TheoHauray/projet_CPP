@@ -113,7 +113,5 @@ void Line::draw(wxDC* dc)
 
 bool Line::isInside(int x, int y)
 {
-    float val1 = (y-y1)/(y2-y1);
-    float val2 = (x - x1)/(x2-x1);
-    return (val1 == val2);
+    return false;
 }

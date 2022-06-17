@@ -21,10 +21,15 @@ class Forme
 {
     protected:
         std::string m_label;
+        /*
         wxColour colourFill;
         wxColour colourPen;
-        wxPen penFill;
+        */
+        wxBrush brushFill;
         wxPen penOutline;
+        wxPen prevPen;
+        bool isSelected;
+
     public:
         Forme();
         Forme(const std::string& s);
@@ -35,11 +40,17 @@ class Forme
         void setLabel(const std::string& s); 
         void setColourContour(wxColour color, int width);
         void setColourFill(wxColour color);
+        /*
         wxColour getColourFill();
         wxColour getColourPen();
+        */
+        void setPrevPen(wxPen penOutline);
+        wxPen getPrevPen();
         wxPen getPenOutline();
-        wxPen getPenFill();
+        wxBrush getBrushFill();
 	    std::string getLabel() const;
+        bool getIsSelected();
+        void setIsSelected(bool val);
 
         virtual void draw(wxDC* dc) = 0;
         virtual bool isInside(int x, int y) = 0;

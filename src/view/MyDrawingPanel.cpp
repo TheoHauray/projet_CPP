@@ -85,6 +85,7 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 	bool circle = controler->getBoolCircle();
 	bool rectangle = controler->getBoolRectangle();
 	bool pen = controler->getBoolPen();
+	bool selection = controler->getBoolSelection();
 	wxColour colourFill = controler->getColourPickedFill();
 	wxColour colourOutline = controler->getColourPickedOutline();
 	int width = controler->getSliderValue();
@@ -95,7 +96,6 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 	//wxColour test = test.SetRGBA(colourFill.Red(), colourFill.Green(), colourFill.Blue(), transparency);
 
 
-	controler->testIsInside(m_onePoint.x, m_onePoint.y);
 
 	
 	//Dans le cas de la ligne :
@@ -154,6 +154,13 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 	{
 		dragging = true;
 	}
+
+	if(selection)
+	{
+		controler->isInside(m_onePoint.x, m_onePoint.y);
+		controler->changeColorsSelectedForm();
+	}
+
 	Refresh() ; // send an event that calls the OnPaint method
 }
 
@@ -173,13 +180,13 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 	bool circle = controler->getBoolCircle();
 	bool rectangle = controler->getBoolRectangle();
 	bool pen = controler->getBoolPen();
+	
 	wxColour colourFill = controler->getColourPickedFill();
 	wxColour colourOutline = controler->getColourPickedOutline();
 	int width = controler->getSliderValue();
 	unsigned int transparency = controler->getSliderTransparencyValue();
 	wxColour transparencyFillColor = wxColour(colourFill.Red(), colourFill.Green(), colourFill.Blue(), transparency);
 	wxColour transparencyOutlineColor = wxColour(colourOutline.Red(), colourOutline.Green(), colourOutline.Blue(), transparency);
-
 
 
 	Dessin dessin = controler->getDessin();
