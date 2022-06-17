@@ -63,12 +63,6 @@ void Point::display() const
 }
 
 
-void Point::move(int dX, int dY)
-{
-    m_x = dX;
-    m_y = dY;
-}
-
 bool Point::XEgalY() const
 {
     if(m_x == m_y)
@@ -116,4 +110,10 @@ void Point::draw(wxDC* dc)
 bool Point::isInside(int x, int y)
 {
     return (m_x == x && m_y == y);
+}
+
+void Point::move(int x, int y)
+{
+    m_x = x;
+    m_y = y;
 }

@@ -54,6 +54,7 @@ class Forme
 
         virtual void draw(wxDC* dc) = 0;
         virtual bool isInside(int x, int y) = 0;
+        virtual void move(int x, int y) = 0;
 };
 
 #endif //__FORME_H__

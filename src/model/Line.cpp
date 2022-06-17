@@ -115,3 +115,11 @@ bool Line::isInside(int x, int y)
 {
     return false;
 }
+
+void Line::move(int x, int y)
+{
+    x1 += x;
+    x2 += x;
+    y1 += y;
+    y2 += y;
+}

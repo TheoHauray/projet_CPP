@@ -78,3 +78,30 @@ bool Rectangle::isInside(int x, int y)
 {
     return ((x >= x1 && x <= x2) && (y >= y1 && y <= y2));
 }   
+
+void Rectangle::move(int x, int y)
+{
+    int pointb_X = x2;
+    int pointb_Y = y1;
+    
+    int length = pointb_X - x1;
+    int height = y2 - pointb_Y;
+
+    x1 = x;
+    y1 = y;
+
+    x2 = x1 + length;
+    y2 = y1 + height;
+}
+
+void Rectangle::resize(int x, int y)
+{
+    int diffX = x1 - x;
+    int diffY = y1 - y;
+
+    x1 = x;
+    y1 = y;
+
+    x2 += diffX;
+    y2 += diffY;
+}

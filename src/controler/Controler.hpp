@@ -60,7 +60,8 @@ class Controler
         void setFormColor(wxColour colorPicked);
         void setBorderColor(wxColour colorPicked);
         void isInside(int x, int y);
-        void changeColorsSelectedForm();
+        void changeColorsSelectedForm(int x, int y);
+        void moveForm(int x, int y);
         
     private:
         MyControlPanel *myControlPanel;

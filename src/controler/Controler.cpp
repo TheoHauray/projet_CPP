@@ -202,11 +202,19 @@ void Controler::isInside(int x, int y)
     }
 }
 
-void Controler::changeColorsSelectedForm()
+void Controler::changeColorsSelectedForm(int x, int y)
 {
-    if(selectedForm != NULL)
+    if(selectedForm != NULL && selectedForm->isInside(x, y))
     {
         selectedForm->setColourContour(getColourPickedOutline(), 5);
         selectedForm->setColourFill(getColourPickedFill());
+    }
+}
+
+void Controler::moveForm(int x, int y)
+{
+    if(selectedForm != NULL)
+    {
+        selectedForm->move(x, y);
     }
 }

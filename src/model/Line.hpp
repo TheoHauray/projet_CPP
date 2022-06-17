@@ -29,7 +29,7 @@ class Line : public Forme
 
         void draw(wxDC* dc) override;
         bool isInside(int x, int y) override;
-        
+        virtual void move(int x, int y) override;
 
     private:
 

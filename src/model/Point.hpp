@@ -14,7 +14,6 @@ class Point : public Forme
         ~Point();
 
         void display() const;
-        void move(int dX, int dY);
         bool XEgalY() const;
         int getX() const;
         int getY() const;
@@ -23,7 +22,7 @@ class Point : public Forme
         float distance(const Point& point) const;
         void draw(wxDC* dc) override;
         bool isInside(int x, int y) override;
-
+        virtual void move(int x, int y) override;
 
     private:
         int m_x;

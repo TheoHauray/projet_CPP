@@ -68,3 +68,8 @@ bool Cercle::isInside(int x, int y)
     float d = sqrt((x - x1)*(x - x1) + (y - y1)*(y - y1));
     return d <= m_radius;
 }
+void Cercle::move(int x, int y)
+{
+    x1 = x;
+    y1 = y;
+}

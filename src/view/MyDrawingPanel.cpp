@@ -58,6 +58,7 @@ void MyDrawingPanel::OnMouseMove(wxMouseEvent &event)
 	wxColour colourFill = controler->getColourPickedFill();
 	wxColour colourOutline = controler->getColourPickedOutline();
 	int width = controler->getSliderValue();
+	bool selection = controler->getBoolSelection();
 
 
 	if (dragging){
@@ -65,6 +66,11 @@ void MyDrawingPanel::OnMouseMove(wxMouseEvent &event)
 		int y1 = m_mousePoint.y;
 		controler->setCoordinatesPoint(x1, y1, colourFill, colourOutline, width);
 
+	}
+
+	if(selection)
+	{
+		controler->moveForm(m_mousePoint.x, m_mousePoint.y);
 	}
 	Refresh() ;	// send an event that calls the OnPaint method
 }
@@ -150,7 +156,7 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 	if(selection)
 	{
 		controler->isInside(m_onePoint.x, m_onePoint.y);
-		controler->changeColorsSelectedForm();
+		controler->changeColorsSelectedForm(m_onePoint.x, m_onePoint.y);
 	}
 
 	Refresh() ; // send an event that calls the OnPaint method

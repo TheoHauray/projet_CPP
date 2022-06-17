@@ -18,7 +18,8 @@ public:
     void setY2(int y2);
     void draw(wxDC* dc) override;
     bool isInside(int x, int y) override;
-
+    virtual void move(int x, int y) override;
+    void resize(int x, int y);
 
 private:
 
