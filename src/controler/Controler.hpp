@@ -45,6 +45,9 @@ class Controler
         unsigned int getSliderTransparencyValue();
         bool getBoolSelectionColor();
         bool getBoolSelectionPosition();
+        bool getBoolSelectionFront();
+        bool getBoolSelectionBack();
+
 
 
         void eraseAll();

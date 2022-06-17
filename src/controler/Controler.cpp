@@ -104,6 +104,15 @@ bool Controler::getBoolSelectionPosition()
     return this->myFrame->GetControlPanel()->GetRadioButtonSelectPosition();
 }
 
+bool Controler::getBoolSelectionFront()
+{
+    return this->myFrame->GetControlPanel()->GetRadioButtonSelectPositionFront();
+}
+bool Controler::getBoolSelectionBack()
+{
+    return this->myFrame->GetControlPanel()->GetRadioButtonSelectPositionBack();
+}
+
 void Controler::setCoordinatesLine(int x1, int y1, int x2, int y2, wxColour colorFill, wxColour colorOutline, int width)
 {
     Line* line = new Line;
@@ -226,6 +235,14 @@ void Controler::changeColorsSelectedForm(int x, int y)
         selectedForm->setColourFill(getColourPickedFill());
     }
 }
+
+/*void Controler::sendToFront(int x, int y)
+{
+    if(selectedForm != NULL && selectedForm->isInside(x, y))
+    {
+        Forme 
+    }
+}*/
 
 void Controler::moveForm(int x, int y)
 {

@@ -95,6 +95,10 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 	bool selection = controler->getBoolSelection();
 	bool selectionColor = controler->getBoolSelectionColor();
 	bool selectionPosition = controler->getBoolSelectionPosition();
+	bool selectionFront = controler->getBoolSelectionFront();
+	bool selectionBack = controler->getBoolSelectionBack();
+
+
 
 	wxColour colourFill = controler->getColourPickedFill();
 	wxColour colourOutline = controler->getColourPickedOutline();
@@ -184,6 +188,14 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 			controler->setOnMove(false);
 			controler->setClic(0);
 		}
+		/*elseif (selectionFront)
+		{
+
+		}
+		elseif (selectionBack)
+		{
+
+		}*/
 	}
 
 	Refresh() ; // send an event that calls the OnPaint method

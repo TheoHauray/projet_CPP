@@ -38,6 +38,8 @@ enum
 	ID_RADIOBUTTONCERCLE,
 	ID_RADIOBUTTONRECTANGLE,
 	ID_RADIOBUTTONSELECTION,
+	ID_RADIOBUTTONPUSHFRONT,
+	ID_RADIOBUTTONPUSHBACK,
 
 	ID_RADIOBUTTONSELECTCOLOR,
 	ID_RADIOBUTTONSELECTPOSITION,
@@ -99,6 +101,12 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 	y+= 25 ;
 	m_radioButtonSelectPosition = new wxRadioButton(this, ID_RADIOBUTTONSELECTPOSITION, "Position", wxPoint(20, y), wxSize(100,20)) ;
 	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTONSELECTPOSITION);
+	y+= 25 ;
+	m_radioButtonPushFront = new wxRadioButton(this, ID_RADIOBUTTONPUSHFRONT, "Send to front", wxPoint(20, y), wxSize(100,20)) ;
+	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTONPUSHFRONT);
+	y+= 25 ;
+	m_radioButtonPushBack = new wxRadioButton(this, ID_RADIOBUTTONPUSHBACK, "Send to back", wxPoint(20, y), wxSize(100,20)) ;
+	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTONPUSHBACK);
 
 	//Radio button pour sélectionner les couleurs
 

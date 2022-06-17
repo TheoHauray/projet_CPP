@@ -33,6 +33,9 @@ public:
 	bool GetRadioButtonSelection() {return m_radioButtonSelection->GetValue();} ;
 	bool GetRadioButtonSelectColor() {return m_radioButtonSelectColor->GetValue();} ;
 	bool GetRadioButtonSelectPosition() {return m_radioButtonSelectPosition->GetValue();} ;
+	bool GetRadioButtonSelectPositionFront() {return m_radioButtonPushFront->GetValue();} ;
+	bool GetRadioButtonSelectPositionBack() {return m_radioButtonPushBack->GetValue();} ;
+
 
 
 
@@ -74,6 +77,9 @@ private:
 	wxButton* m_buttonRedo;
 	wxRadioButton* m_radioButtonSelectColor;
 	wxRadioButton* m_radioButtonSelectPosition;
+	wxRadioButton* m_radioButtonPushFront;
+	wxRadioButton* m_radioButtonPushBack;
+
 
 
 
