@@ -86,18 +86,6 @@ bool Dessin::saveImage(wxString fileName, int height, int width, wxColour color)
         dessins[i]->draw(&dcFile);
     }
 
-    /*
-    // just to create a tiny file
-	FILE* f = fopen(fileName, "w") ;
-	if (!f)
-		isFileSaved = false;
-	else
-	{
-		fprintf(f, "S1102 software can create and write a file") ;
-		
-		fclose(f) ;
-	}
-    */
 
    return true;
 }

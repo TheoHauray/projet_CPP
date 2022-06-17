@@ -25,8 +25,8 @@ private:
 	void OnMouseMove(wxMouseEvent &event) ;
 	void OnMouseLeftDown(wxMouseEvent &event) ;
 	void OnMouseLeftUp(wxMouseEvent &event);
-	void OnPaint(wxPaintEvent &event) ;
-	
+	void OnPaint(wxPaintEvent &event) ;		
+
 	wxPoint m_mousePoint ;
 	wxPoint m_onePoint ;
 	Controler *controler;
@@ -38,7 +38,6 @@ public:
 	void OpenFile(wxString fileName) ;
 	void SaveFile(wxString fileName) ;
 	void setControler(Controler *controler) ;
-	int clic;
 
 	void setBackgroundColor();
 };
