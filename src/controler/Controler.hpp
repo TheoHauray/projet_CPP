@@ -42,6 +42,11 @@ class Controler
         wxColour getColourPickedFill();
         wxColour getColourPickedOutline();
         int getSliderValue();
+        unsigned int getSliderTransparencyValue();
+
+        void eraseAll();
+        void popLastDrawing();
+        void redoLastDrawing();
 
         void setCoordinatesLine(int x1, int y1, int x2, int y2, wxColour colorFill, wxColour colorOutline, int width);
         void setCoordinatesCircle(int x1, int x2, int radius, wxColour colorFill, wxColour colorOutline, int width);
@@ -76,6 +81,7 @@ class Controler
         wxColour colorToFill = *wxWHITE;
         wxColour colorBorder = *wxBLACK;
         wxColour backGroundColor = *wxWHITE;
+
 };
 
 #endif //__CONTROLER_H__

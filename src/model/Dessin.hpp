@@ -28,12 +28,15 @@ public:
 
     std::vector<Forme*>& getVector();
     void addVector(Forme* forme);
+    void rmVector();
+    void redoVector();
     bool saveImage(wxString fileName, int height, int width, wxColour color);
 
 
 private:
 
     std::vector<Forme*> dessins;
+    std::vector<Forme*> dessinsRedo;
 
 };
 

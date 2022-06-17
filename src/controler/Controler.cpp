@@ -89,6 +89,13 @@ int Controler::getSliderValue()
     return this->myFrame->GetControlPanel()->getSliderValue();
 }
 
+unsigned int Controler::getSliderTransparencyValue()
+{
+    return this->myFrame->GetControlPanel()->getSliderTransparencyValue();
+}
+
+
+
 void Controler::setCoordinatesLine(int x1, int y1, int x2, int y2, wxColour colorFill, wxColour colorOutline, int width)
 {
     Line* line = new Line;
@@ -169,6 +176,7 @@ void Controler::drawForms(wxClientDC* dc)
     {
         dc->SetBrush(dessin->getVector().at(i)->getBrushFill());
         dc->SetPen(dessin->getVector().at(i)->getPenOutline());
+
         dessin->getVector().at(i)->draw(dc);
     }
 }
@@ -211,6 +219,7 @@ void Controler::changeColorsSelectedForm(int x, int y)
     }
 }
 
+<<<<<<< HEAD
 void Controler::moveForm(int x, int y)
 {
     if(selectedForm != NULL)
@@ -218,3 +227,22 @@ void Controler::moveForm(int x, int y)
         selectedForm->move(x, y);
     }
 }
+=======
+
+
+void Controler::eraseAll()
+{
+    delete dessin;
+    dessin = new Dessin();
+}
+
+void Controler::popLastDrawing()
+{
+    dessin->rmVector();
+}
+
+void Controler::redoLastDrawing()
+{
+    dessin->redoVector();
+}
+>>>>>>> c023ea9484398cea1c9c1ea4d975c928bb23e7b9

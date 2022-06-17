@@ -50,6 +50,24 @@ void Dessin::addVector(Forme* forme)
 {
     this->dessins.push_back(forme);
 }
+void Dessin::rmVector()
+{
+    if(dessins.size()>0)
+    {
+    dessinsRedo.push_back(dessins.at(dessins.size()-1));
+    dessins.pop_back();
+    }
+}
+
+void Dessin::redoVector()
+{
+    if(dessinsRedo.size()>0)
+    {
+        dessins.push_back(dessinsRedo.at(dessinsRedo.size()-1));
+        dessinsRedo.pop_back();
+    }
+}
+
 
 bool Dessin::saveImage(wxString fileName, int height, int width, wxColour color)
 {

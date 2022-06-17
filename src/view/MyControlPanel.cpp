@@ -29,7 +29,7 @@ enum
 	ID_ABOUT,
 	ID_LOAD,
 	ID_SAVE,
-	//ID_BUTTON1,
+	
 	ID_SLIDER1,
 	ID_CHECKBOX1,
 	ID_CHECKBOX2,
@@ -38,16 +38,18 @@ enum
 	ID_RADIOBUTTONCERCLE,
 	ID_RADIOBUTTONRECTANGLE,
 	ID_RADIOBUTTONSELECTION,
-	//ID_BUTTONAPPLYCOLOR,
-	//ID_RADIOBUTTONCOLORBACK,
-	//ID_RADIOBUTTONCOLORFORM,
-	//ID_RADIOBUTTONCOLORBORDER,
+
 	ID_RADIOBUTTONPEN,
 	ID_COLORPICKERFILL,
 	ID_COLORPICKEROUTLINE,
 	ID_COLORPICKERBACKGROUND,
 
-	ID_SLIDERWIDTH
+	ID_SLIDERWIDTH,
+	ID_SLIDERTRANSPARENCY,
+
+	ID_DELETEALLBUTTON,
+	ID_UNDOBUTTON,
+	ID_REDOBUTTON
 
 };
 
@@ -66,22 +68,11 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 	SetBackgroundColour(*wxLIGHT_GREY) ;
 
 	y = WIDGET_Y0 ;
-	//m_button = new wxButton(this, ID_BUTTON1, wxT("Click me"), wxPoint(10, y)) ;
-	//Bind(wxEVT_BUTTON, &MyControlPanel::OnButton, this, ID_BUTTON1) ;
-	
-	//y+= WIDGET_Y_STEP ;
-	//wxStaticText* text1 = new wxStaticText(this, wxID_ANY, wxT("Radius"), wxPoint(10, y)) ;
-	
-	//y+= 15 ;
-	//m_slider = new wxSlider(this, ID_SLIDER1, 10, 2, 100, wxPoint(10, y), wxSize(100,20)) ;
-	//Bind(wxEVT_SCROLL_THUMBTRACK, &MyControlPanel::OnSlider, this, ID_SLIDER1) ;	
-	
-	//y+= WIDGET_Y_STEP ;
 	m_checkBox = new wxCheckBox(this, ID_CHECKBOX1, "Show (x,y)", wxPoint(10, y), wxSize(100,20)) ;
 	Bind(wxEVT_CHECKBOX, &MyControlPanel::OnCheckBox, this, ID_CHECKBOX1) ;	
 
 
-//Ajout de boutons radio pour test, voir à quelle méthode ils peuvent être liés
+	//Radio button pour dessiner
 
 	y+= WIDGET_Y_STEP ;
     m_radioButtonLine = new wxRadioButton(this, ID_RADIOBUTTONLINE, "Ligne", wxPoint(10, y), wxSize(100,20), wxRB_GROUP) ;
@@ -99,59 +90,77 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 	m_radioButtonSelection = new wxRadioButton(this, ID_RADIOBUTTONSELECTION, "Selection", wxPoint(10, y), wxSize(100,20)) ;
 	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTONSELECTION);
 
+	//Radio button pour sélectionner les couleurs
+
 	y+=WIDGET_Y_STEP;
 	wxStaticText* text1 = new wxStaticText(this, wxID_ANY, wxT("Fill color"), wxPoint(10, y)) ;
 	y+= 20;
-	m_colourPickerFill = new wxColourPickerCtrl(this, ID_COLORPICKERFILL, *wxWHITE, wxPoint(10, y), wxDefaultSize, wxCLRP_DEFAULT_STYLE, wxDefaultValidator, "Pick a color") ;
+	m_colourPickerFill = new wxColourPickerCtrl(this, ID_COLORPICKERFILL, *wxWHITE, wxPoint(10, y), wxDefaultSize, wxCLRP_DEFAULT_STYLE, wxDefaultValidator, "Pick a filling color") ;
 
 	y+=WIDGET_Y_STEP;
 	wxStaticText* text2 = new wxStaticText(this, wxID_ANY, wxT("Outline color"), wxPoint(10, y)) ;
 	y+= 20;
-	m_colourPickerOutline = new wxColourPickerCtrl(this, ID_COLORPICKEROUTLINE, *wxBLACK, wxPoint(10, y), wxDefaultSize, wxCLRP_DEFAULT_STYLE, wxDefaultValidator, "Pick a color") ;
-	//Bind(wxEVT_BUTTON, &MyControlPanel::onColourPicker, this, ID_BUTTONCOLOR) ;
+	m_colourPickerOutline = new wxColourPickerCtrl(this, ID_COLORPICKEROUTLINE, *wxBLACK, wxPoint(10, y), wxDefaultSize, wxCLRP_DEFAULT_STYLE, wxDefaultValidator, "Pick an outline color") ;
 
 	y+=WIDGET_Y_STEP;
 	wxStaticText* text3 = new wxStaticText(this, wxID_ANY, wxT("Background color"), wxPoint(10, y)) ;
 	y+= 20;
-	m_colourPickerBackground = new wxColourPickerCtrl(this, ID_COLORPICKERBACKGROUND, *wxWHITE, wxPoint(10, y), wxDefaultSize, wxCLRP_DEFAULT_STYLE, wxDefaultValidator, "Pick a color") ;
+	m_colourPickerBackground = new wxColourPickerCtrl(this, ID_COLORPICKERBACKGROUND, *wxWHITE, wxPoint(10, y), wxDefaultSize, wxCLRP_DEFAULT_STYLE, wxDefaultValidator, "Pick a background color") ;
 	Bind(wxEVT_COMMAND_COLOURPICKER_CHANGED, &MyControlPanel::onColourPicker, this, ID_COLORPICKERBACKGROUND) ;
-	
-	/*y+= WIDGET_Y_STEP;
-	m_button_applyColor = new wxButton(this, ID_BUTTONAPPLYCOLOR, "Apply color", wxPoint(10, y), wxSize(100,20)) ;
-	Bind(wxEVT_BUTTON, &MyControlPanel::OnButton, this, ID_BUTTONAPPLYCOLOR) ;
 
-	y+= WIDGET_Y_STEP;
-	m_radioButton_Background = new wxRadioButton(this, ID_RADIOBUTTONCOLORBACK, "Background color", wxPoint(10, y), wxSize(100,20), wxRB_GROUP) ;
-	//Bind(wxEVT_BUTTON, &MyControlPanel::OnButton, this, ID_BUTTONAPPLYCOLOR) ;
-	
-	y+= 20;
-	m_radioButton_Form = new wxRadioButton(this, ID_RADIOBUTTONCOLORFORM, "Form color", wxPoint(10, y), wxSize(100,20)) ;
-	//Bind(wxEVT_BUTTON, &MyControlPanel::OnButton, this, ID_RADIOBUTTONCOLORFORM) ;
 
-	y+= 20;
-	m_radioButton_Border = new wxRadioButton(this, ID_RADIOBUTTONCOLORBORDER, "Border color", wxPoint(10, y), wxSize(100,20)) ;*/
+	//Sliders pour transparence et épaisseur du trait
+
 
 	y+= WIDGET_Y_STEP ;
 	wxStaticText* text4 = new wxStaticText(this, wxID_ANY, wxT("Outline Thickness"), wxPoint(10, y)) ;
-	
 	y+= 15 ;
-	m_sliderWidth = new wxSlider(this, ID_SLIDERWIDTH, 1, 1, 20, wxPoint(10, y), wxSize(100,20)) ;
+	m_sliderWidth = new wxSlider(this, ID_SLIDERWIDTH, 1, 1, 20, wxPoint(10, y), wxSize(100,20)) ;	
+
+	y+= WIDGET_Y_STEP ;
+	wxStaticText* text5 = new wxStaticText(this, wxID_ANY, wxT("Transparency"), wxPoint(10, y)) ;
+	y+= 15 ;
+	m_sliderTransparency = new wxSlider(this, ID_SLIDERTRANSPARENCY, 255, 0, 255, wxPoint(10, y), wxSize(100,20)) ;
+
+
+	//Undo, redo, erase all
+
+	y+= 2*WIDGET_Y_STEP ;
+	m_buttonEraseAll = new wxButton(this, ID_UNDOBUTTON, wxT("Undo"), wxPoint(10, y)) ;
+	Bind(wxEVT_BUTTON, &MyControlPanel::OnButtonUndo, this, ID_UNDOBUTTON) ;
+	y+= WIDGET_Y_STEP ;
+	m_buttonRedo = new wxButton(this, ID_REDOBUTTON, wxT("Redo"), wxPoint(10, y)) ;
+	Bind(wxEVT_BUTTON, &MyControlPanel::OnButtonRedo, this, ID_REDOBUTTON) ;
+	y+= WIDGET_Y_STEP ;
+	m_buttonUndo = new wxButton(this, ID_DELETEALLBUTTON, wxT("Erase all"), wxPoint(10, y)) ;
+	Bind(wxEVT_BUTTON, &MyControlPanel::OnButton, this, ID_DELETEALLBUTTON) ;
+
 }
 
 //------------------------------------------------------------------------
 void MyControlPanel::OnButton(wxCommandEvent &event)
 //------------------------------------------------------------------------
 {
-
-	
-}
-
-void MyControlPanel::OnCheckBoxLine(wxCommandEvent &event)
-{
+	controler->eraseAll();
 	MyFrame* frame = (MyFrame*)GetParent() ;
-	frame->RefreshDrawing() ;
-
+	frame->RefreshDrawing() ;	// update the drawing panel
 }
+
+void MyControlPanel::OnButtonUndo(wxCommandEvent &event)
+{
+	controler->popLastDrawing();
+	MyFrame* frame = (MyFrame*)GetParent() ;
+	frame->RefreshDrawing() ;	// update the drawing panel
+}
+
+void MyControlPanel::OnButtonRedo(wxCommandEvent &event)
+{
+	controler->redoLastDrawing();
+	MyFrame* frame = (MyFrame*)GetParent() ;
+	frame->RefreshDrawing() ;	// update the drawing panel
+}
+
+
 
 void MyControlPanel::onColourPicker(wxCommandEvent &event)
 {
@@ -170,6 +179,7 @@ void MyControlPanel::OnSlider(wxScrollEvent &event)
 void MyControlPanel::OnCheckBox(wxCommandEvent &event)
 //------------------------------------------------------------------------
 {
+	controler->setClic(0);
 	MyFrame* frame = (MyFrame*)GetParent() ;
 	frame->RefreshDrawing() ;	// update the drawing panel
 }
