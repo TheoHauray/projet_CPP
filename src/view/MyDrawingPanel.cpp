@@ -188,14 +188,14 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent &event)
 			controler->setOnMove(false);
 			controler->setClic(0);
 		}
-		/*elseif (selectionFront)
+		else if (selectionFront)
 		{
-
+			controler->sendToFront(m_onePoint.x, m_onePoint.y);
 		}
-		elseif (selectionBack)
+		else if (selectionBack)
 		{
-
-		}*/
+			controler->sendToBack(m_onePoint.x, m_onePoint.y);
+		}
 	}
 
 	Refresh() ; // send an event that calls the OnPaint method

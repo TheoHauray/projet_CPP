@@ -45,6 +45,11 @@ std::vector<Forme*>& Dessin::getVector()
     return dessins; 
 }
 
+void Dessin::setVector(std::vector<Forme*> forme)
+{
+    dessins = forme;
+}
+
 
 void Dessin::addVector(Forme* forme)
 {

@@ -16,6 +16,8 @@
 #include "../model/Point.hpp"
 #include "../model/Forme.hpp"
 
+#include <vector>
+
 
 
 using namespace std;
@@ -227,6 +229,21 @@ void Controler::isInside(int x, int y)
     }
 }
 
+int Controler::getIndexInside(int x, int y)
+{
+    bool testIsInside = false;
+    for(int i = dessin->getVector().size()-1; i >=0 && testIsInside == false; i--)
+    {
+        testIsInside = dessin->getVector().at(i)->isInside(x, y);
+        if(testIsInside)
+        {
+            return i;
+        }
+    }
+    return -1;
+    
+}
+
 void Controler::changeColorsSelectedForm(int x, int y)
 {
     if(selectedForm != NULL && selectedForm->isInside(x, y))
@@ -236,13 +253,33 @@ void Controler::changeColorsSelectedForm(int x, int y)
     }
 }
 
-/*void Controler::sendToFront(int x, int y)
+void Controler::sendToFront(int x, int y)
 {
-    if(selectedForm != NULL && selectedForm->isInside(x, y))
+    int index = getIndexInside(x, y);
+    if(selectedForm != NULL && selectedForm->isInside(x, y) && index>=0)
     {
-        Forme 
+
+        Forme* forme = selectedForm;
+        std::vector<Forme*> vec = dessin->getVector();
+        vec.erase(vec.begin()+index);
+        vec.insert(vec.end(),forme);
+        dessin->setVector(vec);
     }
-}*/
+}
+
+void Controler::sendToBack(int x, int y)
+{
+    int index = getIndexInside(x, y);
+
+    if(selectedForm != NULL && selectedForm->isInside(x, y) && index>=0)
+    {
+        Forme* forme = selectedForm;
+        std::vector<Forme*> vec = dessin->getVector();
+        vec.erase(vec.begin()+index);
+        vec.insert(vec.begin(),forme);
+        dessin->setVector(vec);
+    }
+}
 
 void Controler::moveForm(int x, int y)
 {

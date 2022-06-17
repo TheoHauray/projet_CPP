@@ -28,6 +28,8 @@ public:
 
     std::vector<Forme*>& getVector();
     void addVector(Forme* forme);
+    void setVector(std::vector<Forme*> forme);
+
     void rmVector();
     void redoVector();
     bool saveImage(wxString fileName, int height, int width, wxColour color);
