@@ -79,38 +79,38 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 
 	//Radio button pour dessiner
 
-	y+= WIDGET_Y_STEP ;
+	y+= 35 ;
     m_radioButtonLine = new wxRadioButton(this, ID_RADIOBUTTONLINE, "Ligne", wxPoint(10, y), wxSize(100,20), wxRB_GROUP) ;
 	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, 	ID_RADIOBUTTONLINE);
-	y+= WIDGET_Y_STEP ;
+	y+= 35 ;
 	m_radioButtonCircle = new wxRadioButton(this, ID_RADIOBUTTONCERCLE, "Cercle", wxPoint(10, y), wxSize(100,20)) ;
 	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTONCERCLE);
-	y+= WIDGET_Y_STEP ;
+	y+= 35 ;
 	m_radioButtonRectangle = new wxRadioButton(this, ID_RADIOBUTTONRECTANGLE, "Rectangle", wxPoint(10, y), wxSize(100,20)) ;
 	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTONRECTANGLE);
-	y+= WIDGET_Y_STEP ;
+	y+= 35 ;
 	m_radioButtonPen = new wxRadioButton(this, ID_RADIOBUTTONPEN, "Pen", wxPoint(10, y), wxSize(100,20)) ;
 	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTONPEN);
-	y+= WIDGET_Y_STEP ;
+	y+= 35 ;
 	m_radioButtonSelection = new wxRadioButton(this, ID_RADIOBUTTONSELECTION, "Selection", wxPoint(10, y), wxSize(100,20)) ;
 	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTONSELECTION);
 
 	y+= 25 ;
-	m_radioButtonSelectColor = new wxRadioButton(this, ID_RADIOBUTTONSELECTCOLOR, "Color", wxPoint(20, y), wxSize(100,20), wxRB_GROUP) ;
+	m_radioButtonSelectColor = new wxRadioButton(this, ID_RADIOBUTTONSELECTCOLOR, "Color", wxPoint(20, y), wxSize(110,20), wxRB_GROUP) ;
 	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTONSELECTCOLOR);
 	y+= 25 ;
-	m_radioButtonSelectPosition = new wxRadioButton(this, ID_RADIOBUTTONSELECTPOSITION, "Position", wxPoint(20, y), wxSize(100,20)) ;
+	m_radioButtonSelectPosition = new wxRadioButton(this, ID_RADIOBUTTONSELECTPOSITION, "Position", wxPoint(20, y), wxSize(110,20)) ;
 	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTONSELECTPOSITION);
 	y+= 25 ;
-	m_radioButtonPushFront = new wxRadioButton(this, ID_RADIOBUTTONPUSHFRONT, "Send to front", wxPoint(20, y), wxSize(100,20)) ;
+	m_radioButtonPushFront = new wxRadioButton(this, ID_RADIOBUTTONPUSHFRONT, "Send to front", wxPoint(20, y), wxSize(110,20)) ;
 	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTONPUSHFRONT);
 	y+= 25 ;
-	m_radioButtonPushBack = new wxRadioButton(this, ID_RADIOBUTTONPUSHBACK, "Send to back", wxPoint(20, y), wxSize(100,20)) ;
+	m_radioButtonPushBack = new wxRadioButton(this, ID_RADIOBUTTONPUSHBACK, "Send to back", wxPoint(20, y), wxSize(110,20)) ;
 	Bind(wxEVT_RADIOBUTTON, &MyControlPanel::OnCheckBox, this, ID_RADIOBUTTONPUSHBACK);
 
 	//Radio button pour sélectionner les couleurs
 
-	y+=WIDGET_Y_STEP;
+	y+= 2*WIDGET_Y_STEP;
 	wxStaticText* text1 = new wxStaticText(this, wxID_ANY, wxT("Fill color"), wxPoint(10, y)) ;
 	y+= 20;
 	m_colourPickerFill = new wxColourPickerCtrl(this, ID_COLORPICKERFILL, *wxWHITE, wxPoint(10, y), wxDefaultSize, wxCLRP_DEFAULT_STYLE, wxDefaultValidator, "Pick a filling color") ;
@@ -133,12 +133,12 @@ MyControlPanel::MyControlPanel(wxWindow *parent) : wxPanel(parent)
 
 	y+= WIDGET_Y_STEP ;
 	wxStaticText* text4 = new wxStaticText(this, wxID_ANY, wxT("Outline Thickness"), wxPoint(10, y)) ;
-	y+= 15 ;
+	y+= 20 ;
 	m_sliderWidth = new wxSlider(this, ID_SLIDERWIDTH, 1, 1, 20, wxPoint(10, y), wxSize(100,20)) ;	
 
-	y+= WIDGET_Y_STEP ;
-	wxStaticText* text5 = new wxStaticText(this, wxID_ANY, wxT("Transparency"), wxPoint(10, y)) ;
-	y+= 15 ;
+	y+= 25 ;
+	wxStaticText* text5 = new wxStaticText(this, wxID_ANY, wxT("Opacity"), wxPoint(10, y)) ;
+	y+= 20 ;
 	m_sliderTransparency = new wxSlider(this, ID_SLIDERTRANSPARENCY, 255, 0, 255, wxPoint(10, y), wxSize(100,20)) ;
 
 
