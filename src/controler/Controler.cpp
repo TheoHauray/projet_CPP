@@ -222,7 +222,7 @@ void Controler::changeColorsSelectedForm(int x, int y)
 {
     if(selectedForm != NULL && selectedForm->isInside(x, y))
     {
-        selectedForm->setColourContour(getColourPickedOutline(), selectedForm->getPenOutline().GetWidth());
+        selectedForm->setColourContour(getColourPickedOutline(), getSliderValue());
         selectedForm->setColourFill(getColourPickedFill());
     }
 }
