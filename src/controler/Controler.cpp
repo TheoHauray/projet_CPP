@@ -94,6 +94,8 @@ unsigned int Controler::getSliderTransparencyValue()
     return this->myFrame->GetControlPanel()->getSliderTransparencyValue();
 }
 
+
+
 void Controler::setCoordinatesLine(int x1, int y1, int x2, int y2, wxColour colorFill, wxColour colorOutline, int width)
 {
     Line* line = new Line;
@@ -215,4 +217,22 @@ void Controler::changeColorsSelectedForm()
         selectedForm->setColourContour(getColourPickedOutline(), 5);
         selectedForm->setColourFill(getColourPickedFill());
     }
+}
+
+
+
+void Controler::eraseAll()
+{
+    delete dessin;
+    dessin = new Dessin();
+}
+
+void Controler::popLastDrawing()
+{
+    dessin->rmVector();
+}
+
+void Controler::redoLastDrawing()
+{
+    dessin->redoVector();
 }

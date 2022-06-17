@@ -32,9 +32,7 @@ public:
 	bool GetRadioButtonPenValue() {return m_radioButtonPen->GetValue();} ;
 	bool GetRadioButtonSelection() {return m_radioButtonSelection->GetValue();} ;
 
-	/*bool getRadioButtonBackgroundValue() {return m_radioButton_Background->GetValue();} ;
-	bool getRadioButtonFormValue() {return m_radioButton_Form->GetValue();} ;
-	bool GetRadioButtonBorderValue() {return m_radioButton_Border->GetValue();} ;*/
+
 
 	wxColour getColourPickerColorFill() {return m_colourPickerFill->GetColour();} ;
 	wxColour getColourPickerColorOutline() {return m_colourPickerOutline->GetColour();} ;
@@ -56,25 +54,27 @@ private:
 	void OnCheckBox(wxCommandEvent &event) ;
 	void OnCheckBoxLine(wxCommandEvent &event) ;
 	void onColourPicker(wxCommandEvent &event) ;
+	void OnButtonUndo(wxCommandEvent &event);
+	void OnButtonRedo(wxCommandEvent &event);
 
-	//wxButton* m_button ;
-	//wxSlider* m_slider ;
+
 	wxCheckBox* m_checkBox ;
 	wxCheckBox* m_line ;
 	wxRadioButton* m_radioButtonLine;
 	wxRadioButton* m_radioButtonCircle;
 	wxRadioButton* m_radioButtonRectangle;
 	wxRadioButton* m_radioButtonSelection;
-	/*wxButton* m_button_applyColor ;
-	wxRadioButton* m_radioButton_Background;
-	wxRadioButton* m_radioButton_Form;
-	wxRadioButton* m_radioButton_Border;*/
+
 	wxColourPickerCtrl* m_colourPickerFill ;
 	wxColourPickerCtrl* m_colourPickerOutline ;
 	wxColourPickerCtrl* m_colourPickerBackground ;
 	wxRadioButton* m_radioButtonPen;
 	wxSlider* m_sliderWidth;
 	wxSlider* m_sliderTransparency;
+	wxButton* m_buttonEraseAll ;
+	wxButton* m_buttonUndo;
+	wxButton* m_buttonRedo;
+
 
 
 	Controler *controler;

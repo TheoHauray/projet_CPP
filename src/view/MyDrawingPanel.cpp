@@ -189,7 +189,7 @@ void MyDrawingPanel::OnPaint(wxPaintEvent &event)
 	wxColour transparencyOutlineColor = wxColour(colourOutline.Red(), colourOutline.Green(), colourOutline.Blue(), transparency);
 
 
-	Dessin dessin = controler->getDessin();
+	//Dessin dessin = controler->getDessin();
 
 	// then paint
 	wxPaintDC dc(this);	

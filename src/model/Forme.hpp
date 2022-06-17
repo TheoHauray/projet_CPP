@@ -21,10 +21,7 @@ class Forme
 {
     protected:
         std::string m_label;
-        /*
-        wxColour colourFill;
-        wxColour colourPen;
-        */
+
         wxBrush brushFill;
         wxPen penOutline;
         wxPen prevPen;
@@ -40,6 +37,8 @@ class Forme
         void setLabel(const std::string& s); 
         void setColourContour(wxColour color, int width);
         void setColourFill(wxColour color);
+
+
         /*
         wxColour getColourFill();
         wxColour getColourPen();
